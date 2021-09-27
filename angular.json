@@ -1,0 +1,163 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "angular-material-calendar": {
+      "projectType": "library",
+      "root": "projects/angular-material-calendar",
+      "sourceRoot": "projects/angular-material-calendar/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/angular-material-calendar/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-material-calendar/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/angular-material-calendar/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-material-calendar/src/test.ts",
+            "tsConfig": "projects/angular-material-calendar/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-material-calendar/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/angular-material-calendar/**/*.ts",
+              "projects/angular-material-calendar/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "angular-material-calendar-demo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/angular-material-calendar-demo",
+      "sourceRoot": "projects/angular-material-calendar-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/angular-material-calendar-demo",
+            "index": "projects/angular-material-calendar-demo/src/index.html",
+            "main": "projects/angular-material-calendar-demo/src/main.ts",
+            "polyfills": "projects/angular-material-calendar-demo/src/polyfills.ts",
+            "tsConfig": "projects/angular-material-calendar-demo/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/angular-material-calendar-demo/src/favicon.ico",
+              "projects/angular-material-calendar-demo/src/assets"
+            ],
+            "styles": [
+              "projects/angular-material-calendar-demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/angular-material-calendar-demo/src/environments/environment.ts",
+                  "with": "projects/angular-material-calendar-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-material-calendar-demo:build:production"
+            },
+            "development": {
+              "browserTarget": "angular-material-calendar-demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angular-material-calendar-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-material-calendar-demo/src/test.ts",
+            "polyfills": "projects/angular-material-calendar-demo/src/polyfills.ts",
+            "tsConfig": "projects/angular-material-calendar-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-material-calendar-demo/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/angular-material-calendar-demo/src/favicon.ico",
+              "projects/angular-material-calendar-demo/src/assets"
+            ],
+            "styles": [
+              "projects/angular-material-calendar-demo/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/angular-material-calendar-demo/**/*.ts",
+              "projects/angular-material-calendar-demo/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "angular-material-calendar",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
+}
