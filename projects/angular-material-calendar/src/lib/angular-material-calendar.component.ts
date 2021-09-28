@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DateService } from './service/date.service';
 
 @Component({
   selector: 'lib-angular-material-calendar',
@@ -12,7 +13,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AngularMaterialCalendarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _dateservice: DateService) { 
+    console.log("callewd");
+  }
 
   ngOnInit(): void {
   }
