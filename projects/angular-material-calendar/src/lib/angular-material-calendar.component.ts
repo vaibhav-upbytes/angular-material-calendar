@@ -6,6 +6,7 @@ import { DateService } from './service/date.service';
   template: `
     <p>
       angular-material-calendar works!
+      <angular-material-calendar-header></angular-material-calendar-header>
     </p>
   `,
   styles: [
@@ -14,7 +15,7 @@ import { DateService } from './service/date.service';
 export class AngularMaterialCalendarComponent implements OnInit {
 
   constructor(private _dateservice: DateService) { 
-    console.log("callewd");
+
   }
 
   ngOnInit(): void {
