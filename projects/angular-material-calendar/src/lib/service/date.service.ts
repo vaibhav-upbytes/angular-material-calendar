@@ -1,13 +1,29 @@
-import * as moment from "moment";
-import { from, Observable } from "rxjs";
-import { Date } from "../modal/date";
+import { Moment } from 'moment';
+import { CalendarDate } from "../calendar-date/calendar-date";
 import { DateAdapter } from "@angular/material/core";
 import { Injectable } from "@angular/core";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+   providedIn: 'root'
+})
 export class DateService {
-   public date?: Observable<Date>;
-   constructor(private _dateAdapter: DateAdapter<any>){
-      console.log(_dateAdapter.getDate(moment()));
+   constructor(
+      private _dateAdapter: DateAdapter<Moment>
+      ) {}
+
+   today(): CalendarDate {
+      return {current: this._dateAdapter.today()};
+   }
+
+   addCalendarYears(date: CalendarDate, years: number): CalendarDate {
+      return {current: this._dateAdapter.addCalendarYears(date.current, years)};
+   }
+  
+   addCalendarMonths(date: CalendarDate, months: number): CalendarDate {
+      return {current: this._dateAdapter.addCalendarMonths(date.current, months)};
+   }
+  
+   addCalendarDays(date: CalendarDate, days: number): CalendarDate {
+      return {current: this._dateAdapter.addCalendarDays(date.current, days)};
    }
 }

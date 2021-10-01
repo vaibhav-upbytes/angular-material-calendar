@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as _moment from 'moment';
 import { increment, decrement, reset } from '../state/date.action';
+import { CalendarDate } from '../calendar-date/calendar-date';
 
 
 @Component({
@@ -10,14 +10,16 @@ import { increment, decrement, reset } from '../state/date.action';
   templateUrl: './calendar-header.component.html',
 })
 export class CalendarHeaderComponent {
-  date$?: Observable<_moment.Moment>;
+  date$?: Observable<CalendarDate>;
+  _currentDate?: CalendarDate;
 
-  constructor(private store: Store<{ date: _moment.Moment }>) {
-    this.date$ = store.select('date');
+  constructor(private store: Store<{ _date: CalendarDate}>) {
+    this.date$ = store.select('_date');
+    this.date$.subscribe((d: CalendarDate) => this._currentDate = d);
   }
 
   increment() {
-    this.store.dispatch(increment());
+    this.store.dispatch(increment());  
   }
  
   decrement() {
