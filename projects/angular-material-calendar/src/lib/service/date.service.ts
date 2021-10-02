@@ -26,4 +26,13 @@ export class DateService {
    addCalendarDays(date: CalendarDate, days: number): CalendarDate {
       return {current: this._dateAdapter.addCalendarDays(date.current, days)};
    }
+   
+   getMonthNames(date: CalendarDate, style: 'long' | 'short' | 'narrow'): string {
+      return style == 'long' ? date.current.format('MMMM') : date.current.format('M');
+   }
+
+   getYearName(date: CalendarDate, style: 'long' | 'short' | 'narrow'): string {
+      return this._dateAdapter.getYearName(date.current);
+   }
+
 }
