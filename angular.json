@@ -71,7 +71,8 @@
               "projects/angular-material-calendar-demo/src/assets"
             ],
             "styles": [
-              "projects/angular-material-calendar-demo/src/styles.scss"
+              "projects/angular-material-calendar-demo/src/styles.scss",
+              "@angular/material/prebuilt-themes/deeppurple-amber.css"
             ],
             "scripts": []
           },
