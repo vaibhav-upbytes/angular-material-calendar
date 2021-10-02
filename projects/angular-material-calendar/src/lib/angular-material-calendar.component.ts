@@ -6,6 +6,7 @@ import { DateService } from './service/date.service';
   template: `
     <p>
       <angular-material-calendar-header class="calendar-header"></angular-material-calendar-header>
+      <angular-material-calendar-month-view></angular-material-calendar-month-view>
     </p>
   `,
   styleUrls: [
