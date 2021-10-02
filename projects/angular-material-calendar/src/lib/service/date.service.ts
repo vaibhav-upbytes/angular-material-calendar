@@ -2,6 +2,15 @@ import { Moment } from 'moment';
 import { CalendarDate } from "../calendar-date/calendar-date";
 import { DateAdapter } from "@angular/material/core";
 import { Injectable } from "@angular/core";
+import * as moment from 'moment';
+
+export function dateRange<T>(length: number, lamdaFunction: (index: number) => T): T[] {
+   const dateArr = Array(length);
+   for (let i = 0; i < length; i++) {
+     dateArr[i] = lamdaFunction(i);
+   }
+   return dateArr;
+}
 
 @Injectable({
    providedIn: 'root'
@@ -12,19 +21,19 @@ export class DateService {
       ) {}
 
    today(): CalendarDate {
-      return {current: this._dateAdapter.today()};
+      return this.clone({current: this._dateAdapter.today()});
    }
 
    addCalendarYears(date: CalendarDate, years: number): CalendarDate {
-      return {current: this._dateAdapter.addCalendarYears(date.current, years)};
+      return this.clone({current: this._dateAdapter.addCalendarYears(date.current, years)});
    }
   
    addCalendarMonths(date: CalendarDate, months: number): CalendarDate {
-      return {current: this._dateAdapter.addCalendarMonths(date.current, months)};
+      return this.clone({current: this._dateAdapter.addCalendarMonths(date.current, months)});
    }
   
    addCalendarDays(date: CalendarDate, days: number): CalendarDate {
-      return {current: this._dateAdapter.addCalendarDays(date.current, days)};
+      return this.clone({current: this._dateAdapter.addCalendarDays(date.current, days)});
    }
    
    getMonthNames(date: CalendarDate, style: 'long' | 'short' | 'narrow'): string {
@@ -33,6 +42,62 @@ export class DateService {
 
    getYearName(date: CalendarDate, style: 'long' | 'short' | 'narrow'): string {
       return this._dateAdapter.getYearName(date.current);
+   }
+
+   getDayName(date: CalendarDate, style: 'long' | 'short' | 'narrow'): string {
+      return style == 'long' ? date.current.format('dddd') : date.current.format('dd');
+   }
+
+   getYear(date: CalendarDate): number {
+      return this._dateAdapter.getYear(date.current);
+   }
+
+   getMonth(date: CalendarDate): number {
+      return this._dateAdapter.getMonth(date.current);
+   }
+
+   getDate(date: CalendarDate): number {
+      return this._dateAdapter.getDate(date.current);
+   }
+
+   getFirstDayOfMonth(date: CalendarDate): CalendarDate {
+      return this.clone({current:this._dateAdapter.createDate(this.getYear(date), this.getMonth(date), 1)});
+   }
+
+   getLastDayOfMonth(date: CalendarDate): CalendarDate {
+      return this.clone({current: 
+         this._dateAdapter.createDate(this.getYear(date), this.getMonth(date), date.current.daysInMonth())});
+   }
+
+   getFirstDayOfWeek(date: CalendarDate): CalendarDate {
+      return this.clone({current : this._dateAdapter.clone(date.current.startOf('week'))});
+   }
+
+   getLastDayOfWeek(date: CalendarDate): CalendarDate {
+      return this.clone({current : this._dateAdapter.clone(date.current.endOf('week'))});
+   }
+
+   getDaysInMonthRange(date: CalendarDate): number {
+      return this.getLastDayOfWeek(this.getLastDayOfMonth(date))
+                  .current.diff(this.getFirstDayOfWeek(date).current, 'days');
+   }
+
+   clone(date: CalendarDate): CalendarDate {
+      return {current: this._dateAdapter.clone(date.current)};
+   }
+
+   getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): string[] {
+      return this._dateAdapter.getDayOfWeekNames(style);
+   }
+
+   getMonthDatesRange(date: CalendarDate): CalendarDate[] {
+      const dates: CalendarDate[] = Array(35);
+      let first =  this.getFirstDayOfWeek(this.getFirstDayOfMonth(date));
+      for (let i = 0; i < 35; i++) {
+         first = this.addCalendarDays(first, 1);
+         dates[i] = first;
+      }
+      return dates;
    }
 
 }

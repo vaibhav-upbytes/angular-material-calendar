@@ -19,6 +19,7 @@ import {
 import {
   CalendarHeaderToggelComponent
 } from './calendar-header/calendar-toggel/calendar-toggel.component';
+import { CalendarMonthViewModule } from './calendar-month-view-module/calendar-month-view.module'
 export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarDateState>>
 ('Registered Reducers', {
   factory: () => {
@@ -39,7 +40,8 @@ export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarDateSta
     MatMomentDateModule,
     StoreModule.forRoot(REDUCER_TOKEN),
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    CalendarMonthViewModule
   ],
   exports: [
     AngularMaterialCalendarComponent
