@@ -15,7 +15,6 @@ export class MonthViewService {
     getMonthViewDates(date: CalendarDate): CalendarMonthView [] {
         let d = date;
         let monthDates: CalendarDate[] = this._dateService.getMonthDatesRange(d);
-        console.log(monthDates);
         return monthDates.map((d) => {
             return { date: this._dateService.getDate(d),
                      day: this._dateService.getDayName(d, 'short'),
