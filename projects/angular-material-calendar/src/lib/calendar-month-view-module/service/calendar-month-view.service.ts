@@ -23,7 +23,8 @@ export class MonthViewService {
         });
     }
 
+    // need to be fixed to get first day as a monday always
     getDayOfWeeksNames(style: 'long' | 'short' | 'narrow'): string[] {
-        return this._dateService.getDayOfWeekNames(style);
+        return this._dateService.getDayOfWeekNamesFromMonday(style);
     }
 }

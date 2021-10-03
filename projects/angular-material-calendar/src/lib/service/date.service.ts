@@ -90,6 +90,11 @@ export class DateService {
       return this._dateAdapter.getDayOfWeekNames(style);
    }
 
+   getDayOfWeekNamesFromMonday(style: 'long' | 'short' | 'narrow'): string[] {
+      let days = this.getDayOfWeekNames(style);
+      return [...days.slice(1), days[0]];
+   }
+
    getMonthDatesRange(date: CalendarDate): CalendarDate[] {
       const dates: CalendarDate[] = Array(35);
       let first =  this.getFirstDayOfWeek(this.getFirstDayOfMonth(date));
