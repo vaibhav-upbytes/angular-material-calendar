@@ -7,12 +7,16 @@ import {
 import { 
   CalendarMonthViewComponent
  } from './calendar-month-view/calendar-month-view.component';
+import {
+  CalendarMonthViewGridHeaderComponent
+} from './calendar-month-view-grid-header/calendar-month-view-grid-header.component';
 
 import { MonthViewService } from "./service/calendar-month-view.service"; 
 
 @NgModule({
     declarations: [
         CalendarMonthViewComponent,
+        CalendarMonthViewGridHeaderComponent,
         CalendarMonthViewGridComponent
     ],
     imports: [

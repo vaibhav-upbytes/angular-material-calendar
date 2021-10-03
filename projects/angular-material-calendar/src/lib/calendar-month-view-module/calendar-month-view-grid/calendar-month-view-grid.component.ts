@@ -16,7 +16,6 @@ export class CalendarMonthViewGridComponent {
     date$?: Observable<CalendarDate>;
     _currentDate?: CalendarDate;
     monthViewDates?: CalendarMonthView[];
-    dayOfWeekNames?: string[];
 
     constructor(
         private store: Store<{ _date: CalendarDate}>,
@@ -27,6 +26,5 @@ export class CalendarMonthViewGridComponent {
             this._currentDate = d;
             this.monthViewDates = this._monthViewService.getMonthViewDates(this._currentDate!);
         });
-        this.dayOfWeekNames = this._monthViewService.getDayOfWeeksNames('short');
     }
 }
