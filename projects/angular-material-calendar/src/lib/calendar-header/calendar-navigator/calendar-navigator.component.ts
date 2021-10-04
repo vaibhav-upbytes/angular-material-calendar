@@ -7,6 +7,9 @@ import { CalendarDate } from '../../calendar-date/calendar-date';
 @Component({
     selector: 'angular-material-calendar-navigator',
     templateUrl: './calendar-navigator.component.html',
+    styleUrls: [
+      'calendar-navigator.component.scss'
+    ]
   })
 export class CalendarNavigatorComponent {
     date$?: Observable<CalendarDate>;
