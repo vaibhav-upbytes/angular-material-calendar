@@ -1,0 +1,5 @@
+@import './calendar-month-view-grid-header.theme.scss';
+
+@mixin angular-material-calendar($angular-material-calendar) {
+  @include calendar-month-view-grid-header-theme($angular-material-calendar);
+}
