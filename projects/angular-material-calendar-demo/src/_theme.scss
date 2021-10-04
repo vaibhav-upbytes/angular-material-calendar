@@ -1,0 +1,18 @@
+@use '~@angular/material' as mat;
+@import 'angular-material-calendar/theme/angular-material-calendar.theme.scss';
+
+@include mat.core();
+
+$angular-material-calendar-demo-primary: mat.define-palette(mat.$indigo-palette, 500);
+$angular-material-calendar-demo-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$angular-material-calendar-demo-warn: mat.define-palette(mat.$red-palette);
+
+$angular-material-calendar-demo-theme: mat.define-light-theme((
+ color: (
+   primary: $angular-material-calendar-demo-primary,
+   accent: $angular-material-calendar-demo-accent,
+ )
+));
+
+@include mat.all-component-themes($angular-material-calendar-demo-theme);
+@include angular-material-calendar($angular-material-calendar-demo-theme);

@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+
+@mixin calendar-month-view-grid-header-theme($theme) {
+  
+  $primary: map-get($theme, primary);
+  .calendar-month-view-grid-header {
+    background: mat-color($primary);
+  }
+}
