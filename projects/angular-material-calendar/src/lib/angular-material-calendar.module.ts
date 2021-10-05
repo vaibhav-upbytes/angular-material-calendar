@@ -9,17 +9,10 @@ import { StoreModule, ActionReducerMap } from '@ngrx/store';
 import { CalendarDateState } from './state/calendar-date-state'; 
 import { DateReducerService } from './service/date-reducer.service';
 import { DateService } from './service/date.service';
-import { CalendarHeaderComponent } from './calendar-header/calendar-header.component';
-import {
-  CalendarNavigatorComponent
-} from './calendar-header/calendar-navigator/calendar-navigator.component';
-import {
-  CalendarHeaderLabelComponent
-} from './calendar-header/calendar-label/calendar-label.component';
-import {
-  CalendarHeaderToggelComponent
-} from './calendar-header/calendar-toggel/calendar-toggel.component';
-import { CalendarMonthViewModule } from './calendar-month-view-module/calendar-month-view.module'
+
+import { CalendarMonthViewModule } from './calendar-month-view-module/calendar-month-view.module';
+import { CalendarHeaderModule } from './calendar-header-module/calendar-header.module';
+
 export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarDateState>>
 ('Registered Reducers', {
   factory: () => {
@@ -30,18 +23,15 @@ export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarDateSta
 
 @NgModule({
   declarations: [
-    AngularMaterialCalendarComponent,
-    CalendarHeaderComponent,
-    CalendarNavigatorComponent,
-    CalendarHeaderLabelComponent,
-    CalendarHeaderToggelComponent
+    AngularMaterialCalendarComponent
   ],
   imports: [
     MatMomentDateModule,
     StoreModule.forRoot(REDUCER_TOKEN),
     CommonModule,
     MaterialModule,
-    CalendarMonthViewModule
+    CalendarMonthViewModule,
+    CalendarHeaderModule
   ],
   exports: [
     AngularMaterialCalendarComponent
