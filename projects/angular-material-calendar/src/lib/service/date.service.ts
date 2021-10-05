@@ -105,4 +105,8 @@ export class DateService {
       return dates;
    }
 
+   isToday(date: CalendarDate): boolean {
+      return this.today().current.isSame(date.current, "day");
+   }
+
 }

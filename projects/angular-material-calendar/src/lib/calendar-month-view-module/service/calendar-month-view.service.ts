@@ -16,9 +16,11 @@ export class MonthViewService {
         let d = date;
         let monthDates: CalendarDate[] = this._dateService.getMonthDatesRange(d);
         return monthDates.map((d) => {
-            return { date: this._dateService.getDate(d),
+            return { 
+                     date: this._dateService.getDate(d),
                      day: this._dateService.getDayName(d, 'short'),
-                     isEnable: this._dateService.getMonth(date) == this._dateService.getMonth(d)
+                     isEnable: this._dateService.getMonth(date) == this._dateService.getMonth(d),
+                     isToday: this._dateService.isToday(d)
                 }
         });
     }
