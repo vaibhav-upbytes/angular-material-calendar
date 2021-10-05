@@ -7,5 +7,7 @@
        .calendar-month-view-grid-header {
           background: mat-color($primary);
           color: #fff;
+          border: 1px solid mat-color($primary, 100);
         }
+      
 }
