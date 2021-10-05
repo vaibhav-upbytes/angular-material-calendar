@@ -1,8 +1,8 @@
 <mat-grid-list cols="7" 
                rowHeight="5em" 
                gutterSize="0">
-    <mat-grid-tile
+    <mat-grid-tile class="calendar-month-view-grid"
         *ngFor="let tile of monthViewDates">
-            {{tile.date}}
+        <div class="calendar-month-view-grid-date">{{tile.date}}</div>
     </mat-grid-tile>
 </mat-grid-list>
