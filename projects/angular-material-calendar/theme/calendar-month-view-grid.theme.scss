@@ -3,10 +3,22 @@
 @mixin calendar-month-view-grid-theme($theme) {
   
   $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
   
        .calendar-month-view-grid {
           background: #fff;
           color: mat-color($primary);
           border: 1px solid mat-color($primary, 100);
+        }
+
+        .calendar-month-view-grid-date-today {
+          color: mat-color($accent);
+          border-top: 2px solid mat-color($accent);
+        }
+
+        .calendar-month-view-grid-date {
+          position: absolute;
+          left: .5em;
+          bottom: 3.5em;
         }
 }
