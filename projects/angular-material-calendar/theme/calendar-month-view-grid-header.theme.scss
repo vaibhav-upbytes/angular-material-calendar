@@ -3,7 +3,9 @@
 @mixin calendar-month-view-grid-header-theme($theme) {
   
   $primary: map-get($theme, primary);
-  .calendar-month-view-grid-header {
-    background: mat-color($primary);
-  }
+  
+       .calendar-month-view-grid-header {
+          background: mat-color($primary);
+          color: #fff;
+        }
 }
