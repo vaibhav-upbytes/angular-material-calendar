@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+
+@mixin calendar-header-label-theme($theme) {
+  
+  $primary: map-get($theme, primary);
+  
+       .header-label-font-color {
+          color: mat-color($primary);
+        }
+}
