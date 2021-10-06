@@ -1,5 +1,5 @@
 import { Moment } from 'moment';
-import { CalendarDate } from "../calendar-date/calendar-date";
+import { CalendarDate } from "../calendar-modal/calendar-date/calendar-date";
 import { DateAdapter } from "@angular/material/core";
 import { Injectable } from "@angular/core";
 import * as moment from 'moment';

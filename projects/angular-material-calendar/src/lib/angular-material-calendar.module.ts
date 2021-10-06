@@ -1,17 +1,20 @@
 import { NgModule, InjectionToken, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from './material-modules/material.module';
-import { MatMomentDateModule } from "@angular/material-moment-adapter";
-import { AngularMaterialCalendarComponent } from './angular-material-calendar.component';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from "@angular/material-moment-adapter";
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { CalendarDateState } from './state/calendar-date-state'; 
 import { DateReducerService } from './service/date-reducer.service';
 import { DateService } from './service/date.service';
 
 import { CalendarMonthViewModule } from './calendar-month-view-module/calendar-month-view.module';
 import { CalendarHeaderModule } from './calendar-header-module/calendar-header.module';
+import { MaterialModule } from './material-modules/material.module';
+
+import { AngularMaterialCalendarComponent } from './angular-material-calendar.component';
+import { CalendarDeviceDetailService } from './service/calendar-device-detail.service';
 
 export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarDateState>>
 ('Registered Reducers', {
@@ -36,11 +39,18 @@ export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarDateSta
   exports: [
     AngularMaterialCalendarComponent
   ],
-  providers: [DateService, DateReducerService,
+  providers: [
+    DateService,
+    DateReducerService,
+    DeviceDetectorService,
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    {
+      provide: DeviceDetectorService,
+      useClass: CalendarDeviceDetailService
     }
   ]
 })

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { MonthViewService } from '../service/calendar-month-view.service';
-import { CalendarDate } from '../../calendar-date/calendar-date';
+import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 import { CalendarMonthView } from '../calendar-month-view';
 
 @Component({

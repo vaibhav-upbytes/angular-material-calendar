@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { DateService } from "../../service/date.service";
-import { CalendarDate } from "../../calendar-date/calendar-date";
+import { CalendarDate } from "../../calendar-modal/calendar-date/calendar-date";
 import { CalendarMonthView } from "../calendar-month-view";
 
 @Injectable({
