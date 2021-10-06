@@ -105,6 +105,13 @@ export class DateService {
       return dates;
    }
 
+   getHoursFormat(): string[] {
+      return dateRange(24, (i) => moment({
+         hour: i,
+         minutes: 0
+      }).format("hA"));
+   }
+
    isToday(date: CalendarDate): boolean {
       return this.today().current.isSame(date.current, "day");
    }
