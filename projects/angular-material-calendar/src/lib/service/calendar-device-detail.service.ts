@@ -2,7 +2,9 @@ import { Injectable } from "@angular/core";
 import { CalendarDeviceDetail } from "../calendar-modal/calendar-device-detail/calendar-device-detail";
 import { CalendarDeviceDetectService } from "./calendar-device-detect.service";
 
-@Injectable({ providedIn : 'root'})
+@Injectable({ 
+    providedIn : 'root'
+})
 export class CalendarDeviceDetailService {
 
     constructor(
