@@ -105,6 +105,15 @@ export class DateService {
       return dates;
    }
 
+   getWeekDatesRange(date: CalendarDate): CalendarDate[] {
+      const dates: CalendarDate[] = Array(7);
+      let first =  this.getFirstDayOfWeek(date);
+      for (let i = 0; i < 7; i++) {
+         first = this.addCalendarDays(first, 1);
+         dates[i] = first;
+      }
+      return dates;
+   }
    getHoursFormat(): string[] {
       return dateRange(24, (i) => this.today().current.hour(i).format("h A"));
    }
