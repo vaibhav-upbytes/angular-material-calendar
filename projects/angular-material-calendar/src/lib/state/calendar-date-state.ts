@@ -1,4 +1,4 @@
-import { CalendarDate } from "../calendar-date/calendar-date";
+import { CalendarDate } from "../calendar-modal/calendar-date/calendar-date";
 
 export interface CalendarDateState {
     _date: CalendarDate

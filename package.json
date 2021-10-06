@@ -24,6 +24,7 @@
     "@angular/router": "~12.2.0",
     "@ngrx/store": "^12.4.0",
     "moment": "^2.29.1",
+    "ngx-device-detector": "^2.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

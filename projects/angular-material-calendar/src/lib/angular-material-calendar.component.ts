@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CalendarDeviceDetailService } from './service/calendar-device-detail.service';
 import { DateService } from './service/date.service';
 
 @Component({
@@ -10,9 +11,7 @@ import { DateService } from './service/date.service';
 })
 export class AngularMaterialCalendarComponent implements OnInit {
 
-  constructor(private _dateservice: DateService) { 
-
-  }
+  constructor() {}
 
   ngOnInit(): void {
   }
