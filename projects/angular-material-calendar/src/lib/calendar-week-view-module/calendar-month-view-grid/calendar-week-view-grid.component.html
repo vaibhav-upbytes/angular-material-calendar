@@ -7,7 +7,7 @@
                 let-i="index">
 
                 <mat-grid-tile class="calendar-month-view-grid" 
-                               [ngClass]="tile.isSelected ? 'calendar-month-view-grid-date-today' : ''"
+                               [ngClass]="tile.isHourNow ? 'calendar-month-view-grid-date-today' : ''"
                                
                                *ngFor="let tile of days; let i=index; ">
                                <div *ngIf="i==0 || i%8==0"class="calendar-month-view-grid-date" >

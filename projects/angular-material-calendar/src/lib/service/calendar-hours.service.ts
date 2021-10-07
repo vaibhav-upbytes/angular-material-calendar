@@ -16,7 +16,7 @@ export class CalendarHoursService {
         return this._dateService.getHoursFormat().map((d) => {
            return {
                hours: d,
-               isSelected: this._dateService.isHours(d),
+               isHourNow: this._dateService.isHoursNow(d),
                date: 0,
                day: ''
            }
@@ -36,7 +36,7 @@ export class CalendarHoursService {
                 hours: c.hours,
                 day: h.day,
                 date: h.date,
-                isSelected: c.isSelected
+                isHourNow: c.isHourNow
             };
         }));
     }
@@ -45,7 +45,8 @@ export class CalendarHoursService {
         const hours: CalendarHours[] = dates.map((d) => {
             return {
                 day: this._dateService.getDayName(d, 'short'),
-                date: this._dateService.getDate(d)
+                date: this._dateService.getDate(d),
+                isToday: this._dateService.isToday(d)
             };
         });
         hours.unshift(this.createFirstRowDate(dates[0]));
@@ -54,7 +55,8 @@ export class CalendarHoursService {
 
     createFirstRowDate(date: CalendarDate): CalendarHours {
         return {
-            timeZone: this._dateService.getTimeZoneFormat(date)
+            timeZone: this._dateService.getTimeZoneFormat(date),
+            isFirst: true
         };
     }
 }
