@@ -127,7 +127,7 @@ export class DateService {
    }
 
    getTimeZoneFormat(date: CalendarDate): string {
-      return this._dateAdapter.format(date.current, 'Z');
+      return `GMT${this._dateAdapter.format(date.current, 'Z')}`;
    }
 
 }
