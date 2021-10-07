@@ -1,10 +1,10 @@
 <angular-material-calendar-header class="calendar-header">
 
 </angular-material-calendar-header>
-<angular-material-calendar-month-view>
+<angular-material-calendar-month-view *ngIf="_view!.view == 'month'">
     
 </angular-material-calendar-month-view>
 
-<angular-material-calendar-week-view>
+<angular-material-calendar-week-view  *ngIf="_view!.view == 'week'">
     
 </angular-material-calendar-week-view>

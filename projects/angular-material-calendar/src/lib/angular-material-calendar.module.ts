@@ -5,7 +5,6 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from "@angular/material-moment-adapter";
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { CalendarDateState } from './state/calendar-date-state'; 
 import { DateReducerService } from './service/date-reducer.service';
 import { DateService } from './service/date.service';
 
@@ -16,12 +15,19 @@ import { MaterialModule } from './material-modules/material.module';
 
 import { AngularMaterialCalendarComponent } from './angular-material-calendar.component';
 import { CalendarDeviceDetailService } from './service/calendar-device-detail.service';
+import { CalendarState } from './state/calendar-state';
+import { CalendarViewReducerService } from './service/calendar-view-reducer.service';
 
-export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarDateState>>
+export const CALENDAR_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarState>>
 ('Registered Reducers', {
   factory: () => {
-    const serv = inject(DateReducerService);
-    return serv.getReducer();
+    const viewReducer = inject(CalendarViewReducerService).getReducer();
+    const dateReducer = inject(DateReducerService).getReducer();
+    const reducers: ActionReducerMap<CalendarState> = {
+      _date: dateReducer,
+      _view: viewReducer
+    };
+    return reducers;
   }
 });
 
@@ -31,7 +37,7 @@ export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarDateSta
   ],
   imports: [
     MatMomentDateModule,
-    StoreModule.forRoot(REDUCER_TOKEN),
+    StoreModule.forRoot(CALENDAR_REDUCER_TOKEN),
     CommonModule,
     MaterialModule,
     CalendarMonthViewModule,
@@ -44,6 +50,7 @@ export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarDateSta
   providers: [
     DateService,
     DateReducerService,
+    CalendarViewReducerService,
     DeviceDetectorService,
     {
       provide: DateAdapter,
