@@ -2,6 +2,8 @@ export interface CalendarHours {
     hours?: string,
     day?: string,
     date?: number,
-    isSelected?: boolean,
+    isToday?: boolean,
+    isHourNow?: boolean,
+    isFirst?: boolean,
     timeZone?: string
 }

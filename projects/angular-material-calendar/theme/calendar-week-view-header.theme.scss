@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+
+@mixin calendar-week-view-header-theme($theme) {
+  
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  
+       .calendar-week-view-header {
+          background: mat-color($primary);
+          color: #fff;
+          border: 1px solid mat-color($primary, 100);
+          font-size: large;
+        }
+
+        .calendar-week-view-header-today {
+            color: mat-color($accent);
+        }
+
+        .calendar-week-view-header-first {
+            position: absolute;
+            right: 1em;
+            bottom: 1em;
+        }
+      
+}

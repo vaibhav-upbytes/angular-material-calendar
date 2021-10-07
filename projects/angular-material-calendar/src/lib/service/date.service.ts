@@ -115,15 +115,15 @@ export class DateService {
       return dates;
    }
    getHoursFormat(): string[] {
-      return dateRange(24, (i) => this.today().current.hour(i).format("h A"));
+      return dateRange(24, (i) => this.today().current.hour(i).format("hh A"));
    }
 
    isToday(date: CalendarDate): boolean {
       return this.today().current.isSame(date.current, "day");
    }
 
-   isHours(hours: string): boolean {
-      return this.today().current.format("h A") == hours;
+   isHoursNow(hours: string): boolean {
+      return this.today().current.format("hh A") == hours;
    }
 
    getTimeZoneFormat(date: CalendarDate): string {

@@ -2,11 +2,10 @@
                rowHeight="5em" 
                gutterSize="0">
 
-                <mat-grid-tile class="calendar-month-view-grid" 
-                               [ngClass]="tile.isSelected ? 'calendar-month-view-grid-date-today' : ''"
-                               
+                <mat-grid-tile class="calendar-week-view-header" 
+                               [ngClass]="tile.isToday ? 'calendar-week-view-header-today' : ''"
                                *ngFor="let tile of calendarHours; let i=index; ">
-                               <div>
+                               <div [ngClass]="tile.isFirst ? 'calendar-week-view-header-first' : ''">
                                    {{tile.date}}
                                    {{tile.day}}
                                    {{tile.timeZone}}
