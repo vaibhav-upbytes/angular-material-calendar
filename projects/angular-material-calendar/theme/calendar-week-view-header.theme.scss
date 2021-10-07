@@ -9,11 +9,10 @@
           background: mat-color($primary);
           color: #fff;
           border: 1px solid mat-color($primary, 100);
-          font-size: large;
         }
 
         .calendar-week-view-header-today {
-            color: mat-color($accent);
+            color: mat-color($accent, 100);
         }
 
         .calendar-week-view-header-first {
