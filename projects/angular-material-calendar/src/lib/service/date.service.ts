@@ -35,7 +35,27 @@ export class DateService {
    addCalendarDays(date: CalendarDate, days: number): CalendarDate {
       return this.clone({current: this._dateAdapter.addCalendarDays(date.current, days)});
    }
-   
+
+   addCalendarWeeks(date: CalendarDate, weeks: number): CalendarDate {
+      return this.clone({current: moment(date.current).add(weeks, 'week')});
+   }
+
+   subtractCalendarYears(date: CalendarDate, years: number): CalendarDate {
+      return this.clone({current: moment(date.current).subtract(years, "year")});
+   }
+  
+   subtractCalendarMonths(date: CalendarDate, months: number): CalendarDate {
+      return this.clone({current: moment(date.current).subtract(months, "month")});
+   }
+  
+   subtractCalendarDays(date: CalendarDate, days: number): CalendarDate {
+      return this.clone({current: moment(date.current).subtract(days, "day")});
+   }
+
+   subtractCalendarWeeks(date: CalendarDate, weeks: number): CalendarDate {
+      return this.clone({current: moment(date.current).subtract(weeks, 'week')});
+   }
+
    getMonthNames(date: CalendarDate, style: 'long' | 'short' | 'narrow'): string {
       return style == 'long' ? date.current.format('MMMM') : date.current.format('M');
    }
