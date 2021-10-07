@@ -6,11 +6,14 @@
                 [ngForOf]="calendarHours" 
                 let-i="index">
 
-                <mat-grid-tile class="calendar-month-view-grid" 
-                               [ngClass]="tile.isHourNow ? 'calendar-month-view-grid-date-today' : ''"
+                <mat-grid-tile class="calendar-week-view-grid" 
+                               [ngClass]="[
+                               tile.isHourNow ? 'calendar-week-view-grid-hours' : '',
+                               tile.isToday ? 'calendar-week-view-grid-today' : '']"
                                
                                *ngFor="let tile of days; let i=index; ">
-                               <div *ngIf="i==0 || i%8==0"class="calendar-month-view-grid-date" >
+                               <div *ngIf=tile.isFirst 
+                               [ngClass]="tile.isFirst ? 'calendar-week-view-grid-first' : ''" >
                                    {{tile.hours}}
                                    {{tile.day}}
                                </div>

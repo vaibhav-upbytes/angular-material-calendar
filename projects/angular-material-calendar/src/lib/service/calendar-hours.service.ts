@@ -36,7 +36,10 @@ export class CalendarHoursService {
                 hours: c.hours,
                 day: h.day,
                 date: h.date,
-                isHourNow: c.isHourNow
+                isHourNow: c.isHourNow,
+                isToday: h.isToday,
+                timezone: h.timeZone,
+                isFirst: h.isFirst
             };
         }));
     }

@@ -1,0 +1,28 @@
+@import '~@angular/material/theming';
+
+@mixin calendar-week-view-grid-theme($theme) {
+  
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  
+       .calendar-week-view-grid {
+          color: mat-color($primary);
+          border: 1px solid mat-color($primary, 100);
+        }
+
+        .calendar-week-view-grid-hours {
+          color: mat-color($accent);
+          border-top: 1px solid mat-color($accent);
+        }
+
+        .calendar-week-view-grid-today {
+          background-color: mat-color($primary, 50);
+        }
+
+        .calendar-week-view-grid-first {
+            position: absolute;
+            right: .5em;
+            bottom: .5em;
+        }
+      
+}
