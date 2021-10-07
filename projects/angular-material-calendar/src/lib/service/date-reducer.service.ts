@@ -16,8 +16,24 @@ export class DateReducerService {
     public  getReducer():ActionReducer<CalendarDate> {
         return createReducer(
                 this._dateService.today(),
-                on(increment, (state) =>  this._dateService.addCalendarMonths(state, 1)),
-                on(decrement, (state) => this._dateService.addCalendarMonths(state, -1)),
+                on(increment, (state, _view) =>  {
+                    if (_view.view == 'month') {
+                        return this._dateService.addCalendarMonths(state, 1);
+                    } else if (_view.view == 'week') {
+                        return this._dateService.addCalendarWeeks(state, 1);
+                    }
+                    return this._dateService.addCalendarDays(state, 1);
+                    
+                }),
+                on(decrement, (state, _view) => {
+                    if (_view.view == 'month') {
+                        return this._dateService.subtractCalendarMonths(state, 1);
+                    } else if (_view.view == 'week') {
+                        return this._dateService.subtractCalendarWeeks(state, 1);
+                    }
+                    return this._dateService.subtractCalendarDays(state, 1);
+                    
+                }),
                 on(reset, (state) => this._dateService.today())
               )
         };
