@@ -7,17 +7,17 @@ import { CalendarHoursService } from '../../service/calendar-hours.service';
 
 
 @Component({
-  selector: 'angular-material-calendar-week-view-grid',
-  templateUrl: './calendar-week-view-grid.component.html',
+  selector: 'angular-material-calendar-week-view-header',
+  templateUrl: './calendar-week-view-header.component.html',
   styleUrls: [
-    './calendar-week-view-grid.component.scss'
+    './calendar-week-view-header.component.scss'
   ]
 })
-export class CalendarWeekViewGridComponent {
+export class CalendarWeekViewHeaderComponent {
 
   date$?: Observable<CalendarDate>;
   _currentDate?: CalendarDate;
-  calendarHours?: CalendarHours[][];
+  calendarHours?: CalendarHours[];
 
     constructor(
       private store: Store<{ _date: CalendarDate}>,
@@ -26,8 +26,7 @@ export class CalendarWeekViewGridComponent {
       this.date$ = store.select('_date');
       this.date$.subscribe((d: CalendarDate) => {
           this._currentDate = d;
-          this.calendarHours = this._calendarWeekService
-                                   .getCalndarHoursGridData(this._currentDate!);
+          this.calendarHours = this._calendarWeekService.getCalendarWeekRange(this._currentDate!);
           });
     }
 }

@@ -126,4 +126,8 @@ export class DateService {
       return this.today().current.format("h A") == hours;
    }
 
+   getTimeZoneFormat(date: CalendarDate): string {
+      return this._dateAdapter.format(date.current, 'Z');
+   }
+
 }

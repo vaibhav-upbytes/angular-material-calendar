@@ -23,25 +23,38 @@ export class CalendarHoursService {
         });
     }
 
-    getCalendarWeekRange(date: CalendarDate): CalendarDate[] {
-        return this._dateService.getWeekDatesRange(date);
-    }
+    getCalendarWeekRange(date: CalendarDate): CalendarHours[] {
+        const dates: CalendarDate[] = this._dateService.getWeekDatesRange(date);
+        return this.pushFirstRowForGrid(dates);
+        }
 
     getCalndarHoursGridData(date: CalendarDate): CalendarHours[][] {
-        const dates: CalendarDate[] = this.getCalendarWeekRange(date);
-        this.pushAHourForGrid(dates);
+        const dates: CalendarHours[] = this.getCalendarWeekRange(date);
         return this.getCalendarHours().map((c) =>
         dates.map((h) =>{
             return {
                 hours: c.hours,
-                day: this._dateService.getDayName(h, 'short'),
-                date: this._dateService.getDate(h),
+                day: h.day,
+                date: h.date,
                 isSelected: c.isSelected
-            }
+            };
         }));
     }
 
-    pushAHourForGrid(dates: CalendarDate[]) {
-         dates.unshift(dates[0]);
+    pushFirstRowForGrid(dates: CalendarDate[]): CalendarHours[] {
+        const hours: CalendarHours[] = dates.map((d) => {
+            return {
+                day: this._dateService.getDayName(d, 'short'),
+                date: this._dateService.getDate(d)
+            };
+        });
+        hours.unshift(this.createFirstRowDate(dates[0]));
+        return hours
+    }
+
+    createFirstRowDate(date: CalendarDate): CalendarHours {
+        return {
+            timeZone: this._dateService.getTimeZoneFormat(date)
+        };
     }
 }

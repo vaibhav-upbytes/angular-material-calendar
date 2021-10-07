@@ -1,0 +1,16 @@
+<mat-grid-list cols="8" 
+               rowHeight="5em" 
+               gutterSize="0">
+
+                <mat-grid-tile class="calendar-month-view-grid" 
+                               [ngClass]="tile.isSelected ? 'calendar-month-view-grid-date-today' : ''"
+                               
+                               *ngFor="let tile of calendarHours; let i=index; ">
+                               <div>
+                                   {{tile.date}}
+                                   {{tile.day}}
+                                   {{tile.timeZone}}
+                               </div>
+                </mat-grid-tile>
+
+</mat-grid-list>
