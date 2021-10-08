@@ -1,17 +1,20 @@
-<button mat-raised-button color="primary" 
+<button mat-raised-button  
+        [ngClass]="_view!.view == 'day' ? 'calendar-header-toggle-selected' : 'mat-primary'"
         aria-label="Select Month View"
         (click)="day()">
         <mat-icon class="calendar-toggel-button">calendar_view_day</mat-icon>
         Day
 </button>
-<button mat-raised-button color="primary" 
+<button mat-raised-button  
         aria-label="Select Week View"
+        [ngClass]="_view!.view == 'week' ? 'calendar-header-toggle-selected' : 'mat-primary'"
         (click)="week()">
         <mat-icon class="calendar-toggel-button">calendar_view_week</mat-icon>
         Week
 </button>
-<button mat-raised-button color="primary" 
+<button mat-raised-button  
         aria-label="Select Month View"
+        [ngClass]="_view!.view == 'month' ? 'calendar-header-toggle-selected' : 'mat-primary'"
         (click)="month()">
         <mat-icon class="calendar-toggel-button">calendar_view_month</mat-icon>
         Month
