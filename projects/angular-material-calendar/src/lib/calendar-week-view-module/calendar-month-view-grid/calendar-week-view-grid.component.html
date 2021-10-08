@@ -7,11 +7,12 @@
                 let-i="index">
 
                 <mat-grid-tile class="calendar-week-view-grid" 
+                               id="{{trackByHour(i, tile)}}"
                                [ngClass]="[
                                tile.isHourNow ? 'calendar-week-view-grid-hours' : '',
                                tile.isToday ? 'calendar-week-view-grid-today' : '']"
                                
-                               *ngFor="let tile of days; let i=index; ">
+                               *ngFor="let tile of days; let i=index; trackBy: trackByHour">
                                <div *ngIf=tile.isFirst 
                                [ngClass]="tile.isFirst ? 'calendar-week-view-grid-first' : ''" >
                                    {{tile.hours}}

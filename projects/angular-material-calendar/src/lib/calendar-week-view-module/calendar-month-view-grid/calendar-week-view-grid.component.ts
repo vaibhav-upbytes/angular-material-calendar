@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+import { ViewportScroller } from "@angular/common";
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
@@ -13,13 +14,14 @@ import { CalendarHoursService } from '../../service/calendar-hours.service';
     './calendar-week-view-grid.component.scss'
   ]
 })
-export class CalendarWeekViewGridComponent {
+export class CalendarWeekViewGridComponent implements AfterViewInit {
 
   date$?: Observable<CalendarDate>;
   _currentDate?: CalendarDate;
   calendarHours?: CalendarHours[][];
 
     constructor(
+      private scroller: ViewportScroller,
       private store: Store<{ _date: CalendarDate}>,
       private _calendarWeekService: CalendarHoursService
     ) {
@@ -29,5 +31,20 @@ export class CalendarWeekViewGridComponent {
           this.calendarHours = this._calendarWeekService
                                    .getCalndarHoursGridData(this._currentDate!);
           });
+    }
+
+    ngAfterViewInit() {
+      const selectedId = this.calendarHours?.filter
+                             ((hours: CalendarHours[]) => hours.filter
+                             ((hour: CalendarHours) => hour.isHourNow)[0]);
+      document.getElementById(((selectedId![0][0]).hours)!)!.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "nearest"
+      });
+    }
+
+    trackByHour(index:number, el:CalendarHours): string {
+      return el.hours!;
     }
 }
