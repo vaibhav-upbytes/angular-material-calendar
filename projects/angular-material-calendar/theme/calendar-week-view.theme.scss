@@ -1,0 +1,35 @@
+@import '~@angular/material/theming';
+
+@mixin calendar-week-view-theme($theme) {
+  
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  
+       .calendar-week-view {
+           overflow: hidden;
+           height: 27em;
+        }
+
+        .calendar-week-view:hover {
+            overflow-y: auto;
+        }
+        .calendar-week-view::-webkit-scrollbar {
+            width: 2px;
+            scrollbar-color: mat-color($primary);
+        }
+        .calendar-week-view::-webkit-scrollbar-track {
+            box-shadow: 1em;
+            border-radius: 10px;
+        }
+        .calendar-week-view::-webkit-scrollbar-thumb {
+            background-color: mat-color($primary);
+            border-radius: 10px;
+            box-shadow: 1em;
+        }
+
+        .calendar-week-view::-webkit-scrollbar-thumb:hover {
+            background-color: mat-color($primary);
+            border-radius: 10px;
+            box-shadow: 1em;
+        }  
+}
