@@ -39,8 +39,8 @@ export class CalendarWeekViewGridComponent implements AfterViewInit {
                              ((hour: CalendarHours) => hour.isHourNow)[0]);
       document.getElementById(((selectedId![0][0]).hours)!)!.scrollIntoView({
         behavior: "smooth",
-        block: "nearest",
-        inline: "nearest"
+        block: "center",
+        inline: "center"
       });
     }
 
