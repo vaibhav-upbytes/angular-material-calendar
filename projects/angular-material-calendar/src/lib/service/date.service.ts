@@ -33,7 +33,7 @@ export class DateService {
    }
   
    addCalendarDays(date: CalendarDate, days: number): CalendarDate {
-      return this.clone({current: this._dateAdapter.addCalendarDays(date.current, days)});
+      return this.clone({current: moment(date.current).add(days, 'day')});
    }
 
    addCalendarWeeks(date: CalendarDate, weeks: number): CalendarDate {

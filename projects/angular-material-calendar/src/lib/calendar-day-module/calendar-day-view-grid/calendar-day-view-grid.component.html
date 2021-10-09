@@ -1,0 +1,21 @@
+<mat-grid-list cols="8" 
+               rowHeight="5em" 
+               gutterSize="0">
+
+    <ng-template ngFor let-days 
+                [ngForOf]="calendarHours" 
+                let-i="index">
+
+                <mat-grid-tile class="calendar-day-view-grid" 
+                               id="{{trackByHour(i, tile)}}"
+                               [colspan]="getColspan(tile)"
+                               [ngClass]="tile.isHourNow ? 'calendar-day-view-grid-hours' : ''"                               
+                               *ngFor="let tile of days; let i=index; trackBy: trackByHour">
+                               <div *ngIf=tile.isFirst 
+                                     [ngClass]="tile.isFirst ? 'calendar-day-view-grid-first' : ''" >
+                                   {{tile.hours}}
+                                   {{tile.day}}
+                               </div>
+                </mat-grid-tile>
+      </ng-template>
+</mat-grid-list>

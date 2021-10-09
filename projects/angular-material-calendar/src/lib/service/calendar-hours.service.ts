@@ -26,9 +26,9 @@ export class CalendarHoursService {
     getCalendarWeekRange(date: CalendarDate): CalendarHours[] {
         const dates: CalendarDate[] = this._dateService.getWeekDatesRange(date);
         return this.pushFirstRowForGrid(dates);
-        }
+    }
 
-    getCalndarHoursGridData(date: CalendarDate): CalendarHours[][] {
+    getCalndarWeekHoursGridData(date: CalendarDate): CalendarHours[][] {
         const dates: CalendarHours[] = this.getCalendarWeekRange(date);
         return this.getCalendarHours().map((c) =>
         dates.map((h) =>{
@@ -43,6 +43,23 @@ export class CalendarHoursService {
             };
         }));
     }
+
+    getCalndarDayHoursGridData(date: CalendarDate): CalendarHours[][] {
+        const dates: CalendarHours[] = this.pushFirstRowForGrid(Array.of(date));
+        return this.getCalendarHours().map((c) =>
+        dates.map((h) =>{
+            return {
+                hours: c.hours,
+                day: h.day,
+                date: h.date,
+                isHourNow: c.isHourNow,
+                isToday: h.isToday,
+                timezone: h.timeZone,
+                isFirst: h.isFirst
+            };
+        }));
+    }
+
 
     pushFirstRowForGrid(dates: CalendarDate[]): CalendarHours[] {
         const hours: CalendarHours[] = dates.map((d) => {
