@@ -5,7 +5,8 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from "@angular/material-moment-adapter";
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { DateReducerService } from './service/date-reducer.service';
+import { DateReducerService } from './reducer/date-reducer.service';
+import { CalendarViewReducerService } from './reducer/calendar-view-reducer.service';
 import { DateService } from './service/date.service';
 
 import { CalendarMonthViewModule } from './calendar-month-view-module/calendar-month-view.module';
@@ -16,7 +17,6 @@ import { CalendarDayViewModule } from './calendar-day-module/calendar-day-view.m
 import { AngularMaterialCalendarComponent } from './angular-material-calendar.component';
 import { CalendarDeviceDetailService } from './service/calendar-device-detail.service';
 import { CalendarState } from './state/calendar-state';
-import { CalendarViewReducerService } from './service/calendar-view-reducer.service';
 
 export const CALENDAR_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarState>>
 ('Registered Reducers', {
