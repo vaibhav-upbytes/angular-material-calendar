@@ -8,13 +8,13 @@ import { CalendarHoursService } from '../../service/calendar-hours.service';
 
 
 @Component({
-  selector: 'angular-material-calendar-week-view-grid',
-  templateUrl: './calendar-week-view-grid.component.html',
+  selector: 'angular-material-calendar-day-view-grid',
+  templateUrl: './calendar-day-view-grid.component.html',
   styleUrls: [
-    './calendar-week-view-grid.component.scss'
+    './calendar-day-view-grid.component.scss'
   ]
 })
-export class CalendarWeekViewGridComponent implements AfterViewInit {
+export class CalendarDayViewGridComponent implements AfterViewInit {
 
   date$?: Observable<CalendarDate>;
   _currentDate?: CalendarDate;
@@ -29,7 +29,7 @@ export class CalendarWeekViewGridComponent implements AfterViewInit {
       this.date$.subscribe((d: CalendarDate) => {
           this._currentDate = d;
           this.calendarHours = this._calendarWeekService
-                                   .getCalndarWeekHoursGridData(this._currentDate!);
+                                   .getCalndarDayHoursGridData(this._currentDate!);
           });
     }
 
@@ -43,6 +43,10 @@ export class CalendarWeekViewGridComponent implements AfterViewInit {
         inline: "center"
       });
     }
+
+    getColspan(d: CalendarHours): number {
+      return d.isFirst ? 1 : 7;
+  }
 
     trackByHour(index:number, el:CalendarHours): string {
       return el.hours!;
