@@ -90,11 +90,11 @@ export class DateService {
    }
 
    getFirstDayOfWeek(date: CalendarDate): CalendarDate {
-      return this.clone({current : this._dateAdapter.clone(date.current.startOf('week'))});
+      return this.clone({current : this._dateAdapter.clone(date.current).startOf('week')});
    }
 
    getLastDayOfWeek(date: CalendarDate): CalendarDate {
-      return this.clone({current : this._dateAdapter.clone(date.current.endOf('week'))});
+      return this.clone({current : this._dateAdapter.clone(date.current).endOf('week')});
    }
 
    getDaysInMonthRange(date: CalendarDate): number {
