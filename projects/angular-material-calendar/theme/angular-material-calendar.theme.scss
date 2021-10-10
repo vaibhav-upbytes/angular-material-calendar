@@ -8,6 +8,7 @@
 @import './calendar-day-view-grid.theme.scss';
 @import './calendar-day-view.theme.scss';
 @import './calendar-header-toggle.theme.scss';
+@import './calendar-event-view.theme.scss';
 
 @mixin angular-material-calendar($angular-material-calendar) {
   @include calendar-month-view-grid-header-theme($angular-material-calendar);
@@ -20,4 +21,5 @@
   @include calendar-day-view-header-theme($angular-material-calendar);
   @include calendar-day-view-grid-theme($angular-material-calendar);
   @include calendar-day-view-theme($angular-material-calendar);
+  @include calendar-event-view-theme($angular-material-calendar);
 }

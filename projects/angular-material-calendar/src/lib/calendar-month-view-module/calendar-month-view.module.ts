@@ -2,6 +2,9 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "../material-modules/material.module";
 import {
+  CalendarEventViewModule
+} from "../calendar-events-module/calendar-event-view.module"; 
+import {
   CalendarMonthViewGridComponent
 } from "./calendar-month-view-grid/calendar-month-view-grid.component";
 import { 
@@ -21,7 +24,8 @@ import { MonthViewService } from "./service/calendar-month-view.service";
     ],
     imports: [
       CommonModule,
-      MaterialModule
+      MaterialModule,
+      CalendarEventViewModule
     ],
     exports: [
       CalendarMonthViewComponent
