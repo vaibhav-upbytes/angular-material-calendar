@@ -12,6 +12,7 @@ import { DateService } from './service/date.service';
 import { CalendarMonthViewModule } from './calendar-month-view-module/calendar-month-view.module';
 import { CalendarHeaderModule } from './calendar-header-module/calendar-header.module';
 import { CalendarWeekViewModule } from './calendar-week-view-module/calendar-week-view.module';
+import { CalendarEventViewModule } from './calendar-events-module/calendar-event-view.module';
 import { MaterialModule } from './material-modules/material.module';
 import { CalendarDayViewModule } from './calendar-day-module/calendar-day-view.module';
 import { AngularMaterialCalendarComponent } from './angular-material-calendar.component';
@@ -43,7 +44,8 @@ export const CALENDAR_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<Calend
     CalendarMonthViewModule,
     CalendarWeekViewModule,
     CalendarHeaderModule,
-    CalendarDayViewModule
+    CalendarDayViewModule,
+    CalendarEventViewModule
   ],
   exports: [
     AngularMaterialCalendarComponent

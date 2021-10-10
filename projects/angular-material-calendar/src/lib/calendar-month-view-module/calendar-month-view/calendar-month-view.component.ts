@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event';
 
 @Component({
   selector: 'angular-material-calendar-month-view',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
     './calendar-month-view.component.scss'
   ]
 })
-export class CalendarMonthViewComponent {}
+export class CalendarMonthViewComponent {
+  @Input()
+  events?: CalendarEventInput[] = [];
+}

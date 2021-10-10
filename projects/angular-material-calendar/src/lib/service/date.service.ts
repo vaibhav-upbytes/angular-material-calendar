@@ -150,4 +150,16 @@ export class DateService {
       return `GMT ${this._dateAdapter.format(date.current, 'Z')}`;
    }
 
+   getMoment(d: string | Moment): Moment {
+      return  moment(d, moment.ISO_8601); 
+   }
+
+   isSameDate(date: CalendarDate, eventDate: string | Moment): boolean {
+      return this._dateAdapter.sameDate(date.current, this.getMoment(eventDate));
+   }
+
+   getTimeFormat(d:  string | Moment): string {
+      return this.getMoment(d).format("HH:MM")
+
+   }
 }

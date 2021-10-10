@@ -1,0 +1,10 @@
+<mat-chip-list class="calendar-event-view">
+    <mat-chip *ngFor="let tile of events"
+              class="calendar-event-chip"
+              color="primary" selected> 
+    <div class ="calendar-event-view-content">
+        <span>{{getDisplay(tile)}}</span>
+    </div>
+
+</mat-chip>
+</mat-chip-list>
