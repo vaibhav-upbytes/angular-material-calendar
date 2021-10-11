@@ -1,7 +1,8 @@
 <angular-material-calendar-header class="calendar-header">
 
 </angular-material-calendar-header>
-<angular-material-calendar-month-view *ngIf="_view!.view == 'month'">
+<angular-material-calendar-month-view *ngIf="_view!.view == 'month'"
+                                       [events]="events">
     
 </angular-material-calendar-month-view>
 

@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+
+@mixin calendar-event-view-theme($theme) {
+  
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  
+       .calendar-event-view {
+          
+           height: .5em;
+        }
+
+        .calendar-event-chip {
+           background-color: mat-color($primary, 100) ;
+           color: #fff;
+           border-radius: 0px;
+        }
+        
+        .calendar-event-view-content {
+            display: flex;
+
+        }
+}
