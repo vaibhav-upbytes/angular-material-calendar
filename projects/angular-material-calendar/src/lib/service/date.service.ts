@@ -159,7 +159,7 @@ export class DateService {
    }
 
    getTimeFormat(d:  string | Moment): string {
-      return this.getMoment(d).format("HH:MM")
+      return this.getMoment(d).format("HH:mm");
 
    }
 }

@@ -32,8 +32,7 @@ export class CalendarMonthViewGridComponent implements OnInit {
     this.date$!.subscribe((d: CalendarDate) => {
         this._currentDate = d;
         this.monthViewDates  = this._monthViewService.getCalendarDateEventMap(d, this.events!);
-        console.log(this._monthViewService.getCalendarDateEventMap(d, this.events!));
-       });
+      });
 
   }
 
