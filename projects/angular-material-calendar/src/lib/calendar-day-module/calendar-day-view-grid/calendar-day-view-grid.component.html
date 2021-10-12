@@ -9,7 +9,7 @@
                 <mat-grid-tile class="calendar-day-view-grid" 
                                id="{{trackByHour(i, tile)}}"
                                [colspan]="getColspan(tile)"
-                               [ngClass]="tile.isHourNow ? 'calendar-day-view-grid-hours' : ''"                               
+                               [ngClass]="tile.isHourNow ? 'calendar-day-view-grid-hours' : 'calendar-day-view-grid'"                               
                                *ngFor="let tile of days; let i=index; trackBy: trackByHour">
                                <div *ngIf=tile.isFirst 
                                      [ngClass]="tile.isFirst ? 'calendar-day-view-grid-first' : ''" >
