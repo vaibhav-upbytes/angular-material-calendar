@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material-modules/material.module';
+import {
+  CalendarEventViewModule
+} from "../calendar-events-module/calendar-event-view.module"; 
 import { CalendarHoursService } from '../service/calendar-hours.service';
 import {
   CalendarDayViewComponent
@@ -20,7 +23,8 @@ import {
     ],
     imports: [
       CommonModule,
-      MaterialModule
+      MaterialModule,
+      CalendarEventViewModule
     ],
     exports: [
       CalendarDayViewComponent

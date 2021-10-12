@@ -40,19 +40,14 @@ export class CalendarHoursService {
         }));
     }
 
-    getCalndarDayHoursGridData(date: CalendarDate): CalendarHours[][] {
+    getCalndarDayHoursGridData(events: CalendarEventInput[], date: CalendarDate): CalendarHours[][] {
         const dates: CalendarHours[] = this.pushFirstRowForGrid(Array.of(date));
         return this.getCalendarHours().map((c) =>
         dates.map((h) => {
-            return {
-                hours: c.hours,
-                day: h.day,
-                date: h.date,
-                isHourNow: c.isHourNow,
-                isToday: h.isToday,
-                timezone: h.timeZone,
-                isFirst: h.isFirst
-            };
+            const ch =  this.createCalendarHours(h, c);
+            const e = this.filterEventsByDateAndStartTime(events, ch);
+            ch.events = e;
+            return ch
         }));
     }
 
