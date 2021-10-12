@@ -1,0 +1,21 @@
+<ng-template ngFor let-event
+[ngForOf]="events" 
+let-i="index">
+
+<mat-card class="example-card">
+    <mat-card-subtitle>{{event.start}}</mat-card-subtitle>
+    <mat-card-title>{{event.title}}</mat-card-title>
+    <!-- <mat-card-content>
+      <p>This card has divider and indeterminate progress as footer</p>
+      <p>{{ longText }}</p>
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer> -->
+  </mat-card>
+  </ng-template>

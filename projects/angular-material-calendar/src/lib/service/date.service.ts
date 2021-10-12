@@ -154,12 +154,15 @@ export class DateService {
       return  moment(d, moment.ISO_8601); 
    }
 
+   isSameHour(hours: string, eventDate: string | Moment): boolean {
+      return this.getMoment(eventDate).format("hh A") == hours; 
+   }
+
    isSameDate(date: CalendarDate, eventDate: string | Moment): boolean {
       return this._dateAdapter.sameDate(date.current, this.getMoment(eventDate));
    }
 
    getTimeFormat(d:  string | Moment): string {
       return this.getMoment(d).format("HH:mm");
-
    }
 }

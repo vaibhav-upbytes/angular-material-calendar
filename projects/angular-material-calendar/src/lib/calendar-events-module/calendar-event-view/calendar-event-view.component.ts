@@ -11,7 +11,7 @@ import { MonthViewService } from '../../calendar-month-view-module/service/calen
   ]
 })
 export class CalendarEventViewComponent {
-    @Input() events?: CalendarEventInput[]
+    @Input() events?: CalendarEventInput[];
     constructor(private monthViewService: MonthViewService) {}
 
     getDisplay(tile: CalendarEventInput): string {

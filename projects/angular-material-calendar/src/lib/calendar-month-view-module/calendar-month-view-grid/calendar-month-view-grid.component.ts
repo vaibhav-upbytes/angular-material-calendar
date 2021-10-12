@@ -20,20 +20,17 @@ export class CalendarMonthViewGridComponent implements OnInit {
     @Input()
     events?: CalendarEventInput[] = [];
 
-
     constructor(
         private store: Store<{ _date: CalendarDate}>,
         private _monthViewService: MonthViewService, 
     ) {
       this.date$ = store.select('_date');
-     }
-  ngOnInit(): void {
+    }
 
-    this.date$!.subscribe((d: CalendarDate) => {
+    ngOnInit(): void {
+      this.date$!.subscribe((d: CalendarDate) => {
         this._currentDate = d;
         this.monthViewDates  = this._monthViewService.getCalendarDateEventMap(d, this.events!);
       });
-
-  }
-
+    }
 }
