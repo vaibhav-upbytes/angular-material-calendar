@@ -6,12 +6,12 @@ import {
   CalendarEventViewComponent
  } from './calendar-event-view/calendar-event-view.component';
 import {
-  CalendarEventWeekViewComponent
-} from './calendar-event-week-view/calendar-event-view/calendar-event-week-view.component';
+  CalendarEventFullViewComponent
+} from './calendar-event-full-view/calendar-event-full-view.component';
 @NgModule({
     declarations: [
       CalendarEventViewComponent,
-      CalendarEventWeekViewComponent
+      CalendarEventFullViewComponent
     ],
     imports: [
       CommonModule,
@@ -19,7 +19,7 @@ import {
     ],
     exports: [
       CalendarEventViewComponent,
-      CalendarEventWeekViewComponent
+      CalendarEventFullViewComponent
     ],
     providers: [
       CalendarHoursService

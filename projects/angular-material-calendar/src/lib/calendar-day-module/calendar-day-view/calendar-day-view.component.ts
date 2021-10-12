@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event';
 import { CalendarHoursService } from '../../service/calendar-hours.service';
 
 @Component({
@@ -9,5 +10,6 @@ import { CalendarHoursService } from '../../service/calendar-hours.service';
   ]
 })
 export class CalendarDayViewComponent {
+    @Input() events?: CalendarEventInput[] = []
     constructor(private c: CalendarHoursService) {}
 }

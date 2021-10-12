@@ -1,10 +1,11 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { ViewportScroller } from "@angular/common";
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 import { CalendarHours } from '../../calendar-modal/calendar-hours/calendar-hours';
 import { CalendarHoursService } from '../../service/calendar-hours.service';
+import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event';
 
 
 @Component({
@@ -14,8 +15,8 @@ import { CalendarHoursService } from '../../service/calendar-hours.service';
     './calendar-day-view-grid.component.scss'
   ]
 })
-export class CalendarDayViewGridComponent implements AfterViewInit {
-
+export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
+  @Input() events?: CalendarEventInput[] = []
   date$?: Observable<CalendarDate>;
   _currentDate?: CalendarDate;
   calendarHours?: CalendarHours[][];
@@ -26,11 +27,14 @@ export class CalendarDayViewGridComponent implements AfterViewInit {
       private _calendarWeekService: CalendarHoursService
     ) {
       this.date$ = store.select('_date');
-      this.date$.subscribe((d: CalendarDate) => {
-          this._currentDate = d;
-          this.calendarHours = this._calendarWeekService
-                                   .getCalndarDayHoursGridData(this._currentDate!);
-          });
+    }
+    
+    ngOnInit(): void {
+      this.date$!.subscribe((d: CalendarDate) => {
+        this._currentDate = d;
+        this.calendarHours = this._calendarWeekService
+                                 .getCalndarDayHoursGridData(this.events!, this._currentDate!);
+        });
     }
 
     ngAfterViewInit() {
