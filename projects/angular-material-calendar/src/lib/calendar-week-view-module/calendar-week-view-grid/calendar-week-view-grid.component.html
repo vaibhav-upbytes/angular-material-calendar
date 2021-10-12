@@ -17,6 +17,10 @@
                                    {{tile.hours}}
                                    {{tile.day}}
                                </div>
+                               <angular-material-calendar-event-week-view *ngIf=!tile.isFirst
+                               [events]="tile.events"> 
+
+                               </angular-material-calendar-event-week-view>
                 </mat-grid-tile>
       </ng-template>
 </mat-grid-list>

@@ -5,10 +5,13 @@ import { CalendarHoursService } from '../service/calendar-hours.service';
 import { CalendarWeekViewComponent } from './calendar-week-view/calendar-week-view.component';
 import {
   CalendarWeekViewGridComponent
-} from './calendar-month-view-grid/calendar-week-view-grid.component';
+} from './calendar-week-view-grid/calendar-week-view-grid.component';
 import { 
   CalendarWeekViewHeaderComponent
 } from './calendar-week-view-header/calendar-week-view-header.component';
+import {
+  CalendarEventViewModule
+} from '../calendar-events-module/calendar-event-view.module';
 
 @NgModule({
     declarations: [
@@ -18,7 +21,8 @@ import {
     ],
     imports: [
       CommonModule,
-      MaterialModule
+      MaterialModule,
+      CalendarEventViewModule
     ],
     exports: [
       CalendarWeekViewComponent
