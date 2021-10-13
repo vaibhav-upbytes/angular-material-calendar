@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 import { CalendarHours } from '../../calendar-modal/calendar-hours/calendar-hours';
 import { CalendarHoursService } from '../../service/calendar-hours.service';
-import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event';
+import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
+import { CalendarEventFull } from '../../calendar-modal/calendar-event/calendar-event-full';
 
 @Component({
   selector: 'angular-material-calendar-week-view-grid',
@@ -18,6 +19,7 @@ export class CalendarWeekViewGridComponent implements OnInit, AfterViewInit {
   date$?: Observable<CalendarDate>;
   _currentDate?: CalendarDate;
   calendarHours?: CalendarHours[][];
+  calendarEventsFull?: CalendarEventFull[];
   @Input()
   events?: CalendarEventInput[] = [];
 
@@ -33,7 +35,9 @@ export class CalendarWeekViewGridComponent implements OnInit, AfterViewInit {
         this._currentDate = d;
         this.calendarHours = this._calendarWeekService
         .getCalndarWeekHoursGridData(this.events!, this._currentDate!);
-      });
+        this.calendarEventsFull = this._calendarWeekService
+        .filterEventsByDateAndStartTime(this.events!, this.calendarHours!);
+       });
     }
 
     ngAfterViewInit() {

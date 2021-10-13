@@ -1,5 +1,5 @@
 import { CalendarDate } from "../calendar-date/calendar-date";
-import { CalendarEventInput } from "../calendar-event/calendar-event";
+import { CalendarEventInput } from "../calendar-event/calendar-event-input";
 
 export interface CalendarHours {
     hours?: string,
@@ -12,5 +12,6 @@ export interface CalendarHours {
     isFirst?: boolean,
     timeZone?: string,
     cDate?: CalendarDate,
-    events?: CalendarEventInput[]
+    left?: number,
+    top?: number
 }

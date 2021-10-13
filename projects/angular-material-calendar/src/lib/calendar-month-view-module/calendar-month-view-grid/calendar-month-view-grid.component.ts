@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { MonthViewService } from '../service/calendar-month-view.service';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 import { CalendarMonthView } from '../calendar-month-view';
-import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event';
+import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
 
 @Component({
   selector: 'angular-material-calendar-month-view-grid',

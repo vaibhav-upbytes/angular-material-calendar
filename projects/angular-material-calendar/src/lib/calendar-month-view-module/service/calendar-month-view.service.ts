@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { DateService } from "../../service/date.service";
 import { CalendarDate } from "../../calendar-modal/calendar-date/calendar-date";
 import { CalendarMonthView } from "../calendar-month-view";
-import { CalendarEventInput } from "../../calendar-modal/calendar-event/calendar-event";
+import { CalendarEventInput } from "../../calendar-modal/calendar-event/calendar-event-input";
 
 @Injectable({
     providedIn: 'root'

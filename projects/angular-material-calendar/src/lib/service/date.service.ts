@@ -162,6 +162,10 @@ export class DateService {
       return this._dateAdapter.sameDate(date.current, this.getMoment(eventDate));
    }
 
+   timeDiff(start: string | Moment, end: string | Moment): number {
+      return  moment.duration(this.getMoment(end).diff(this.getMoment(start))).asHours();
+   }
+
    getTimeFormat(d:  string | Moment): string {
       return this.getMoment(d).format("HH:mm");
    }

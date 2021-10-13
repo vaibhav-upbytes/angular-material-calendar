@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 import { CalendarHours } from '../../calendar-modal/calendar-hours/calendar-hours';
 import { CalendarHoursService } from '../../service/calendar-hours.service';
-import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event';
+import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
 
 
 @Component({
