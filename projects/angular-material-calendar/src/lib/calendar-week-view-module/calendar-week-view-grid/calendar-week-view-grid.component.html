@@ -8,6 +8,7 @@
 
                 <mat-grid-tile class="calendar-week-view-grid" 
                                id="{{trackByHour(i, tile)}}"
+                               
                                [ngClass]="[
                                tile.isToday ? 'calendar-week-view-grid-today' : '',
                                tile.isHourNow ? 'calendar-week-view-grid-hours' : '']"
@@ -17,10 +18,16 @@
                                    {{tile.hours}}
                                    {{tile.day}}
                                </div>
-                               <angular-material-calendar-event-full-view *ngIf=!tile.isFirst
-                               [events]="tile.events"> 
 
-                               </angular-material-calendar-event-full-view>
+
                 </mat-grid-tile>
       </ng-template>
+      <ng-template ngFor let-event
+                   [ngForOf]="calendarEventsFull" 
+                   let-i="index">
+                   <angular-material-calendar-event-full-view class="calendar-full-view"
+                                                              [event]="event">
+                    </angular-material-calendar-event-full-view>
+      </ng-template>
 </mat-grid-list>
+

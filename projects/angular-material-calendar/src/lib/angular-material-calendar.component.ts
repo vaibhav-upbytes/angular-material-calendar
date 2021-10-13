@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { CalendarView } from './calendar-modal/calendar-view/calendar-view';
-import { CalendarEventInput } from './calendar-modal/calendar-event/calendar-event';
+import { CalendarEventInput } from './calendar-modal/calendar-event/calendar-event-input';
 
 @Component({
   selector: 'lib-angular-material-calendar',
@@ -38,7 +38,7 @@ export class AngularMaterialCalendarComponent implements OnInit {
     },
     {
         "start": "2021-10-15T09:35:07",
-        "end": "2021-10-12T11:40:07",
+        "end": "2021-10-15T11:40:07",
         "title": "string",
         "color": "string"
     },

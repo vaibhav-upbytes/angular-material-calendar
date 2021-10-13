@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { CalendarDate } from "../calendar-modal/calendar-date/calendar-date";
-import { CalendarEventInput } from "../calendar-modal/calendar-event/calendar-event";
+import { CalendarEventFull } from "../calendar-modal/calendar-event/calendar-event-full";
+import { CalendarEventInput } from "../calendar-modal/calendar-event/calendar-event-input";
 import { CalendarHours } from "../calendar-modal/calendar-hours/calendar-hours";
 import { DateService } from "./date.service";
 
@@ -14,12 +15,13 @@ export class CalendarHoursService {
         ) {}
 
     getCalendarHours(): CalendarHours[] {
-        return this._dateService.getHoursFormat().map((d) => {
+        return this._dateService.getHoursFormat().map((d, i) => {
            return {
                hours: d,
                isHourNow: this._dateService.isHoursNow(d),
                date: 0,
-               day: ''
+               day: '',
+               top: i
            }
         });
     }
@@ -34,8 +36,6 @@ export class CalendarHoursService {
         return this.getCalendarHours().map((c) =>
         dates.map((h) => {
             const ch =  this.createCalendarHours(h, c);
-            const e = this.filterEventsByDateAndStartTime(events, ch);
-            ch.events = e;
             return ch
         }));
     }
@@ -45,22 +45,21 @@ export class CalendarHoursService {
         return this.getCalendarHours().map((c) =>
         dates.map((h) => {
             const ch =  this.createCalendarHours(h, c);
-            const e = this.filterEventsByDateAndStartTime(events, ch);
-            ch.events = e;
             return ch
         }));
     }
 
 
     pushFirstRowForGrid(dates: CalendarDate[]): CalendarHours[] {
-        const hours: CalendarHours[] = dates.map((d) => {
+        const hours: CalendarHours[] = dates.map((d, i) => {
             return {
                 day: this._dateService.getDayName(d, 'short'),
                 date: this._dateService.getDate(d),
                 isToday: this._dateService.isToday(d),
                 month: this._dateService.getMonth(d),
                 year: this._dateService.getYear(d),
-                cDate: d
+                cDate: d,
+                left: i + 1
             };
         });
         hours.unshift(this.createFirstRowDate(dates[0]));
@@ -70,7 +69,8 @@ export class CalendarHoursService {
     createFirstRowDate(date: CalendarDate): CalendarHours {
         return {
             timeZone: this._dateService.getTimeZoneFormat(date),
-            isFirst: true
+            isFirst: true,
+            left: 0
         };
     }
 
@@ -84,14 +84,37 @@ export class CalendarHoursService {
             timeZone: h.timeZone,
             isFirst: h.isFirst,
             cDate: h.cDate,
-            events: []
+            left: h.left,
+            top: c.top
         };
     }
 
     filterEventsByDateAndStartTime(
-        events: CalendarEventInput[], h: CalendarHours
-        ): CalendarEventInput[] {
-            return events.filter((e: CalendarEventInput) => h.cDate! && this._dateService.isSameDate(h.cDate!, e.start!) && 
-            this._dateService.isSameHour(h.hours!, e.start!));
+        events: CalendarEventInput[], calendarHours: CalendarHours[][]
+        ): CalendarEventFull[] {
+            let filteredEvents: CalendarEventFull[] = [];
+            calendarHours.forEach((hours: CalendarHours[]) => {
+                hours.forEach((h: CalendarHours) => {
+                    events.forEach((e: CalendarEventInput) => {
+                        if( h.cDate! && this._dateService.isSameDate(h.cDate!, e.start!) && 
+                        this._dateService.isSameHour(h.hours!, e.start!)) {
+                            filteredEvents.push(this.createCalendarEventFull(e, h));
+                        }
+                    });
+                });
+            });
+            return filteredEvents;
+    }
+
+    createCalendarEventFull(final: CalendarEventInput, h: CalendarHours): CalendarEventFull {
+        return {
+            start: final.start ,
+            end: final.end,
+            title: final.title,
+            color: final.color,
+            format: final.format,
+            left: h.left,
+            top: h.top
+        };
     }
 }

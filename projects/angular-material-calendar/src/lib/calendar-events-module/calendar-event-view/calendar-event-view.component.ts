@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event';
+import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
 import { MonthViewService } from '../../calendar-month-view-module/service/calendar-month-view.service';
 
 @Component({

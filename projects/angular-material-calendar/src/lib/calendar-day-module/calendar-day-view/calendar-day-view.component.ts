@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event';
+import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
 import { CalendarHoursService } from '../../service/calendar-hours.service';
 
 @Component({

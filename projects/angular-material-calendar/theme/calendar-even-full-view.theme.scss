@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+
+@mixin calendar-full-view-theme($theme) {
+  
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  
+       .calendar-full-view {
+           background-color: mat-color($primary);
+           color: #fff;
+           position: absolute;
+        }
+
+}
