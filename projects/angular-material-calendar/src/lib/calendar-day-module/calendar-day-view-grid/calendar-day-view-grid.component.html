@@ -22,4 +22,11 @@
                                </angular-material-calendar-event-full-view> -->
                 </mat-grid-tile>
       </ng-template>
+      <ng-template ngFor let-event
+                   [ngForOf]="calendarEventsFull" 
+                   let-i="index">
+                   <angular-material-calendar-event-full-view class="calendar-full-view"
+                                                              [event]="event">
+                   </angular-material-calendar-event-full-view>
+</ng-template>
 </mat-grid-list>
