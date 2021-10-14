@@ -20,8 +20,7 @@ export class CalendarHoursService {
                hours: d,
                isHourNow: this._dateService.isHoursNow(d),
                date: 0,
-               day: '',
-               top: i
+               day: ''
            }
         });
     }
@@ -58,8 +57,7 @@ export class CalendarHoursService {
                 isToday: this._dateService.isToday(d),
                 month: this._dateService.getMonth(d),
                 year: this._dateService.getYear(d),
-                cDate: d,
-                left: i + 1
+                cDate: d
             };
         });
         hours.unshift(this.createFirstRowDate(dates[0]));
@@ -69,8 +67,7 @@ export class CalendarHoursService {
     createFirstRowDate(date: CalendarDate): CalendarHours {
         return {
             timeZone: this._dateService.getTimeZoneFormat(date),
-            isFirst: true,
-            left: 0
+            isFirst: true
         };
     }
 
@@ -83,9 +80,7 @@ export class CalendarHoursService {
             isToday: h.isToday,
             timeZone: h.timeZone,
             isFirst: h.isFirst,
-            cDate: h.cDate,
-            left: h.left,
-            top: c.top
+            cDate: h.cDate
         };
     }
 
@@ -93,12 +88,12 @@ export class CalendarHoursService {
         events: CalendarEventInput[], calendarHours: CalendarHours[][]
         ): CalendarEventFull[] {
             let filteredEvents: CalendarEventFull[] = [];
-            calendarHours.forEach((hours: CalendarHours[]) => {
-                hours.forEach((h: CalendarHours) => {
+            calendarHours.forEach((hours: CalendarHours[], i) => {
+                hours.forEach((h: CalendarHours, j) => {
                     events.forEach((e: CalendarEventInput) => {
                         if( h.cDate! && this._dateService.isSameDate(h.cDate!, e.start!) && 
                         this._dateService.isSameHour(h.hours!, e.start!)) {
-                            filteredEvents.push(this.createCalendarEventFull(e, h));
+                            filteredEvents.push(this.createCalendarEventFull(e, i, j));
                         }
                     });
                 });
@@ -106,15 +101,15 @@ export class CalendarHoursService {
             return filteredEvents;
     }
 
-    createCalendarEventFull(final: CalendarEventInput, h: CalendarHours): CalendarEventFull {
+    createCalendarEventFull(final: CalendarEventInput, top: number, left: number): CalendarEventFull {
         return {
             start: final.start ,
             end: final.end,
             title: final.title,
             color: final.color,
             format: final.format,
-            left: h.left,
-            top: h.top
+            left: left,
+            top: top
         };
     }
 }
