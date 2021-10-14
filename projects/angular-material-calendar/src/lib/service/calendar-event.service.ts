@@ -19,6 +19,7 @@ export class CalendarEventService {
             this.styleWidth(event, _element, WIDTH);
             this.styleTop(event, _element, TOP);
             this.styleHeight(event, _element, HEIGHT);
+            this.styleBackground(event, _element, HEIGHT);
     }
 
     calc(exp: string): string {
@@ -47,15 +48,21 @@ export class CalendarEventService {
             this.calc(`${this.calculateEventHeight(event)}`);
     }
 
+    styleBackground(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
+        HEIGHT: string): void {
+            (_element.nativeElement.style as any)['background-color'] = 
+            `${event.color}`;
+    }
+
     calculateEventStartOffset(event: CalendarEventFull): string {
         return `${this._dateService.minute(event.start!) / 12}em`
     }
 
     calculateEventHeight(event: CalendarEventFull): string {
-        return `${Math.round(this._dateService.timeDiffinMinutes(event.start!, event.end!) / 12)}em`
+        return `${this._dateService.timeDiffinMinutes(event.start!, event.end!) / 12}em`
     }
 
     eventsubtitle(event: CalendarEventFull): string {
-        return `${this._dateService.getTimeFormat(event.start!)}-${this._dateService.getTimeFormat(event.end!)}`;
+        return `${this._dateService.getTimeFormat(event.start!)} - ${this._dateService.getTimeFormat(event.end!)}`;
     }
 }

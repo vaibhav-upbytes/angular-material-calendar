@@ -7,12 +7,20 @@
   
        .calendar-full-view {
            background-color: mat-color($primary, A100);
-           color: #fff;
+           border-radius: 8px;
+           color: #00355e;
            position: absolute;
         }
 
-        .mat-card {
+        .calendar-full-view-content {
+          display: flex;
+          flex-flow: column;
           height: inherit;
+          padding: 2px !important;
+       }
+
+        .calendar-full-view-subtitle {
+          margin-bottom: 2px !important;
         }
 
 }

@@ -180,6 +180,6 @@ export class DateService {
 
 
    getTimeFormat(d:  string | Moment): string {
-      return this.getMoment(d).format("hh:mma");
+      return this.getMoment(d).format("hh:mm a");
    }
 }
