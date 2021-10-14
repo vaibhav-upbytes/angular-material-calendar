@@ -1,18 +1,7 @@
 
 
-<mat-card class="calendar-full-view">
-    <mat-card-subtitle>{{time!}}</mat-card-subtitle>
-    <mat-card-title>{{event!.title}}</mat-card-title>
-    <!-- <mat-card-content>
-      <p>This card has divider and indeterminate progress as footer</p>
-      <p>{{ longText }}</p>
-    </mat-card-content>
-    <mat-divider inset></mat-divider>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-    <mat-card-footer>
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </mat-card-footer> -->
-  </mat-card>
+<mat-card class="calendar-full-view-content"
+         [ngStyle]="{'background-color' : event!.color}">
+    <mat-card-subtitle class="calendar-full-view-subtitle">{{time!}}</mat-card-subtitle>
+    <mat-card-content>{{event!.title}}</mat-card-content>
+</mat-card>
