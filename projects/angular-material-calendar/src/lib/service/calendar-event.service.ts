@@ -56,6 +56,6 @@ export class CalendarEventService {
     }
 
     eventsubtitle(event: CalendarEventFull): string {
-        return `${this._dateService.getTimeFormat(event.start!)} - ${this._dateService.getTimeFormat(event.end!)}`;
+        return `${this._dateService.getTimeFormat(event.start!)}-${this._dateService.getTimeFormat(event.end!)}`;
     }
 }

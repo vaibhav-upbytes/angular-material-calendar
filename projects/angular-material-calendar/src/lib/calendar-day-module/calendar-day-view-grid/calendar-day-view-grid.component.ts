@@ -6,6 +6,7 @@ import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 import { CalendarHours } from '../../calendar-modal/calendar-hours/calendar-hours';
 import { CalendarHoursService } from '../../service/calendar-hours.service';
 import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
+import { CalendarEventFull } from '../../calendar-modal/calendar-event/calendar-event-full';
 
 
 @Component({
@@ -20,20 +21,23 @@ export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
   date$?: Observable<CalendarDate>;
   _currentDate?: CalendarDate;
   calendarHours?: CalendarHours[][];
+  calendarEventsFull?: CalendarEventFull[];
 
-    constructor(
+  constructor(
       private scroller: ViewportScroller,
       private store: Store<{ _date: CalendarDate}>,
       private _calendarWeekService: CalendarHoursService
-    ) {
+  ) {
       this.date$ = store.select('_date');
-    }
+  }
     
     ngOnInit(): void {
       this.date$!.subscribe((d: CalendarDate) => {
         this._currentDate = d;
         this.calendarHours = this._calendarWeekService
-                                 .getCalndarDayHoursGridData(this.events!, this._currentDate!);
+                                 .getCalndarDayHoursGridData(this._currentDate!);
+        this.calendarEventsFull = this._calendarWeekService
+                                 .filterEventsByDateAndStartTime(this.events!, this.calendarHours!);
         });
     }
 

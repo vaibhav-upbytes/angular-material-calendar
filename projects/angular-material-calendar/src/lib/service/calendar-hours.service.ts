@@ -30,7 +30,7 @@ export class CalendarHoursService {
         return this.pushFirstRowForGrid(dates);
     }
 
-    getCalndarWeekHoursGridData(events: CalendarEventInput[], date: CalendarDate): CalendarHours[][] {
+    getCalndarWeekHoursGridData(date: CalendarDate): CalendarHours[][] {
         const dates: CalendarHours[] = this.getCalendarWeekRange(date);
         return this.getCalendarHours().map((c) =>
         dates.map((h) => {
@@ -39,7 +39,7 @@ export class CalendarHoursService {
         }));
     }
 
-    getCalndarDayHoursGridData(events: CalendarEventInput[], date: CalendarDate): CalendarHours[][] {
+    getCalndarDayHoursGridData(date: CalendarDate): CalendarHours[][] {
         const dates: CalendarHours[] = this.pushFirstRowForGrid(Array.of(date));
         return this.getCalendarHours().map((c) =>
         dates.map((h) => {

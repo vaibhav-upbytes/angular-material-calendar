@@ -171,7 +171,6 @@ export class DateService {
    }
 
    timeDiffinMinutes(start: string | Moment, end: string | Moment): number {
-      console.log(start, this.timeDiff(start, end).asMinutes());
       return  this.timeDiff(start, end).asMinutes();
    }
 
@@ -181,6 +180,6 @@ export class DateService {
 
 
    getTimeFormat(d:  string | Moment): string {
-      return this.getMoment(d).format("HH:mm");
+      return this.getMoment(d).format("hh:mma");
    }
 }
