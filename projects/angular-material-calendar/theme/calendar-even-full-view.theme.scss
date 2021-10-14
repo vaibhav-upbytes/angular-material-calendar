@@ -6,9 +6,13 @@
   $accent: map-get($theme, accent);
   
        .calendar-full-view {
-           background-color: mat-color($primary);
+           background-color: mat-color($primary, A100);
            color: #fff;
            position: absolute;
+        }
+
+        .mat-card {
+          height: inherit;
         }
 
 }

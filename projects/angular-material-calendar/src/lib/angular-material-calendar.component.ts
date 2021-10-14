@@ -44,7 +44,7 @@ export class AngularMaterialCalendarComponent implements OnInit {
     },
     {
         "start": "2021-10-17T13:22:07",
-        "end": "2021-10-12T19:22:07",
+        "end": "2021-10-17T19:22:07",
         "title": "string",
         "color": "string"
     },

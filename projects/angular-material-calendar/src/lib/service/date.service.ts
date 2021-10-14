@@ -162,9 +162,23 @@ export class DateService {
       return this._dateAdapter.sameDate(date.current, this.getMoment(eventDate));
    }
 
-   timeDiff(start: string | Moment, end: string | Moment): number {
-      return  moment.duration(this.getMoment(end).diff(this.getMoment(start))).asHours();
+   timeDiff(start: string | Moment, end: string | Moment): moment.Duration {
+      return  moment.duration(this.getMoment(end).diff(this.getMoment(start)));
    }
+
+   timeDiffinHours(start: string | Moment, end: string | Moment): number {
+      return  this.timeDiff(start, end).asHours();
+   }
+
+   timeDiffinMinutes(start: string | Moment, end: string | Moment): number {
+      console.log(start, this.timeDiff(start, end).asMinutes());
+      return  this.timeDiff(start, end).asMinutes();
+   }
+
+   minute(start: string | Moment): number {
+      return  this.getMoment(start).minutes();
+   }
+
 
    getTimeFormat(d:  string | Moment): string {
       return this.getMoment(d).format("HH:mm");

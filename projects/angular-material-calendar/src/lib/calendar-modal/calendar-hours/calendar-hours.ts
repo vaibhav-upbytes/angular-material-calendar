@@ -11,7 +11,5 @@ export interface CalendarHours {
     isHourNow?: boolean,
     isFirst?: boolean,
     timeZone?: string,
-    cDate?: CalendarDate,
-    left?: number,
-    top?: number
+    cDate?: CalendarDate
 }

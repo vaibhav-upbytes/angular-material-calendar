@@ -1,8 +1,11 @@
 import { Component, Input, ElementRef, OnInit } from '@angular/core';
 import { CalendarEventFull } from '../../calendar-modal/calendar-event/calendar-event-full';
-//import {DomSanitizationService} from '@angular/platform-browser';
-//import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
-import { CalendarHoursService } from '../../service/calendar-hours.service';
+import { CalendarEventService } from '../../service/calendar-event.service';
+
+const LEFT = "12.7%";
+const TOP = "5em";
+const WIDTH = "11%";
+const HEIGHT = "5em";
 
 @Component({
   selector: 'angular-material-calendar-event-full-view',
@@ -13,19 +16,17 @@ import { CalendarHoursService } from '../../service/calendar-hours.service';
 })
 export class CalendarEventFullViewComponent implements OnInit {
     @Input() event?: CalendarEventFull;
+    time?: string;
     constructor(
       private _element: ElementRef<HTMLElement>,
-      private calendarHoursService: CalendarHoursService) {
+      private calendarEventService: CalendarEventService) {
 
-      }
-  ngOnInit(): void {
-    this._setStyle('left', `calc((12.5% - 0px + 0px) * ${this.event?.left})`);
-    this._setStyle('top', `calc((5em + 0px) * ${this.event?.top})`);
-    this._setStyle('width', `calc((12.5% - 0px) * 1 + 0px)`);
-    this._setStyle('height', `calc(5em + 0px)`);
-  }
-    
-    _setStyle(property: string, value: any): void {
-        (this._element.nativeElement.style as any)[property] = value;
     }
+    
+    ngOnInit(): void {
+      this.calendarEventService.setEventStyle(this.event!,
+      this._element, LEFT, TOP, WIDTH, HEIGHT);
+      this.time = this.calendarEventService.eventsubtitle(this.event!);
+    }
+
 }
