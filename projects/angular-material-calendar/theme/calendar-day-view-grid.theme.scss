@@ -25,5 +25,10 @@
             right: .5em;
             bottom: .5em;
         }
+
+        .calendar-day-view-grid-hour {
+          border: 1px dashed mat-color($primary, 50);
+          width: 100%;
+        }
       
 }

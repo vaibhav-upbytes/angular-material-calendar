@@ -16,10 +16,10 @@
                                    {{tile.hours}}
                                    {{tile.day}}
                                </div>
-                               <!-- <angular-material-calendar-event-full-view *ngIf=!tile.isFirst
-                               [events]="tile.events"> 
-
-                               </angular-material-calendar-event-full-view> -->
+                               <div *ngIf=!tile.isFirst 
+                                    [ngClass]="!tile.isFirst ? 'calendar-day-view-grid-hour' : ''" >
+                                   
+                               </div>
                 </mat-grid-tile>
       </ng-template>
       <ng-template ngFor let-event

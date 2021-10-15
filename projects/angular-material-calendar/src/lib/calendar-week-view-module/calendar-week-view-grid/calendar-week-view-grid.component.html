@@ -18,7 +18,10 @@
                                    {{tile.hours}}
                                    {{tile.day}}
                                </div>
-
+                               <div *ngIf=!tile.isFirst 
+                               [ngClass]="!tile.isFirst ? 'calendar-week-view-grid-hour' : ''" >
+                                   
+                               </div>
 
                 </mat-grid-tile>
       </ng-template>
