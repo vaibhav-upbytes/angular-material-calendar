@@ -22,9 +22,14 @@
         }
 
         .calendar-week-view-grid-first {
-            position: absolute;
-            right: .5em;
-            bottom: .5em;
+          position: absolute;
+          right: .5em;
+          bottom: .5em;
+        }
+
+        .calendar-week-view-grid-hour {
+          border: 1px dashed mat-color($primary, 50);
+          width: 100%;
         }
       
 }
