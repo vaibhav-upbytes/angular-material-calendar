@@ -93,7 +93,9 @@ export class CalendarHoursService {
                     events.forEach((e: CalendarEventInput) => {
                         if( h.cDate! && this._dateService.isSameDate(h.cDate!, e.start!) && 
                         this._dateService.isSameHour(h.hours!, e.start!)) {
-                            filteredEvents.push(this.createCalendarEventFull(e, i, j));
+                            let height: number = this._dateService
+                                                .timeDiffinMinutes(e.start!, e.end!) / 12;
+                            filteredEvents.push(this.createCalendarEventFull(e, i, j, height));
                         }
                     });
                 });
@@ -101,7 +103,8 @@ export class CalendarHoursService {
             return filteredEvents;
     }
 
-    createCalendarEventFull(final: CalendarEventInput, top: number, left: number): CalendarEventFull {
+    createCalendarEventFull(final: CalendarEventInput,
+        top: number, left: number, height: number): CalendarEventFull {
         return {
             start: final.start ,
             end: final.end,
@@ -109,7 +112,10 @@ export class CalendarHoursService {
             color: final.color,
             format: final.format,
             left: left,
-            top: top
+            top: top,
+            height: height,
+            width: 1
         };
     }
+
 }

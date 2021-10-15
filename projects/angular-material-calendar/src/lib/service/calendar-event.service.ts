@@ -2,8 +2,6 @@ import { ElementRef, Injectable } from "@angular/core";
 import { CalendarEventFull } from "../calendar-modal/calendar-event/calendar-event-full";
 import { DateService } from "./date.service";
 
-const gridHeight = 80;
-
 @Injectable({
     providedIn: 'root'
 })
@@ -14,7 +12,7 @@ export class CalendarEventService {
 
     setEventStyle(
         event: CalendarEventFull, _element: ElementRef<HTMLElement>,
-        LEFT: string, TOP: string, WIDTH: string, HEIGHT: string): void {
+        LEFT: string, TOP: string, WIDTH: number, HEIGHT: string): void {
             this.styleLeft(event, _element, LEFT);
             this.styleWidth(event, _element, WIDTH);
             this.styleTop(event, _element, TOP);
@@ -38,8 +36,8 @@ export class CalendarEventService {
     }
 
     styleWidth(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
-        WIDTH: string): void {
-            (_element.nativeElement.style as any)['width'] = this.calc(`(${WIDTH} - 0px) * 1 + 0px`);
+        WIDTH: number): void {
+            (_element.nativeElement.style as any)['width'] = this.calc(`(${WIDTH}% - 0px) * ${event.width} + 0px`);
     }
 
     styleHeight(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
@@ -64,5 +62,26 @@ export class CalendarEventService {
 
     eventsubtitle(event: CalendarEventFull): string {
         return `${this._dateService.getTimeFormat(event.start!)} - ${this._dateService.getTimeFormat(event.end!)}`;
+    }
+
+    filteredConflictedEvents(events: CalendarEventFull[]): CalendarEventFull[] {
+        for(let i = 0;  i < events.length; i++) {
+            let e1 = events[i];
+            let count = 0;
+            for(let j = i+1; j < events.length; j++) {
+                let e2 = events[j];
+                if(this._dateService.getMoment(e2.start!)
+                .isBetween(this._dateService.getMoment(e1.start!),
+                this._dateService.getMoment(e1.end!)) || this._dateService.getMoment(e2.end!)
+                .isBetween(this._dateService.getMoment(e1.start!),
+                this._dateService.getMoment(e1.end!))) {
+                    count++;
+                    e2.left = e1.left! + ((count === 1 ? count : count * 1.5)  / 10);
+                    e2.width = e1.width! - ((count * 1.5)  / 10);
+                    events[j] = e2;
+                }
+            }
+        }
+        return events;
     }
 }

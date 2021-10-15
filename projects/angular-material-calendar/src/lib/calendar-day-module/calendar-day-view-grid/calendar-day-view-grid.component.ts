@@ -7,6 +7,7 @@ import { CalendarHours } from '../../calendar-modal/calendar-hours/calendar-hour
 import { CalendarHoursService } from '../../service/calendar-hours.service';
 import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
 import { CalendarEventFull } from '../../calendar-modal/calendar-event/calendar-event-full';
+import { CalendarEventService } from '../../service/calendar-event.service';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
   constructor(
       private scroller: ViewportScroller,
       private store: Store<{ _date: CalendarDate}>,
-      private _calendarWeekService: CalendarHoursService
+      private _calendarWeekService: CalendarHoursService,
+      private _calendarEventService: CalendarEventService
   ) {
       this.date$ = store.select('_date');
   }
@@ -38,6 +40,8 @@ export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
                                  .getCalndarDayHoursGridData(this._currentDate!);
         this.calendarEventsFull = this._calendarWeekService
                                  .filterEventsByDateAndStartTime(this.events!, this.calendarHours!);
+        this.calendarEventsFull = this._calendarEventService
+                                 .filteredConflictedEvents(this.calendarEventsFull);
         });
     }
 
