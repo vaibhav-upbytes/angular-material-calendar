@@ -7,5 +7,6 @@ export interface CalendarEventFull {
     left?: number,
     top?: number,
     width?: number,
-    height?: number
+    height?: number,
+    isConflicted?: boolean
 }

@@ -12,7 +12,13 @@
            position: absolute;
         }
 
+        .calendar-full-view:hover {
+          z-index:99 !important;
+        }
+
         .calendar-full-view-content {
+          border: 1px solid #fff;
+          color: #00355e;
           display: flex;
           flex-flow: column;
           height: inherit;
@@ -21,6 +27,12 @@
 
         .calendar-full-view-subtitle {
           margin-bottom: 2px !important;
+          color: #00355e;
+        }
+
+        .calendar-card-content {
+          margin-top: 2px !important;
+          color: #00355e;
         }
 
 }
