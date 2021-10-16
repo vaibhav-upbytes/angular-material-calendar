@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
-import { ViewportScroller } from "@angular/common";
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
@@ -25,7 +24,6 @@ export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
   calendarEventsFull?: CalendarEventFull[];
 
   constructor(
-      private scroller: ViewportScroller,
       private store: Store<{ _date: CalendarDate}>,
       private _calendarWeekService: CalendarHoursService,
       private _calendarEventService: CalendarEventService

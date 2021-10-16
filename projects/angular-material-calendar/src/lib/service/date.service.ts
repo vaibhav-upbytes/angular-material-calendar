@@ -150,7 +150,7 @@ export class DateService {
       return `GMT ${this._dateAdapter.format(date.current, 'Z')}`;
    }
 
-   getMoment(d: string | Moment): Moment {
+   getMoment(d: string | Moment, format?: string): Moment {
       return  moment(d, moment.ISO_8601); 
    }
 
