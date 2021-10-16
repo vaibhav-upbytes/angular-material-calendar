@@ -11,5 +11,6 @@ export interface CalendarHours {
     isHourNow?: boolean,
     isFirst?: boolean,
     timeZone?: string,
-    cDate?: CalendarDate
+    cDate?: CalendarDate,
+    isAllDay?: boolean
 }

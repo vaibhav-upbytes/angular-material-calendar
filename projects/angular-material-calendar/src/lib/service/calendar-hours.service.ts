@@ -15,14 +15,17 @@ export class CalendarHoursService {
         ) {}
 
     getCalendarHours(): CalendarHours[] {
-        return this._dateService.getHoursFormat().map((d, i) => {
+        let hours = this._dateService.getHoursFormat().map((d) => {
            return {
                hours: d,
                isHourNow: this._dateService.isHoursNow(d),
                date: 0,
-               day: ''
+               day: '',
+               isAllDay: false
            }
         });
+        hours.unshift(this.addAllDayEventRow());
+        return hours;
     }
 
     getCalendarWeekRange(date: CalendarDate): CalendarHours[] {
@@ -101,6 +104,16 @@ export class CalendarHoursService {
                 });
             });
             return filteredEvents;
+    }
+
+    addAllDayEventRow() {
+        return {
+            hours: "0",
+            isHourNow: false,
+            date: 0,
+            day: '',
+            isAllDay: true
+        };
     }
 
     createCalendarEventFull(final: CalendarEventInput,

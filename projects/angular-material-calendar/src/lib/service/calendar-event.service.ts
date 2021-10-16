@@ -32,7 +32,8 @@ export class CalendarEventService {
     styleTop(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
         TOP: string): void {
             (_element.nativeElement.style as any)['top'] 
-            =  this.calc(`(${TOP} + 0px) * ${event.top} + ${this.calculateEventStartOffset(event)}`);
+            =  !event.isAllDay ? 
+            this.calc(`(${TOP} + 0px) * ${event.top} + ${this.calculateEventStartOffset(event)}`) : "5px";
     }
 
     styleWidth(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
@@ -43,7 +44,7 @@ export class CalendarEventService {
     styleHeight(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
         HEIGHT: string): void {
             (_element.nativeElement.style as any)['height'] = 
-            this.calc(`${this.calculateEventHeight(event)}`);
+            !event.isAllDay ? this.calc(`${this.calculateEventHeight(event)}`) : "4em";
     }
 
     styleBackground(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
@@ -83,5 +84,16 @@ export class CalendarEventService {
             }
         }
         return events;
+    }
+
+    isAllDayEvent(event: CalendarEventFull): CalendarEventFull {
+        event.isAllDay = this._dateService.getMoment(event.start!)
+        .date() !== this._dateService.getMoment(event.end!).date();
+        if(event.isAllDay) {
+            let diff = this._dateService.getMoment(event.end!)
+            .date() - this._dateService.getMoment(event.start!).date() + 1;
+            event.width = diff + diff / 10;
+        }
+        return event; 
     }
 }

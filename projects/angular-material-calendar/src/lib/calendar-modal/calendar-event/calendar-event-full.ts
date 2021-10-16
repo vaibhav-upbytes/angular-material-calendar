@@ -8,5 +8,5 @@ export interface CalendarEventFull {
     top?: number,
     width?: number,
     height?: number,
-    isConflicted?: boolean
+    isAllDay?: boolean
 }
