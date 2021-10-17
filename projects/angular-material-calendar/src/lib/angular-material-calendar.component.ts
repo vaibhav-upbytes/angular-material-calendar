@@ -62,14 +62,14 @@ export class AngularMaterialCalendarComponent implements OnInit {
     "color": "#d8c6d9"
 },
 {
-  "start": "2021-10-15T16:35:07",
-  "end": "2021-10-15T18:40:07",
+  "start": "2021-10-15T20:35:07",
+  "end": "2021-10-15T21:40:07",
   "title": "conflict2",
   "color": "#d8c6d9"
 },
 {
-  "start": "2021-10-15T16:35:07",
-  "end": "2021-10-15T18:40:07",
+  "start": "2021-10-15T19:35:07",
+  "end": "2021-10-15T22:40:07",
   "title": "conflict3",
   "color": "#d8c6d9"
 },

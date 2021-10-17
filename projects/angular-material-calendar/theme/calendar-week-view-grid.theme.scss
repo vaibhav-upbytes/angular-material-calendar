@@ -28,7 +28,7 @@
         }
 
         .calendar-week-view-grid-hour {
-          border: 1px dashed mat-color($primary, 50);
+          border-top: .5px dotted mat-color($primary, 100);
           width: 100%;
         }
       
