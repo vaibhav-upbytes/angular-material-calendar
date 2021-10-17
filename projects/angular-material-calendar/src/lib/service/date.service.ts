@@ -90,7 +90,7 @@ export class DateService {
    }
 
    getFirstDayOfWeek(date: CalendarDate): CalendarDate {
-      return this.clone({current : this._dateAdapter.clone(date.current).startOf('week')});
+      return this.clone({current : this._dateAdapter.clone(date.current).startOf('isoWeek')});
    }
 
    getLastDayOfWeek(date: CalendarDate): CalendarDate {
@@ -128,7 +128,8 @@ export class DateService {
    getWeekDatesRange(date: CalendarDate): CalendarDate[] {
       const dates: CalendarDate[] = Array(7);
       let first =  this.getFirstDayOfWeek(date);
-      for (let i = 0; i < 7; i++) {
+      dates[0] = first
+      for (let i = 1; i < 7; i++) {
          first = this.addCalendarDays(first, 1);
          dates[i] = first;
       }
