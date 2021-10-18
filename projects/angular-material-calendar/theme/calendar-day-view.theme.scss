@@ -6,15 +6,13 @@
   $accent: map-get($theme, accent);
   
        .calendar-day-view {
-           overflow: hidden;
+           overflow-x: hidden;
+           overflow-y: auto;
            height: 27em;
         }
 
-        .calendar-day-view:hover {
-            overflow-y: auto;
-        }
         .calendar-day-view::-webkit-scrollbar {
-            width: 2px;
+            width: 4px;
             scrollbar-color: mat-color($primary);
         }
         .calendar-day-view::-webkit-scrollbar-track {

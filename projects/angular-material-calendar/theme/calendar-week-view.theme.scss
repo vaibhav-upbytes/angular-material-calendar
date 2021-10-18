@@ -6,15 +6,13 @@
   $accent: map-get($theme, accent);
   
        .calendar-week-view {
-           overflow: hidden;
+           overflow-y: auto;
+           overflow-x: hidden;
            height: 27em;
         }
 
-        .calendar-week-view:hover {
-            overflow-y: auto;
-        }
         .calendar-week-view::-webkit-scrollbar {
-            width: 2px;
+            width: 4px;
             scrollbar-color: mat-color($primary);
         }
         .calendar-week-view::-webkit-scrollbar-track {
