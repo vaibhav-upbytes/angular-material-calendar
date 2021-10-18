@@ -180,8 +180,13 @@ export class DateService {
       return  this.getMoment(start).minutes();
    }
 
-
    getTimeFormat(d:  string | Moment): string {
       return this.getMoment(d).format("hh:mm a");
+   }
+
+   isBetween(date: CalendarDate,
+      start: Moment, end: Moment): boolean {
+         return this.getMoment(start).unix() < date.current.unix() 
+         && date.current.unix() < this.getMoment(end).unix();
    }
 }

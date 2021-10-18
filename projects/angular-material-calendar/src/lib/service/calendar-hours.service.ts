@@ -94,8 +94,9 @@ export class CalendarHoursService {
             calendarHours.forEach((hours: CalendarHours[], i) => {
                 hours.forEach((h: CalendarHours, j) => {
                     events.forEach((e: CalendarEventInput) => {
-                        if( h.cDate! && this._dateService.isSameDate(h.cDate!, e.start!) && 
-                        this._dateService.isSameHour(h.hours!, e.start!)) {
+                        if( h.cDate! && (this._dateService.isSameDate(h.cDate!, e.start!) && 
+                        this._dateService.isSameHour(h.hours!, e.start!) || 
+                        h.cDate! && this._dateService.isBetween(h.cDate!, e.start!, e.end!))) {
                             let height: number = this._dateService
                                                 .timeDiffinMinutes(e.start!, e.end!) / 12;
                             filteredEvents.push(this.createCalendarEventFull(e, i, j, height));
