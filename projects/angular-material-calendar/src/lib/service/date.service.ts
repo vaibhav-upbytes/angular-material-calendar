@@ -118,7 +118,8 @@ export class DateService {
    getMonthDatesRange(date: CalendarDate): CalendarDate[] {
       const dates: CalendarDate[] = Array(35);
       let first =  this.getFirstDayOfWeek(this.getFirstDayOfMonth(date));
-      for (let i = 0; i < 35; i++) {
+      dates[0] = first;
+      for (let i = 1; i < 35; i++) {
          first = this.addCalendarDays(first, 1);
          dates[i] = first;
       }

@@ -11,6 +11,11 @@
           border: 1px solid mat-color($primary, 100);
         }
 
+        .calendar-week-view-header-border {
+          background: mat-color($primary);
+          border-right: 4px solid #fff;
+        }
+
         .calendar-week-view-header-today {
             color: mat-color($accent, 100);
         }

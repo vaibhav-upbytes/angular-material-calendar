@@ -13,6 +13,11 @@
           left: 1em;
         }
 
+        .calendar-day-view-header-border {
+          background: mat-color($primary);
+          border-right: 4px solid #fff;
+        }
+
         .calendar-day-view-header-today {
             color: mat-color($accent, 100);
         }
