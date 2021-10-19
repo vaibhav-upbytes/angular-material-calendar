@@ -193,4 +193,10 @@ export class DateService {
    restoreFromStore(d: CalendarDate): CalendarDate {
       return {current: this.getDateTime(d.current.toMillis())};
    }
+
+   isBetween(date: CalendarDate,
+      start: number, end: number): boolean {
+         return start < date.current.toMillis() 
+         && date.current.toMillis() < end;
+   }
 }
