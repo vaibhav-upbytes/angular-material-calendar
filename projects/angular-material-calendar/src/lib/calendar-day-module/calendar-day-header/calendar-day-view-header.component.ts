@@ -22,7 +22,8 @@ export class CalendarDayViewHeaderComponent {
     ) {
       this.date$ = store.select('_date');
       this.date$.subscribe((d: CalendarDate) => {
-          this.dayheader = d.current.format("ddd MMM DD YYYY");
+          let date = this._dateService.restoreFromStore(d);
+          this.dayheader = date.current.toFormat("ccc d");
           this.timeZone = this._dateService.getTimeZoneFormat(d);
       });
     }
