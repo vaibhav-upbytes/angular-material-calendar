@@ -55,7 +55,7 @@ export class CalendarHoursService {
     pushFirstRowForGrid(dates: CalendarDate[]): CalendarHours[] {
         const hours: CalendarHours[] = dates.map((d, i) => {
             return {
-                day: this._dateService.getDayName(d, 'short'),
+                day:  this._dateService.getDayName(d, 'short'),
                 date: this._dateService.getDate(d),
                 isToday: this._dateService.isToday(d),
                 month: this._dateService.getMonth(d),
@@ -96,8 +96,9 @@ export class CalendarHoursService {
                     events.forEach((e: CalendarEventInput) => {
                         if( h.cDate! && this._dateService.isSameDate(h.cDate!, e.start!) && 
                         this._dateService.isSameHour(h.hours!, e.start!)) {
-                            let height: number = this._dateService
-                                                .timeDiffinMinutes(e.start!, e.end!) / 12;
+                            let diff: number = this._dateService
+                                                .timeDiffinMinutes(e.start!, e.end!)!;
+                            let height: number = diff / 12;
                             filteredEvents.push(this.createCalendarEventFull(e, i, j, height));
                         }
                     });

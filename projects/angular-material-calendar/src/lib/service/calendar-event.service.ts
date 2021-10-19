@@ -58,7 +58,7 @@ export class CalendarEventService {
     }
 
     calculateEventHeight(event: CalendarEventFull): string {
-        return `${this._dateService.timeDiffinMinutes(event.start!, event.end!) / 12}em`
+        return `${this._dateService.timeDiffinMinutes(event.start!, event.end!)! / 12}em`
     }
 
     eventsubtitle(event: CalendarEventFull): string {
@@ -66,32 +66,31 @@ export class CalendarEventService {
     }
 
     filteredConflictedEvents(events: CalendarEventFull[]): CalendarEventFull[] {
-        for(let i = 0;  i < events.length; i++) {
-            let e1 = events[i];
-            let count = 0;
-            for(let j = i+1; j < events.length; j++) {
-                let e2 = events[j];
-                if(this._dateService.getMoment(e2.start!)
-                .isBetween(this._dateService.getMoment(e1.start!),
-                this._dateService.getMoment(e1.end!)) || this._dateService.getMoment(e2.end!)
-                .isBetween(this._dateService.getMoment(e1.start!),
-                this._dateService.getMoment(e1.end!))) {
-                    count++;
-                    e2.left = e1.left! + ((count === 1 ? count : count * 1.5)  / 10);
-                    e2.width = e1.width! - ((count * 1.5)  / 10);
-                    events[j] = e2;
-                }
-            }
-        }
+        // for(let i = 0;  i < events.length; i++) {
+        //     let e1 = events[i];
+        //     let count = 0;
+        //     for(let j = i+1; j < events.length; j++) {
+        //         let e2 = events[j];
+        //         if(this._dateService.getDateTime(e2.start!)
+        //         .isBetween(this._dateService.getMoment(e1.start!),
+        //         this._dateService.getMoment(e1.end!)) || this._dateService.getMoment(e2.end!)
+        //         .isBetween(this._dateService.getMoment(e1.start!),
+        //         this._dateService.getMoment(e1.end!))) {
+        //             count++;
+        //             e2.left = e1.left! + ((count === 1 ? count : count * 1.5)  / 10);
+        //             e2.width = e1.width! - ((count * 1.5)  / 10);
+        //             events[j] = e2;
+        //         }
+        //     }
+        // }
         return events;
     }
 
     isAllDayEvent(event: CalendarEventFull): CalendarEventFull {
-        event.isAllDay = this._dateService.getMoment(event.start!)
-        .date() !== this._dateService.getMoment(event.end!).date();
+        event.isAllDay = !this._dateService.isSameDate(event.end!, event.start!);
         if(event.isAllDay) {
-            let diff = this._dateService.getMoment(event.end!)
-            .date() - this._dateService.getMoment(event.start!).date() + 1;
+            let diff = this._dateService.getDateTime(event.end!).day
+             - this._dateService.getDateTime(event.start!).day + 1;
             event.width = diff + diff / 10;
         }
         return event; 

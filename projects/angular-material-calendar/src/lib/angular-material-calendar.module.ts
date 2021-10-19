@@ -1,8 +1,10 @@
 import { NgModule, InjectionToken, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatMomentDateModule } from "@angular/material-moment-adapter";
-import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from "@angular/material-moment-adapter";
+import { 
+  LuxonDateModule,
+  LuxonDateAdapter,
+  MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { DateReducerService } from './reducer/date-reducer.service';
@@ -37,7 +39,7 @@ export const CALENDAR_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<Calend
     AngularMaterialCalendarComponent
   ],
   imports: [
-    MatMomentDateModule,
+    LuxonDateModule,
     StoreModule.forRoot(CALENDAR_REDUCER_TOKEN),
     CommonModule,
     MaterialModule,
@@ -57,8 +59,8 @@ export const CALENDAR_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<Calend
     DeviceDetectorService,
     {
       provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+      useClass: LuxonDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_LUXON_DATE_ADAPTER_OPTIONS]
     },
     {
       provide: DeviceDetectorService,

@@ -1,5 +1,5 @@
-import { Moment } from "moment";
+import { DateTime } from "luxon";
 
 export interface CalendarDate {
-    current: Moment;
+    current: DateTime;
 }
