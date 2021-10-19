@@ -33,27 +33,111 @@ export class AngularMaterialCalendarComponent implements OnInit {
     {
         "start": 1634743992000,
         "end": 1634747592000,
-        "title": "string",
+        "title": "event1",
         "color": "#e2e6c7"
     },
     {
       "start": 1634826792000,
       "end": 1634833992000,
-      "title": "string",
+      "title": "event2",
       "color": "#d8c6d9"
   },
     {
         "start": 1634995992000,
         "end": 1635010392000,
-        "title": "string",
+        "title": "event3",
         "color": "#d8c6d9"
     },
     {
       "start": 1634640759000,
       "end": 1634986359000,
-      "title": "string",
+      "title": "event4",
       "color": "#d8c6d9"
-  }
+  },
+
+
+
+  {
+    "start": 1634743992000,
+    "end": 1634747592000,
+    "title": "event1",
+    "color": "#e2e6c7"
+},
+{
+  "start": 1634826792000,
+  "end": 1634833992000,
+  "title": "event2",
+  "color": "#d8c6d9"
+},
+{
+    "start": 1634995992000,
+    "end": 1635010392000,
+    "title": "event3",
+    "color": "#d8c6d9"
+},
+
+
+
+{
+  "start": 1634743992000,
+  "end": 1634747592000,
+  "title": "event1",
+  "color": "#e2e6c7"
+},
+{
+"start": 1634826792000,
+"end": 1634833992000,
+"title": "event2",
+"color": "#d8c6d9"
+},
+{
+  "start": 1634995992000,
+  "end": 1635010392000,
+  "title": "event3",
+  "color": "#d8c6d9"
+},
+
+
+
+{
+  "start": 1634743992000,
+  "end": 1634747592000,
+  "title": "event1",
+  "color": "#e2e6c7"
+},
+{
+"start": 1634826792000,
+"end": 1634833992000,
+"title": "event2",
+"color": "#d8c6d9"
+},
+{
+  "start": 1634995992000,
+  "end": 1635010392000,
+  "title": "event3",
+  "color": "#d8c6d9"
+},
+
+
+
+{
+  "start": 1634743992000,
+  "end": 1634747592000,
+  "title": "event1",
+  "color": "#e2e6c7"
+},
+{
+"start": 1634826792000,
+"end": 1634833992000,
+"title": "event2",
+"color": "#d8c6d9"
+},
+{
+  "start": 1634995992000,
+  "end": 1635010392000,
+  "title": "event3",
+  "color": "#d8c6d9"
+}
     ]
 }
       `).data;
