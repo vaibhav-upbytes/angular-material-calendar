@@ -1,6 +1,6 @@
 export interface CalendarEventFull {
-    start?: string ,
-    end?: string,
+    start?: number ,
+    end?: number,
     title?: string,
     color?: string,
     format?: string,

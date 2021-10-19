@@ -25,72 +25,34 @@ export class AngularMaterialCalendarComponent implements OnInit {
     this.events = JSON.parse(`{ "data" : 
     [
     {
-        "start": "2021-10-09T05:06:07",
-        "end": "2021-10-09T06:06:07",
+        "start": 1634621592000,
+        "end": 1634625192000,
         "title": "string  string string string string string" ,
         "color": "#e2e6c7"
     },
     {
-        "start": "2021-10-12T15:17:07",
-        "end": "2021-10-12T16:11:07",
+        "start": 1634743992000,
+        "end": 1634747592000,
         "title": "string",
         "color": "#e2e6c7"
     },
     {
-      "start": "2021-10-14T14:35:07",
-      "end": "2021-10-14T17:40:07",
+      "start": 1634826792000,
+      "end": 1634833992000,
       "title": "string",
       "color": "#d8c6d9"
   },
     {
-        "start": "2021-10-15T15:35:07",
-        "end": "2021-10-15T19:40:07",
+        "start": 1634995992000,
+        "end": 1635010392000,
         "title": "string",
         "color": "#d8c6d9"
     },
     {
-      "start": "2021-10-15T16:35:07",
-      "end": "2021-10-15T18:40:07",
-      "title": "conflict",
-      "color": "#d8c6d9"
-  },
-
-  {
-    "start": "2021-10-15T16:35:07",
-    "end": "2021-10-15T18:40:07",
-    "title": "conflict1",
-    "color": "#d8c6d9"
-},
-{
-  "start": "2021-10-15T20:35:07",
-  "end": "2021-10-15T21:40:07",
-  "title": "conflict2",
-  "color": "#d8c6d9"
-},
-{
-  "start": "2021-10-15T19:35:07",
-  "end": "2021-10-15T22:40:07",
-  "title": "conflict3",
-  "color": "#d8c6d9"
-},
-    {
-        "start": "2021-10-17T13:22:07",
-        "end": "2021-10-17T19:22:07",
-        "title": "string",
-        "color": "#eec8ca"
-    },
-    {
-        "start": "2021-10-25T11:22:07",
-        "end": "2021-10-25T11:22:07",
-        "title": "string",
-        "color": "#c6d3d9"
-    },
-
-    {
-      "start": "2021-10-18T11:22:07",
-      "end": "2021-10-24T11:22:07",
+      "start": 1634640759000,
+      "end": 1634986359000,
       "title": "string",
-      "color": "#c6d3d9"
+      "color": "#d8c6d9"
   }
     ]
 }
