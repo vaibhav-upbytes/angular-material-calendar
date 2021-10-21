@@ -24,16 +24,19 @@
           height: inherit;
           padding: 2px !important;
           min-height: 3em;
+          overflow: hidden;
        }
 
         .calendar-full-view-subtitle {
           margin-bottom: 2px !important;
           color: #00355e;
+          overflow: hidden;
         }
 
         .calendar-card-content {
           margin-top: 2px !important;
           color: #00355e;
+          overflow: hidden;
         }
 
 }
