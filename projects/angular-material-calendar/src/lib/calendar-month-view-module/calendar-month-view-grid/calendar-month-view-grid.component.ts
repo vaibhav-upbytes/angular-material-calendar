@@ -19,7 +19,7 @@ export class CalendarMonthViewGridComponent implements OnInit {
     monthViewDates?: Map<CalendarMonthView, CalendarEventInput[]>;
     @Input()
     events?: CalendarEventInput[] = [];
-
+    
     constructor(
         private store: Store<{ _date: CalendarDate}>,
         private _monthViewService: MonthViewService, 
@@ -31,6 +31,11 @@ export class CalendarMonthViewGridComponent implements OnInit {
       this.date$!.subscribe((d: CalendarDate) => {
         this._currentDate = d;
         this.monthViewDates  = this._monthViewService.getCalendarDateEventMap(d, this.events!);
-      });
+       });
     }
+
+    isCountVisible(events: CalendarEventInput[]): boolean {
+      return events.length > 2;
+    }
+
 }

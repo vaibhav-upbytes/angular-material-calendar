@@ -5,6 +5,10 @@
                   [ngClass]="tile.key.isToday ? 'calendar-month-view-grid-date-today' : ''"
                   *ngFor="let tile of monthViewDates | keyvalue">
         <div class="calendar-month-view-grid-date" >{{tile.key.date}}</div>
-        <angular-material-calendar-event-view [events]="tile.value"></angular-material-calendar-event-view>
+        <angular-material-calendar-event-view [events]="tile.value">
+        </angular-material-calendar-event-view>
+        <div *ngIf="isCountVisible(tile.value)" class="calendar-month-view-grid-footer">
+            +{{tile.value.length}}
+        </div>
     </mat-grid-tile>
 </mat-grid-list>
