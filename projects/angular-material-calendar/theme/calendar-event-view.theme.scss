@@ -15,9 +15,14 @@
            color: #fff;
            border-radius: 0px;
         }
-        
-        .calendar-event-view-content {
-            display: flex;
 
-        }
+        .calendar-event-view-content {
+            border: 1px solid #fff;
+            color: #00355e;
+            display: flex;
+            flex-flow: column;
+            height: inherit;
+            padding: 2px !important;
+            overflow: hidden;
+         }
 }
