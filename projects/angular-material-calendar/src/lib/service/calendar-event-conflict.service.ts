@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CalendarEventFull } from "../calendar-modal/calendar-event/calendar-event-full";
 
-
 @Injectable({
 	providedIn: "root"
 })
