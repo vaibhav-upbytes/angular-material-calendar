@@ -3,6 +3,7 @@ import { CalendarDate } from "../calendar-modal/calendar-date/calendar-date";
 import { CalendarEventFull } from "../calendar-modal/calendar-event/calendar-event-full";
 import { CalendarEventInput } from "../calendar-modal/calendar-event/calendar-event-input";
 import { CalendarHours } from "../calendar-modal/calendar-hours/calendar-hours";
+import { CalendarEventService } from "./calendar-event.service";
 import { DateService } from "./date.service";
 
 @Injectable({
@@ -11,7 +12,8 @@ import { DateService } from "./date.service";
 export class CalendarHoursService {
 
     constructor(
-        private _dateService: DateService
+        private _dateService: DateService,
+        private _calendarEventService: CalendarEventService
         ) {}
 
     getCalendarHours(): CalendarHours[] {
@@ -97,10 +99,8 @@ export class CalendarHoursService {
                         if( h.cDate! && this._dateService.isSameDate(h.cDate!, e.start!) && 
                         this._dateService.isSameHour(h.hours!, e.start!) || 
                         (h.cDate! && this._dateService.isBetween(h.cDate, e.start!, e.end!))) {
-                            let diff: number = this._dateService
-                                                .timeDiffinMinutes(e.start!, e.end!)!;
-                            let height: number = diff / 12;
-                            filteredEvents.push(this.createCalendarEventFull(e, i, j, height));
+                            filteredEvents.push(
+                                this._calendarEventService.createCalendarEventFull(e, i, j));
                         }
                     });
                 });
@@ -118,19 +118,6 @@ export class CalendarHoursService {
         };
     }
 
-    createCalendarEventFull(final: CalendarEventInput,
-        top: number, left: number, height: number): CalendarEventFull {
-        return {
-            start: final.start ,
-            end: final.end,
-            title: final.title,
-            color: final.color,
-            format: final.format,
-            left: left,
-            top: top,
-            height: height,
-            width: 1
-        };
-    }
+
 
 }

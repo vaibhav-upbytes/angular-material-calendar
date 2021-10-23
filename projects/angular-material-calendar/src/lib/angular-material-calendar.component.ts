@@ -48,31 +48,26 @@ export class AngularMaterialCalendarComponent implements OnInit {
         "title": "event3",
         "color": "#d8c6d9"
     },
-    {
-      "start": 1634640759000,
-      "end": 1634986359000,
-      "title": "event4",
-      "color": "#d8c6d9"
-  },
+    
 
 
 
   {
     "start": 1634743992000,
     "end": 1634747592000,
-    "title": "event1",
+    "title": "event4",
     "color": "#e2e6c7"
 },
 {
   "start": 1634826792000,
   "end": 1634833992000,
-  "title": "event2",
+  "title": "event5",
   "color": "#d8c6d9"
 },
 {
     "start": 1634995992000,
     "end": 1635010392000,
-    "title": "event3",
+    "title": "event6",
     "color": "#d8c6d9"
 },
 
@@ -81,19 +76,19 @@ export class AngularMaterialCalendarComponent implements OnInit {
 {
   "start": 1634743992000,
   "end": 1634747592000,
-  "title": "event1",
+  "title": "event7",
   "color": "#e2e6c7"
 },
 {
 "start": 1634826792000,
 "end": 1634833992000,
-"title": "event2",
+"title": "event8",
 "color": "#d8c6d9"
 },
 {
   "start": 1634995992000,
   "end": 1635010392000,
-  "title": "event3",
+  "title": "event9",
   "color": "#d8c6d9"
 },
 
@@ -102,19 +97,19 @@ export class AngularMaterialCalendarComponent implements OnInit {
 {
   "start": 1634743992000,
   "end": 1634747592000,
-  "title": "event1",
+  "title": "event10",
   "color": "#e2e6c7"
 },
 {
 "start": 1634826792000,
 "end": 1634833992000,
-"title": "event2",
+"title": "event11",
 "color": "#d8c6d9"
 },
 {
   "start": 1634995992000,
   "end": 1635010392000,
-  "title": "event3",
+  "title": "event12",
   "color": "#d8c6d9"
 },
 
@@ -123,21 +118,41 @@ export class AngularMaterialCalendarComponent implements OnInit {
 {
   "start": 1634743992000,
   "end": 1634747592000,
-  "title": "event1",
+  "title": "event13",
   "color": "#e2e6c7"
 },
 {
 "start": 1634826792000,
 "end": 1634833992000,
-"title": "event2",
+"title": "event14",
 "color": "#d8c6d9"
 },
 {
   "start": 1634995992000,
   "end": 1635010392000,
-  "title": "event3",
+  "title": "event15",
   "color": "#d8c6d9"
-}
+},
+
+{
+  "start": 1634639410000,
+  "end": 1634661010000,
+  "title": "event16",
+  "color": "#d8c6d9"
+  },
+  {
+    "start": 1634639410000,
+    "end": 1634653810000,
+    "title": "event17",
+    "color": "#d8c6d9"
+  }
+  ,
+  {
+    "start": 1634654710000,
+    "end": 1634661010000,
+    "title": "event18",
+    "color": "#d8c6d9"
+  }
     ]
 }
       `).data;
