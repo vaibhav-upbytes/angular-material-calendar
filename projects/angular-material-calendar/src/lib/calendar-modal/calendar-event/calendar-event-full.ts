@@ -5,8 +5,10 @@ export interface CalendarEventFull {
     color?: string,
     format?: string,
     left?: number,
+    leftFr?: number,
     top?: number,
-    width?: number,
+    widthFr?: number,
     height?: number,
-    isAllDay?: boolean
+    isAllDay?: boolean,
+    conflics?: number
 }

@@ -6,7 +6,7 @@ import { Injectable } from "@angular/core";
 export function dateRange<T>(length: number, lamdaFunction: (index: number) => T): T[] {
    const dateArr = Array(length);
    for (let i = 0; i < length; i++) {
-     dateArr[i] = lamdaFunction(i);
+      dateArr[i] = lamdaFunction(i);
    }
    return dateArr;
 }
@@ -17,42 +17,42 @@ export function dateRange<T>(length: number, lamdaFunction: (index: number) => T
 export class DateService {
    constructor(
       private _dateAdapter: DateAdapter<DateTime>
-      ) {}
+   ) { }
 
    today(): CalendarDate {
-      return {current: this._dateAdapter.today()};
+      return { current: this._dateAdapter.today() };
    }
 
    addCalendarYears(date: CalendarDate, years: number): CalendarDate {
-      return {current: this._dateAdapter.addCalendarYears(date.current, years)};
+      return { current: this._dateAdapter.addCalendarYears(date.current, years) };
    }
-  
+
    addCalendarMonths(date: CalendarDate, months: number): CalendarDate {
-      return {current: this._dateAdapter.addCalendarMonths(date.current, months)};
+      return { current: this._dateAdapter.addCalendarMonths(date.current, months) };
    }
-  
+
    addCalendarDays(date: CalendarDate, days: number): CalendarDate {
-      return {current: this._dateAdapter.addCalendarDays(date.current, days)};
+      return { current: this._dateAdapter.addCalendarDays(date.current, days) };
    }
 
    addCalendarWeeks(date: CalendarDate, weeks: number): CalendarDate {
-      return {current:date.current.plus({weeks : weeks})};
+      return { current: date.current.plus({ weeks: weeks }) };
    }
 
    subtractCalendarYears(date: CalendarDate, years: number): CalendarDate {
-      return {current: date.current.minus({ years: years})};
+      return { current: date.current.minus({ years: years }) };
    }
-  
+
    subtractCalendarMonths(date: CalendarDate, months: number): CalendarDate {
-      return {current: date.current.minus({months: months})};
+      return { current: date.current.minus({ months: months }) };
    }
-  
+
    subtractCalendarDays(date: CalendarDate, days: number): CalendarDate {
-      return {current: date.current.minus({days: days})};
+      return { current: date.current.minus({ days: days }) };
    }
 
    subtractCalendarWeeks(date: CalendarDate, weeks: number): CalendarDate {
-      return {current: date.current.minus({weeks: weeks})};
+      return { current: date.current.minus({ weeks: weeks }) };
    }
 
    getMonthNames(date: CalendarDate, style: 'long' | 'short' | 'narrow'): string {
@@ -80,27 +80,31 @@ export class DateService {
    }
 
    getFirstDayOfMonth(date: CalendarDate): CalendarDate {
-      return {current:this._dateAdapter
-         .createDate(this.getYear(date), this.getMonth(date), 1)};
+      return {
+         current: this._dateAdapter
+            .createDate(this.getYear(date), this.getMonth(date), 1)
+      };
    }
 
    getLastDayOfMonth(date: CalendarDate): CalendarDate {
-      return {current: 
-         this._dateAdapter
-         .createDate(this.getYear(date), this.getMonth(date), date.current.daysInMonth)};
+      return {
+         current:
+            this._dateAdapter
+               .createDate(this.getYear(date), this.getMonth(date), date.current.daysInMonth)
+      };
    }
 
    getFirstDayOfWeek(date: CalendarDate): CalendarDate {
-      return {current : date.current.startOf('week')};
+      return { current: date.current.startOf('week') };
    }
 
    getLastDayOfWeek(date: CalendarDate): CalendarDate {
-      return {current : date.current.endOf('week')};
+      return { current: date.current.endOf('week') };
    }
 
    getDaysInMonthRange(date: CalendarDate): number {
       return this.getLastDayOfWeek(this.getLastDayOfMonth(date))
-                  .current.diff(this.getFirstDayOfWeek(date).current, 'days').days;
+         .current.diff(this.getFirstDayOfWeek(date).current, 'days').days;
    }
 
    getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): string[] {
@@ -114,7 +118,7 @@ export class DateService {
 
    getMonthDatesRange(date: CalendarDate): CalendarDate[] {
       const dates: CalendarDate[] = Array(35);
-      let first =  this.getFirstDayOfWeek(this.getFirstDayOfMonth(date));
+      let first = this.getFirstDayOfWeek(this.getFirstDayOfMonth(date));
       dates[0] = first;
       for (let i = 1; i < 35; i++) {
          first = this.addCalendarDays(first, 1);
@@ -125,7 +129,7 @@ export class DateService {
 
    getWeekDatesRange(date: CalendarDate): CalendarDate[] {
       const dates: CalendarDate[] = Array(7);
-      let first =  this.getFirstDayOfWeek(date);
+      let first = this.getFirstDayOfWeek(date);
       dates[0] = first
       for (let i = 1; i < 7; i++) {
          first = this.addCalendarDays(first, 1);
@@ -136,7 +140,7 @@ export class DateService {
 
    getHoursFormat(): string[] {
       return dateRange(24, (i) => this.today().current
-      .set({ hour: i, minute: 0 }).toFormat("hh:mm a"));
+         .set({ hour: i, minute: 0 }).toFormat("hh:mm a"));
    }
 
    isToday(date: CalendarDate): boolean {
@@ -144,8 +148,8 @@ export class DateService {
    }
 
    isHoursNow(hours: string): boolean {
-      return this.today().current.set({minute : 0})
-      .toFormat("hh:mm a") == hours;
+      return this.today().current.set({ minute: 0 })
+         .toFormat("hh:mm a") == hours;
    }
 
    getTimeZoneFormat(date: CalendarDate): string {
@@ -153,24 +157,24 @@ export class DateService {
    }
 
    getDateTime(d: number): DateTime {
-      return DateTime.fromMillis(d); 
+      return DateTime.fromMillis(d);
    }
 
    isSameHour(hours: string, eventDate: number): boolean {
       return this.getDateTime(eventDate)
-      .set({ minute : 0}).toFormat("hh:mm a") == hours; 
+         .set({ minute: 0 }).toFormat("hh:mm a") == hours;
    }
 
-   isSameDate<T extends CalendarDate | number>(date: T , eventDate: number): boolean {
-      return  typeof date == 'object' ?
-       this._dateAdapter.sameDate(date.current, this.getDateTime(eventDate)) : 
-       this._dateAdapter.sameDate(this.getDateTime(date), this.getDateTime(eventDate));
+   isSameDate<T extends CalendarDate | number>(date: T, eventDate: number): boolean {
+      return typeof date == 'object' ?
+         this._dateAdapter.sameDate(date.current, this.getDateTime(eventDate)) :
+         this._dateAdapter.sameDate(this.getDateTime(date), this.getDateTime(eventDate));
    }
 
    timeDiff(start: number, end: number) {
       return this.getDateTime(end)
-      .diff(this.getDateTime(start), ['months', 'days', 'hours', 'minutes'])
-      .toObject();
+         .diff(this.getDateTime(start), ['months', 'days', 'hours', 'minutes'])
+         .toObject();
    }
 
    timeDiffinHours(start: number, end: number): number | undefined {
@@ -178,7 +182,7 @@ export class DateService {
    }
 
    timeDiffinMinutes(start: number, end: number): number | undefined {
-      let diff  = this.timeDiff(start, end);
+      let diff = this.timeDiff(start, end);
       return diff.hours! * 60 + diff.minutes!;
    }
 
@@ -191,12 +195,12 @@ export class DateService {
    }
 
    restoreFromStore(d: CalendarDate): CalendarDate {
-      return {current: this.getDateTime(d.current.toMillis())};
+      return { current: this.getDateTime(d.current.toMillis()) };
    }
 
    isBetween(date: CalendarDate,
       start: number, end: number): boolean {
-         return start < date.current.toMillis() 
+      return start < date.current.toMillis()
          && date.current.toMillis() < end;
    }
 }
