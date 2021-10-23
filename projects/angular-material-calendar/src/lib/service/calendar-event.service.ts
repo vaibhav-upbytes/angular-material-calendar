@@ -15,9 +15,9 @@ export class CalendarEventService {
 
     setEventStyle(
         event: CalendarEventFull, _element: ElementRef<HTMLElement>,
-        LEFT: string, TOP: string, WIDTH: number, HEIGHT: string): void {
+        LEFT: string, TOP: string, WIDTH: number, HEIGHT: string, DAYS: number): void {
         this.styleWidth(event, _element, WIDTH);
-        this.styleLeft(event, _element, LEFT, WIDTH);
+        this.styleLeft(event, _element, LEFT, WIDTH, DAYS);
         this.styleTop(event, _element, TOP);
         this.styleHeight(event, _element, HEIGHT);
         this.styleBackground(event, _element, HEIGHT);
@@ -28,9 +28,9 @@ export class CalendarEventService {
     }
 
     styleLeft(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
-        LEFT: string, WIDTH: number): void {
+        LEFT: string, WIDTH: number, DAYS: number): void {
         if (event.conflics! > 0 && event.leftFr! > 1) {
-            let wf = 1 / (event.conflics! + 1) * (event.leftFr! - 1);
+            let wf = DAYS / (event.conflics! + 1) * (event.leftFr! - 1);
             let lwf = event.left! + wf;
             (_element.nativeElement.style as any)['left'] =
                 this.calc(`(${LEFT} - 0px + 0px) * ${lwf}`);

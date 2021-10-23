@@ -32,10 +32,11 @@ export class CalendarEventFullViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.width = this._view?.view == 'week' ? 12.5 : 100;
+    let width = this._view?.view == 'week' ? 12.5 : 87.5;
+    let days = this._view?.view == 'week' ? 1 : 7;
     this.event = this.calendarEventService.isAllDayEvent(this.event!);
     this.calendarEventService.setEventStyle(this.event!,
-      this._element, LEFT, TOP, this.width!, HEIGHT);
+      this._element, LEFT, TOP, width!, HEIGHT, days);
     this.time = this.calendarEventService.eventsubtitle(this.event!);
   }
 

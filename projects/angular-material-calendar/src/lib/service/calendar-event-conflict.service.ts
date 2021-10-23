@@ -22,7 +22,6 @@ export class CalendarEventConflictService {
 	}
 
 	conflicting(events: CalendarEventFull[]): CalendarEventFull[] {
-		// var root: EventNode;
 		events.forEach((e: CalendarEventFull) => {
 			e.conflics = 0;
 			e.leftFr = 1;
