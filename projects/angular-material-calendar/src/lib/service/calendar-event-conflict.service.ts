@@ -1,15 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CalendarEventFull } from "../calendar-modal/calendar-event/calendar-event-full";
 
-// class Interval {
-// 	low: number = 0;
-// 	high: number = 0;
-// 	constructor() {
-// 		this.low = 0;
-// 		this.high = 0;
-// 	}
-// }
-
 class EventNode {
 	// 'i' could also be a normal variable
 	max: number = 0;
@@ -17,7 +8,6 @@ class EventNode {
 	right?: EventNode;
 	i?: CalendarEventFull;
 	constructor() {
-
 	}
 }
 @Injectable({
