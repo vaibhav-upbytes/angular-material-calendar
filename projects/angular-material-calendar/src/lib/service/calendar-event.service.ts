@@ -47,7 +47,7 @@ export class CalendarEventService {
 
     styleWidth(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
         WIDTH: number): void {
-        (_element.nativeElement.style as any)['width'] = this.calc(`(${WIDTH}% - 0px) * ${event.widthFr! / (event.conflics! + 1)} + 0px`);
+             (_element.nativeElement.style as any)['width'] = this.calc(`(${WIDTH}% - 0px) * ${event.widthFr! / (event.conflics! + 1)} + 0px`);
     }
 
     styleHeight(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
@@ -91,7 +91,9 @@ export class CalendarEventService {
             left: left,
             top: top,
             height: this.calculateEventHeightFraction(final),
-            widthFr: 1
+            widthFr: 1,
+            conflics: 0,
+            leftFr: 1
         };
     }
 
@@ -108,8 +110,7 @@ export class CalendarEventService {
     }
 
     filteredConflictedEvents(events: CalendarEventFull[]): CalendarEventFull[] {
-        let notAllDayEvents: CalendarEventFull[] = this.filterNotAllDayEvents(events);
-        let eventMap: Map<number, CalendarEventFull[]> = this.filterEventsBySameLeft(notAllDayEvents);
+        let eventMap: Map<number, CalendarEventFull[]> = this.filterEventsBySameLeft(events);
         eventMap.forEach((v: CalendarEventFull[], k: number) => {
             this._calendarEventConflictService.conflicting(v);
         });
@@ -123,10 +124,14 @@ export class CalendarEventService {
 
     isAllDayEvent(event: CalendarEventFull): CalendarEventFull {
         event.isAllDay = !this._dateService.isSameDate(event.end!, event.start!);
+        return event;
+    }
+
+    allDayEventWidth(event: CalendarEventFull): CalendarEventFull {
         if (event.isAllDay) {
             let diff = this._dateService.getDateTime(event.end!).day
                 - this._dateService.getDateTime(event.start!).day + 1;
-            event.widthFr = diff + diff / 10;
+            event.widthFr = diff;
         }
         return event;
     }
