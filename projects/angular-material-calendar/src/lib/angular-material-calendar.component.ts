@@ -153,6 +153,22 @@ export class AngularMaterialCalendarComponent implements OnInit {
     "title": "event18",
     "color": "#d8c6d9"
   }
+
+  ,
+  {
+    "start": 1634581620000,
+    "end": 1634754420000,
+    "title": "multiple event19",
+    "color": "#d8c6d9"
+  }
+
+  ,
+  {
+    "start": 1634840820000,
+    "end": 1635100020000,
+    "title": "multiple event20",
+    "color": "#d8c6d9"
+  }
     ]
 }
       `).data;

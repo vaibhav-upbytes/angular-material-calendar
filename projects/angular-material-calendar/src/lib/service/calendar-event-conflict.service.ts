@@ -22,10 +22,6 @@ export class CalendarEventConflictService {
 	}
 
 	conflicting(events: CalendarEventFull[]): CalendarEventFull[] {
-		events.forEach((e: CalendarEventFull) => {
-			e.conflics = 0;
-			e.leftFr = 1;
-		});
 		let conflicfs: CalendarEventFull[] = [];
 
 		for (let i = 0; i < events.length; i++) {

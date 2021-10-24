@@ -23,6 +23,7 @@ export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
   _currentDate?: CalendarDate;
   calendarHours?: CalendarHours[][];
   calendarEventsFull?: CalendarEventFull[];
+  multipleDayEvents?: CalendarEventFull[];
 
   constructor(
       private store: Store<{ _date: CalendarDate}>,
@@ -38,8 +39,11 @@ export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
         this._currentDate = d;
         this.calendarHours = this._calendarWeekService
                                  .getCalndarDayHoursGridData(this._dateService.restoreFromStore(d));
+        let filteredEventsArr = this._calendarWeekService.filterMultipleDayEvents(this.events!);
+        this.multipleDayEvents = this._calendarWeekService
+                                 .findLeftForMultiDaysEventDay(filteredEventsArr[0], this._dateService.restoreFromStore(d));
         this.calendarEventsFull = this._calendarWeekService
-                                 .filterEventsByDateAndStartTime(this.events!, this.calendarHours!);
+                                 .filterEventsByDateAndStartTime( filteredEventsArr[1], this.calendarHours!);
         this.calendarEventsFull = this._calendarEventService
                                  .filteredConflictedEvents(this.calendarEventsFull);
         });
