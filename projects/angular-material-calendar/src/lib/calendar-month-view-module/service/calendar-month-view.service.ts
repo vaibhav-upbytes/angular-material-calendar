@@ -36,7 +36,8 @@ export class MonthViewService {
             let gridDate = this.createMonthViewDate(d);
             data.set(gridDate, []);
             events.map((event) => {
-                if(this._dateService.isSameDate(d, event.start!)) 
+                if(this._dateService.isSameDate(d, event.start!) 
+                || this._dateService.isBetween(d, event.start!, event.end!)) 
                 {  
                     data.get(gridDate)?.push(event);
                 }
