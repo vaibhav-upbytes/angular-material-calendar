@@ -7,4 +7,12 @@
        .header-label-font-color {
           color: mat-color($primary);
         }
+        
+        .header-label-font-x-large {
+          font-size: x-large;
+        }
+
+        .header-label-font-small {
+          font-size: medium;
+        }
 }

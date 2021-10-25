@@ -35,4 +35,8 @@ export class CalendarHeaderLabelComponent {
         return `${this.month} ${this.year}`;
     }
 
+    get size(): boolean {
+        return this.viewport !== 'Small' && this.viewport !== 'XSmall';
+    }
+
 }

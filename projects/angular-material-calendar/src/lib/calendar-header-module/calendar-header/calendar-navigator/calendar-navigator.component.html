@@ -1,18 +1,29 @@
-<button mat-icon-button color="primary" 
-        aria-label="Previous"
-        (click)="decrement()">
-    <mat-icon>arrow_back_ios</mat-icon>
-</button>
-<button mat-icon-button 
-        color="primary" 
-        aria-label="Next"
-        (click)="increment()">
-    <mat-icon>arrow_forward_ios</mat-icon>
-</button>
-<button mat-raised-button  
-        color="primary" 
-        aria-label="current date"
-        (click)="reset()">
-    <mat-icon class="calendar-navigator-button">today</mat-icon>
-    Today
-</button>
+<ng-template [ngIf]="size">
+    <button mat-raised-button color="primary" aria-label="Previous" (click)="decrement()">
+        <mat-icon class="calendar-navigator-button  material-icons-round">chevron_left</mat-icon>
+        Prev
+    </button>
+    <button mat-raised-button color="primary" aria-label="Next" (click)="increment()">
+        Next
+        <mat-icon class="calendar-navigator-button material-icons-round">
+            chevron_right
+        </mat-icon>
+        <!-- <mat-icon class="calendar-navigator-button">chevron_right</mat-icon> -->
+    </button>
+    <button mat-raised-button class="calendar-navigator-today" color="primary" aria-label="current date" (click)="reset()">
+        <mat-icon class="calendar-navigator-button  material-icons-round ">today</mat-icon>
+        Today
+    </button>
+</ng-template>
+
+<ng-template [ngIf]="!size">
+    <button mat-icon-button color="primary" aria-label="Previous" (click)="decrement()">
+        <mat-icon class="calendar-navigator-button  material-icons-round">chevron_left</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" aria-label="Next" (click)="increment()">
+        <mat-icon class="calendar-navigator-button  material-icons-round">chevron_right</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" aria-label="current date" (click)="reset()">
+        <mat-icon class="calendar-navigator-button material-icons-round">today</mat-icon>
+    </button>
+</ng-template>
