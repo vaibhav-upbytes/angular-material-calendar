@@ -7,7 +7,7 @@ import {
   MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
 import { CalendarViewReducerService } from './reducer/calendar-view-reducer.service';
-import { CalendarViewPortService } from './service/calendar-device-detect.service';
+import { CalendarViewPortService } from './service/calendar-view-port.service';
 import { DateService } from './service/date.service';
 import { DateReducerService } from './reducer/date-reducer.service';
 import { CalendarMonthViewModule } from './calendar-month-view-module/calendar-month-view.module';
