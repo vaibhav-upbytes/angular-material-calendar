@@ -13,17 +13,19 @@ import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 })
 export class CalendarDayViewHeaderComponent {
 
-  date$?: Observable<CalendarDate>;
-  dayheader?: String;
+  currentdate$?: Observable<CalendarDate>;
+  day?: string;
+  date?: number;
   timeZone?: string;
     constructor(
       private store: Store<{ _date: CalendarDate}>,
       private _dateService: DateService
     ) {
-      this.date$ = store.select('_date');
-      this.date$.subscribe((d: CalendarDate) => {
-          let date = this._dateService.restoreFromStore(d);
-          this.dayheader = date.current.toFormat("ccc d");
+      this.currentdate$ = store.select('_date');
+      this.currentdate$.subscribe((d: CalendarDate) => {
+          let redate = this._dateService.restoreFromStore(d);
+          this.day = redate.current.weekdayLong;
+          this.date = redate.current.day;
           this.timeZone = this._dateService.getTimeZoneFormat(d);
       });
     }

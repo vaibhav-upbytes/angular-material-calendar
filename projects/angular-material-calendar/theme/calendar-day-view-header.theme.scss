@@ -26,5 +26,15 @@
             position: absolute;
             right: .5em;
         }
+
+        .calendar-day-view-grid-date {
+          position: absolute;
+          left: .5em;
+          flex-flow: column;
+      }
+      
+      .calendar-day-view-header-date {
+        font-size: x-large;
+      }
       
 }
