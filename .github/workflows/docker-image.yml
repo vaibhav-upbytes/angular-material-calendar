@@ -17,4 +17,4 @@ jobs:
     - name: Build the Docker image
       run: |
            docker build --tag my-image-name:1 .
-           docker save -o angular-material-calendar.tar upbytes/angular-material-calendar-demo:1
+           docker save -o /angular-material-calendar.tar upbytes/angular-material-calendar-demo:1
