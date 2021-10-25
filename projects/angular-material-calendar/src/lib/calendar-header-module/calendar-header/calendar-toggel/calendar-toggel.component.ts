@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { day, month, week} from '../../../actions/calendar-view.action'
 import { CalendarView } from '../../../calendar-modal/calendar-view/calendar-view';
-import { CalendarViewPortService } from '../../../service/calendar-device-detect.service';
+import { CalendarViewPortService } from '../../../service/calendar-view-port.service';
 
 @Component({
     selector: 'angular-material-calendar-toggel',

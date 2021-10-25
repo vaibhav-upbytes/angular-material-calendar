@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { CalendarDate } from '../../../calendar-modal/calendar-date/calendar-date';
 import { DateService } from '../../../service/date.service';
-import { CalendarViewPortService } from '../../../service/calendar-device-detect.service';
+import { CalendarViewPortService } from '../../../service/calendar-view-port.service';
 
 @Component({
     selector: 'angular-material-calendar-label',

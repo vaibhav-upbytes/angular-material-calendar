@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { CalendarView } from './calendar-modal/calendar-view/calendar-view';
 import { CalendarEventInput } from './calendar-modal/calendar-event/calendar-event-input';
-import { CalendarViewPortService } from './service/calendar-device-detect.service';
+import { CalendarViewPortService } from './service/calendar-view-port.service';
 
 @Component({
   selector: 'lib-angular-material-calendar',

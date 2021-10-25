@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { increment, decrement, reset } from '../../../actions/date.action';
 import { CalendarDate } from '../../../calendar-modal/calendar-date/calendar-date';
 import { CalendarView } from '../../../calendar-modal/calendar-view/calendar-view';
-import { CalendarViewPortService } from '../../../service/calendar-device-detect.service';
+import { CalendarViewPortService } from '../../../service/calendar-view-port.service';
 
 @Component({
     selector: 'angular-material-calendar-navigator',
