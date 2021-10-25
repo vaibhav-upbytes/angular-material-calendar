@@ -1,0 +1,27 @@
+@import "./calendar-month-view-grid-header.theme.scss";
+@import "./calendar-header-label.theme.scss";
+@import "./calendar-month-view-grid.theme.scss";
+@import "./calendar-week-view-header.theme.scss";
+@import "./calendar-week-view-grid.theme.scss";
+@import "./calendar-week-view.theme.scss";
+@import "./calendar-day-view-header.theme.scss";
+@import "./calendar-day-view-grid.theme.scss";
+@import "./calendar-day-view.theme.scss";
+@import "./calendar-header-toggle.theme.scss";
+@import "./calendar-event-view.theme.scss";
+@import "./calendar-even-full-view.theme.scss";
+
+@mixin angular-material-calendar($angular-material-calendar) {
+  @include calendar-month-view-grid-header-theme($angular-material-calendar);
+  @include calendar-header-label-theme($angular-material-calendar);
+  @include calendar-header-toggle-theme($angular-material-calendar);
+  @include calendar-month-view-grid-theme($angular-material-calendar);
+  @include calendar-week-view-header-theme($angular-material-calendar);
+  @include calendar-week-view-grid-theme($angular-material-calendar);
+  @include calendar-week-view-theme($angular-material-calendar);
+  @include calendar-day-view-header-theme($angular-material-calendar);
+  @include calendar-day-view-grid-theme($angular-material-calendar);
+  @include calendar-day-view-theme($angular-material-calendar);
+  @include calendar-event-view-theme($angular-material-calendar);
+  @include calendar-full-view-theme($angular-material-calendar);
+}
