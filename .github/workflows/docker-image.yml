@@ -15,7 +15,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:latest
-    - uses: actions/checkout@v2
-    - name: save docker image
-      run: docker save -o angular-material-calendar.tar upbytes/angular-material-calendar-demo:latest
+      run: docker build . --file Dockerfile --tag my-image-name:1
+           docker save -o angular-material-calendar.tar upbytes/angular-material-calendar-demo:1
