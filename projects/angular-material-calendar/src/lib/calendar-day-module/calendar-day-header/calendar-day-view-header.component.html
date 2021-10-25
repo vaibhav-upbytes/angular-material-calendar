@@ -1,0 +1,19 @@
+<div class="calendar-day-view-header-border">
+<mat-grid-list cols="8" 
+               rowHeight="5em" 
+               gutterSize="0">
+                <mat-grid-tile class="calendar-day-view-header">
+                    <div class ='calendar-day-view-header-first'>
+                        {{timeZone}}
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile class="calendar-day-view-header"
+                              [colspan]="7">
+                    <div class="calendar-day-view-grid-date">
+                        <div class="calendar-day-view-header-date">{{date}}</div>
+                        <div class="calendar-day-view-header-day">{{day}}</div>
+                        
+                    </div>
+                </mat-grid-tile>
+</mat-grid-list>
+</div>

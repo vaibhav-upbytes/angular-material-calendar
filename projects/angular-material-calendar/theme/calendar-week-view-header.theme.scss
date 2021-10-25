@@ -1,0 +1,36 @@
+@import '~@angular/material/theming';
+
+@mixin calendar-week-view-header-theme($theme) {
+  
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  
+       .calendar-week-view-header {
+          background: mat-color($primary);
+          color: #fff;
+          border: 1px solid mat-color($primary, 100);
+        }
+
+        .calendar-week-view-header-border {
+          background: mat-color($primary);
+          border-right: 4px solid #fff;
+        }
+
+        .calendar-week-view-header-today {
+            color: mat-color($accent, 100);
+        }
+
+        .calendar-week-view-header-first {
+            position: absolute;
+            right: .5em;
+        }
+
+        .calendar-week-view-header-content {
+          flex-flow: column;
+        }
+
+        .calendar-week-view-header-font {
+          font-size: x-large;
+        }
+      
+}

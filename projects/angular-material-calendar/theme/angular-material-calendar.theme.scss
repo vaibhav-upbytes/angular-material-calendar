@@ -1,15 +1,16 @@
-@import "./calendar-month-view-grid-header.theme.scss";
-@import "./calendar-header-label.theme.scss";
-@import "./calendar-month-view-grid.theme.scss";
-@import "./calendar-week-view-header.theme.scss";
-@import "./calendar-week-view-grid.theme.scss";
-@import "./calendar-week-view.theme.scss";
-@import "./calendar-day-view-header.theme.scss";
-@import "./calendar-day-view-grid.theme.scss";
-@import "./calendar-day-view.theme.scss";
-@import "./calendar-header-toggle.theme.scss";
-@import "./calendar-event-view.theme.scss";
-@import "./calendar-even-full-view.theme.scss";
+@import './calendar-month-view-grid-header.theme.scss';
+@import './calendar-header-label.theme.scss';
+@import './calendar-month-view-grid.theme.scss';
+@import './calendar-week-view-header.theme.scss';
+@import './calendar-week-view-grid.theme.scss';
+@import './calendar-week-view.theme.scss';
+@import './calendar-day-view-header.theme.scss';
+@import './calendar-day-view-grid.theme.scss';
+@import './calendar-day-view.theme.scss';
+@import './calendar-header-toggle.theme.scss';
+@import './calendar-event-view.theme.scss';
+@import './calendar-even-full-view.theme.scss';
+
 
 @mixin angular-material-calendar($angular-material-calendar) {
   @include calendar-month-view-grid-header-theme($angular-material-calendar);

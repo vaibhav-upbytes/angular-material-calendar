@@ -1,0 +1,35 @@
+@import '~@angular/material/theming';
+
+@mixin calendar-week-view-grid-theme($theme) {
+  
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  
+       .calendar-week-view-grid {
+          color: mat-color($primary);
+          border-bottom: .5px solid mat-color($primary, 100);
+          border-left: .5px solid mat-color($primary, 100);
+        }
+
+        .calendar-week-view-grid-hours {
+          color: mat-color($accent);
+          border-top: .5px solid mat-color($accent) !important;
+        }
+
+        .calendar-week-view-grid-today {
+          background-color: mat-color($primary, 50);
+          border-top: .5px solid mat-color($primary, 100);
+        }
+
+        .calendar-week-view-grid-first {
+          position: absolute;
+          right: .5em;
+          bottom: .5em;
+        }
+
+        .calendar-week-view-grid-hour {
+          border-top: .5px dotted mat-color($primary, 100);
+          width: 100%;
+        }
+      
+}

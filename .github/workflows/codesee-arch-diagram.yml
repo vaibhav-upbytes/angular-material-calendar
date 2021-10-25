@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - development
   pull_request_target:
     types: [opened, synchronize, reopened]
 

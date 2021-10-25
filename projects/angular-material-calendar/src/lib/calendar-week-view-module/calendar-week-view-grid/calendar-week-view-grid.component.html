@@ -1,0 +1,47 @@
+<mat-grid-list cols="8" 
+               rowHeight="5em" 
+               gutterSize="0">
+
+    <ng-template ngFor let-days 
+                [ngForOf]="calendarHours" 
+                let-i="index">
+
+                <mat-grid-tile class="calendar-week-view-grid" 
+                               id="{{trackByHour(i, tile)}}"
+                               
+                               [ngClass]="[
+                               tile.isToday ? 'calendar-week-view-grid-today' : '',
+                               tile.isHourNow ? 'calendar-week-view-grid-hours' : '']"
+                               *ngFor="let tile of days; let i=index; trackBy: trackByHour">
+                               <div *ngIf="tile.isFirst && tile.hours! != '0'"
+                                     [ngClass]="tile.isFirst ? 'calendar-day-view-grid-first' : ''" >
+                                   {{tile.hours}}
+                                   {{tile.day}}
+                               </div>
+                               <div *ngIf="tile.isFirst && tile.hours! === '0'" 
+                                    [ngClass]="tile.isFirst ? 'calendar-day-view-grid-first' : ''" >
+                                     all-day
+                               </div>
+                               <div *ngIf=!tile.isFirst 
+                               [ngClass]="!tile.isFirst ? 'calendar-week-view-grid-hour' : ''" >
+                                   
+                               </div>
+
+                </mat-grid-tile>
+      </ng-template>
+      <ng-template ngFor let-event
+                   [ngForOf]="calendarEventsFull" 
+                   let-i="index">
+                   <angular-material-calendar-event-full-view class="calendar-full-view"
+                                                              [event]="event">
+                    </angular-material-calendar-event-full-view>
+      </ng-template>
+      <ng-template ngFor let-event
+      [ngForOf]="multipleDayEvents" 
+      let-i="index">
+      <angular-material-calendar-event-full-view class="calendar-full-view"
+                                                 [event]="event">
+       </angular-material-calendar-event-full-view>
+</ng-template>
+</mat-grid-list>
+

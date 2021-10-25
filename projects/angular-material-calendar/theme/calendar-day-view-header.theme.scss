@@ -1,0 +1,40 @@
+@import '~@angular/material/theming';
+
+@mixin calendar-day-view-header-theme($theme) {
+  
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  
+       .calendar-day-view-header {
+          background: mat-color($primary);
+          color: #fff;
+          border: 1px solid mat-color($primary, 100);
+          position: absolute;
+          left: 1em;
+        }
+
+        .calendar-day-view-header-border {
+          background: mat-color($primary);
+          border-right: 4px solid #fff;
+        }
+
+        .calendar-day-view-header-today {
+            color: mat-color($accent, 100);
+        }
+
+        .calendar-day-view-header-first {
+            position: absolute;
+            right: .5em;
+        }
+
+        .calendar-day-view-grid-date {
+          position: absolute;
+          left: .5em;
+          flex-flow: column;
+      }
+      
+      .calendar-day-view-header-date {
+        font-size: x-large;
+      }
+      
+}

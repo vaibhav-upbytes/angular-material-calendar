@@ -1,0 +1,33 @@
+@import '~@angular/material/theming';
+
+@mixin calendar-day-view-theme($theme) {
+  
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  
+       .calendar-day-view {
+           overflow-x: hidden;
+           overflow-y: auto;
+           height: 27em;
+        }
+
+        .calendar-day-view::-webkit-scrollbar {
+            width: 4px;
+            scrollbar-color: mat-color($primary);
+        }
+        .calendar-day-view::-webkit-scrollbar-track {
+            box-shadow: 1em;
+            border-radius: 10px;
+        }
+        .calendar-day-view::-webkit-scrollbar-thumb {
+            background-color: mat-color($primary);
+            border-radius: 10px;
+            box-shadow: 1em;
+        }
+
+        .calendar-day-view::-webkit-scrollbar-thumb:hover {
+            background-color: mat-color($primary);
+            border-radius: 10px;
+            box-shadow: 1em;
+        }  
+}
