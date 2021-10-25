@@ -24,5 +24,13 @@
             position: absolute;
             right: .5em;
         }
+
+        .calendar-week-view-header-content {
+          flex-flow: column;
+        }
+
+        .calendar-week-view-header-font {
+          font-size: x-large;
+        }
       
 }

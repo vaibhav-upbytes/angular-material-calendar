@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { day, month, week} from '../../../actions/calendar-view.action'
 import { CalendarView } from '../../../calendar-modal/calendar-view/calendar-view';
+import { CalendarViewPortService } from '../../../service/calendar-device-detect.service';
 
 @Component({
     selector: 'angular-material-calendar-toggel',
@@ -14,12 +15,15 @@ import { CalendarView } from '../../../calendar-modal/calendar-view/calendar-vie
 export class CalendarHeaderToggelComponent {
   _view$?: Observable<CalendarView>;
   _view?: CalendarView;
+  viewport?: string;
   
   constructor(
-    private store: Store<{ _view: CalendarView}> 
+    private store: Store<{ _view: CalendarView}>,
+    private calendarViewPortService: CalendarViewPortService
   ) {
     this._view$ = store.select('_view');
     this._view$.subscribe((v) => this._view = v);
+    this.calendarViewPortService.viewport.subscribe(s => this.viewport = s);
   }
 
   month() {
@@ -32,5 +36,9 @@ export class CalendarHeaderToggelComponent {
  
   day() {
     this.store.dispatch(day());
+  }
+
+  get size(): boolean {
+    return this.viewport !== 'Small' && this.viewport !== 'XSmall';
   }
 }
