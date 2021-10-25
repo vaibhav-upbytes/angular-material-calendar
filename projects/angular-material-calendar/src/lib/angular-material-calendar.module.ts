@@ -6,11 +6,10 @@ import {
   LuxonDateAdapter,
   MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
-import { DeviceDetectorService } from 'ngx-device-detector';
-import { DateReducerService } from './reducer/date-reducer.service';
 import { CalendarViewReducerService } from './reducer/calendar-view-reducer.service';
+import { CalendarViewPortService } from './service/calendar-device-detect.service';
 import { DateService } from './service/date.service';
-
+import { DateReducerService } from './reducer/date-reducer.service';
 import { CalendarMonthViewModule } from './calendar-month-view-module/calendar-month-view.module';
 import { CalendarHeaderModule } from './calendar-header-module/calendar-header.module';
 import { CalendarWeekViewModule } from './calendar-week-view-module/calendar-week-view.module';
@@ -18,7 +17,6 @@ import { CalendarEventViewModule } from './calendar-events-module/calendar-event
 import { MaterialModule } from './material-modules/material.module';
 import { CalendarDayViewModule } from './calendar-day-module/calendar-day-view.module';
 import { AngularMaterialCalendarComponent } from './angular-material-calendar.component';
-import { CalendarDeviceDetailService } from './service/calendar-device-detail.service';
 import { CalendarState } from './state/calendar-state';
 
 export const CALENDAR_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarState>>
@@ -56,15 +54,11 @@ export const CALENDAR_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<Calend
     DateService,
     DateReducerService,
     CalendarViewReducerService,
-    DeviceDetectorService,
+    CalendarViewPortService,
     {
       provide: DateAdapter,
       useClass: LuxonDateAdapter,
       deps: [MAT_DATE_LOCALE, MAT_LUXON_DATE_ADAPTER_OPTIONS]
-    },
-    {
-      provide: DeviceDetectorService,
-      useClass: CalendarDeviceDetailService
     }
   ]
 })
