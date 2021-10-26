@@ -88,6 +88,7 @@ export class CalendarEventService {
             title: final.title,
             color: final.color,
             format: final.format,
+            description: final.description,
             left: left,
             top: top,
             height: this.calculateEventHeightFraction(final),
@@ -135,4 +136,12 @@ export class CalendarEventService {
         }
         return event;
     }
+
+    eventFullTime(event: CalendarEventFull): string {
+        let start = this._dateService.getDateTime(event.start!)
+
+        return `${start.weekdayShort} ${start.day}/${start.month}/${start.year} ${this._dateService.getTimeFormat(event.start!)} - ${this._dateService.getTimeFormat(event.end!)}`;
+    }
+
+
 }

@@ -156,6 +156,13 @@ export class AppComponent {
     "end": 1635100020000,
     "title": "multiple event20",
     "color": "#d8c6d9"
+  },
+  {
+    "start": 1635589817000,
+    "end": 1635604217000,
+    "title": "event21",
+    "color": "#e2e6c7",
+    "description": "https://fonts.google.com/icons?selected=Material+Icons git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all docker commands docker build docker build -t upbytes/angular-material-calendar-demo:latest .https://fonts.google.com/icons?selected=Material+Icons git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all docker commands docker build docker build -t upbytes/angular-material-calendar-demo:latest .https://fonts.google.com/icons?selected=Material+Icons git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all docker commands docker build docker build -t upbytes/angular-material-calendar-demo:latest ."
   }
     ]
 }
