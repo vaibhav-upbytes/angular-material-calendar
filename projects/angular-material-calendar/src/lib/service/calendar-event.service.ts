@@ -88,6 +88,7 @@ export class CalendarEventService {
             title: final.title,
             color: final.color,
             format: final.format,
+            description: final.description,
             left: left,
             top: top,
             height: this.calculateEventHeightFraction(final),

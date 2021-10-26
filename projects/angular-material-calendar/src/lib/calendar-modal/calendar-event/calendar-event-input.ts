@@ -3,5 +3,6 @@ export interface CalendarEventInput {
     end?: number,
     title?: string,
     color?: string,
-    format?: string
+    format?: string,
+    description?: string
 }
