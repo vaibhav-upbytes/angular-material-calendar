@@ -10,5 +10,6 @@ export interface CalendarEventFull {
     widthFr?: number,
     height?: number,
     isAllDay?: boolean,
-    conflics?: number
+    conflics?: number,
+    description?: string
 }
