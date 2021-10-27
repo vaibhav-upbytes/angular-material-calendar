@@ -18,6 +18,7 @@ import { MaterialModule } from './material-modules/material.module';
 import { CalendarDayViewModule } from './calendar-day-module/calendar-day-view.module';
 import { AngularMaterialCalendarComponent } from './angular-material-calendar.component';
 import { CalendarState } from './state/calendar-state';
+import { CalendarHourIndicatorModule } from './calendar-hour-indicator-module/calendar-hour-indicator.module';
 
 export const CALENDAR_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarState>>
 ('Registered Reducers', {
@@ -45,7 +46,8 @@ export const CALENDAR_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<Calend
     CalendarWeekViewModule,
     CalendarHeaderModule,
     CalendarDayViewModule,
-    CalendarEventViewModule
+    CalendarEventViewModule,
+    CalendarHourIndicatorModule
   ],
   exports: [
     AngularMaterialCalendarComponent

@@ -45,7 +45,9 @@ export class CalendarViewPortService implements OnDestroy {
 
 
   ngOnDestroy() {
+    this.viewport.next();
     this.destroyed.next();
+    this.viewport.complete();
     this.destroyed.complete();
   }
 }

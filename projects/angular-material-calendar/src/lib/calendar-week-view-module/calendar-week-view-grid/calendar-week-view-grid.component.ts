@@ -48,10 +48,7 @@ export class CalendarWeekViewGridComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-      const selectedId = this.calendarHours?.filter
-                             ((hours: CalendarHours[]) => hours.filter
-                             ((hour: CalendarHours) => hour.isHourNow)[0]);
-      document.getElementById(`week-${((selectedId![0][0]).hours)!}`)!.scrollIntoView({
+      document.getElementById(`week-hour-indicator`)!.scrollIntoView({
         behavior: "smooth",
         block: "center",
         inline: "center"
