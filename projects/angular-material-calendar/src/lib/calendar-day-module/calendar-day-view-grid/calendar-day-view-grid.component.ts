@@ -26,45 +26,45 @@ export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
   multipleDayEvents?: CalendarEventFull[];
 
   constructor(
-      private store: Store<{ _date: CalendarDate}>,
-      private _calendarWeekService: CalendarHoursService,
-      private _calendarEventService: CalendarEventService,
-      private _dateService: DateService
+    private store: Store<{ _date: CalendarDate }>,
+    private _calendarWeekService: CalendarHoursService,
+    private _calendarEventService: CalendarEventService,
+    private _dateService: DateService
   ) {
-      this.date$ = store.select('_date');
-  }
-    
-    ngOnInit(): void {
-      this.date$!.subscribe((d: CalendarDate) => {
-        this._currentDate = d;
-        this.calendarHours = this._calendarWeekService
-                                 .getCalndarDayHoursGridData(this._dateService.restoreFromStore(d));
-        let filteredEventsArr = this._calendarWeekService.filterMultipleDayEvents(this.events!);
-        this.multipleDayEvents = this._calendarWeekService
-                                 .findLeftForMultiDaysEventDay(filteredEventsArr[0], this._dateService.restoreFromStore(d));
-        this.calendarEventsFull = this._calendarWeekService
-                                 .filterEventsByDateAndStartTime( filteredEventsArr[1], this.calendarHours!);
-        this.calendarEventsFull = this._calendarEventService
-                                 .filteredConflictedEvents(this.calendarEventsFull);
-        });
-    }
-
-    ngAfterViewInit() {
-      const selectedId = this.calendarHours?.filter
-                             ((hours: CalendarHours[]) => hours.filter
-                             ((hour: CalendarHours) => hour.isHourNow)[0]);
-      document.getElementById(((selectedId![0][0]).hours)!)!.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "center"
-      });
-    }
-
-    getColspan(d: CalendarHours): number {
-      return d.isFirst ? 1 : 7;
+    this.date$ = store.select('_date');
   }
 
-    trackByHour(index:number, el:CalendarHours): string {
-      return el.hours!;
-    }
+  ngOnInit(): void {
+    this.date$!.subscribe((d: CalendarDate) => {
+      this._currentDate = d;
+      this.calendarHours = this._calendarWeekService
+        .getCalndarDayHoursGridData(this._dateService.restoreFromStore(d));
+      let filteredEventsArr = this._calendarWeekService.filterMultipleDayEvents(this.events!);
+      this.multipleDayEvents = this._calendarWeekService
+        .findLeftForMultiDaysEventDay(filteredEventsArr[0], this._dateService.restoreFromStore(d));
+      this.calendarEventsFull = this._calendarWeekService
+        .filterEventsByDateAndStartTime(filteredEventsArr[1], this.calendarHours!);
+      this.calendarEventsFull = this._calendarEventService
+        .filteredConflictedEvents(this.calendarEventsFull);
+    });
+  }
+
+  ngAfterViewInit() {
+    const selectedId = this.calendarHours?.filter
+      ((hours: CalendarHours[]) => hours.filter
+        ((hour: CalendarHours) => hour.isHourNow)[0]);
+    document.getElementById(`day-${((selectedId![0][0]).hours)!}`)!.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center"
+    });
+  }
+
+  getColspan(d: CalendarHours): number {
+    return d.isFirst ? 1 : 7;
+  }
+
+  trackByHour(index: number, el: CalendarHours): string {
+    return el.hours!;
+  }
 }

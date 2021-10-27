@@ -7,7 +7,7 @@
                 let-i="index">
 
                 <mat-grid-tile class="calendar-week-view-grid" 
-                               id="{{trackByHour(i, tile)}}"
+                               id="week-{{trackByHour(i, tile)}}"
                                
                                [ngClass]="[
                                tile.isToday ? 'calendar-week-view-grid-today' : '',
