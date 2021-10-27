@@ -1,6 +1,6 @@
 <ng-template ngFor let-e [ngForOf]="events" let-i="index">
-    <mat-card *ngIf="i<2" class="calendar-event-view-content"
-         [ngStyle]="{'background-color' : e.color}">
+  <mat-card #eventView *ngIf="i<2" class="calendar-event-view-content"
+         [ngStyle]="{'background-color' : e.color}" (click)="openEventDialog(e)">
          <mat-card-subtitle class="calendar-full-view-subtitle" >
              {{getTitle(e)!}}
          </mat-card-subtitle>

@@ -6,7 +6,6 @@ import { CalendarEventFull } from '../../calendar-modal/calendar-event/calendar-
 import { CalendarView } from '../../calendar-modal/calendar-view/calendar-view';
 import { CalendarEventDialogeService } from '../../service/calendar-event-dialog.service';
 import { CalendarEventService } from '../../service/calendar-event.service';
-import { CalendarEventDialog } from '../calendar-event-dialog-view/calendar-event-dialog.component';
 
 const LEFT = "12.5%";
 const TOP = "5em";
