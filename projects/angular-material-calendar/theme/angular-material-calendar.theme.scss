@@ -10,6 +10,7 @@
 @import './calendar-header-toggle.theme.scss';
 @import './calendar-event-view.theme.scss';
 @import './calendar-even-full-view.theme.scss';
+@import './calendar-even-dialog-view.theme.scss';
 
 @mixin angular-material-calendar($angular-material-calendar) {
   @include calendar-month-view-grid-header-theme($angular-material-calendar);
@@ -23,5 +24,6 @@
   @include calendar-day-view-grid-theme($angular-material-calendar);
   @include calendar-day-view-theme($angular-material-calendar);
   @include calendar-event-view-theme($angular-material-calendar);
-  @include calendar-full-view-theme($angular-material-calendar)
+  @include calendar-full-view-theme($angular-material-calendar);
+  @include calendar-event-dialog-theme($angular-material-calendar);
 }

@@ -17,11 +17,17 @@ export class CalendarEventDialog implements OnInit {
         @Inject(MAT_DIALOG_DATA) public event: { edata: CalendarEventFull },
         @Inject(MAT_DIALOG_DATA) public position: { positionRelativeToElement: ElementRef },
         private calendarEventService: CalendarEventService) {
-        this.time = this.calendarEventService.eventsubtitle(this.event.edata);
+        this.time = this.calendarEventService.eventFullTime(this.event.edata);
         this.positionRelativeToElement = position.positionRelativeToElement;
     }
 
     ngOnInit(): void {
+        const matDialogConfig = this.setDialogPosition(); 
+        this.dialogRef.updatePosition(matDialogConfig.position);
+        this.setDialogBackground();
+    }
+
+    setDialogPosition(): MatDialogConfig {
         const matDialogConfig = new MatDialogConfig()
         const rect: DOMRect = this.positionRelativeToElement!.nativeElement.getBoundingClientRect();
         matDialogConfig.position = {
@@ -35,7 +41,14 @@ export class CalendarEventDialog implements OnInit {
         matDialogConfig.position = {
             top: `${10}em`
         }
-        this.dialogRef.updatePosition(matDialogConfig.position);
+        return matDialogConfig;
+    }
+
+    setDialogBackground() {
         this._element.nativeElement.parentElement!.style.background = this.event.edata.color!;
+    } 
+
+    close() {
+        this.dialogRef.close();
     }
 }

@@ -1,20 +1,24 @@
-
-<div mat-dialog-title> <mat-icon class="material-icons-round">close</mat-icon></div>
-<div class="calendar-full-view-content">
-    <h2>
-        {{event!.edata.title}}
-    </h2>
-
+<div mat-dialog-title class="calendar-event-dialog-title">
+    <button mat-icon-button (click)="close()">
+        <mat-icon class="calendar-toggel-button">close</mat-icon>
+    </button>
 </div>
+<mat-dialog-content>
+    <mat-list class="calendar-event-dialog">
+        <mat-list-item>
+            <mat-icon mat-list-icon class="material-icons-round">title</mat-icon>
+            <div mat-line class="calendar-event-line">{{event!.edata.title}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <mat-icon mat-list-icon class="material-icons-round">schedule</mat-icon>
+            <div mat-line class="calendar-event-line">{{time!}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngIf="event!.edata.description!">
+            <mat-icon mat-list-icon class="material-icons-round">description</mat-icon>
+            <div mat-line class="calendar-event-line">{{event!.edata.description}}</div>
+        </mat-list-item>
 
-<mat-dialog-content >
-    <h4>
-        {{event!.edata.title}}
-    </h4>
-
-    <span>
-
-    </span>
-
- 
+    </mat-list>
 </mat-dialog-content>

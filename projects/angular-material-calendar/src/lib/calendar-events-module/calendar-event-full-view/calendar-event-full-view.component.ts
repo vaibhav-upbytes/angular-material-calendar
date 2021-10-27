@@ -53,7 +53,8 @@ export class CalendarEventFullViewComponent implements OnInit {
       edata: this.event,
       positionRelativeToElement: this.eventfullviewRef!,
       hasBackdrop: true,
-      backdropClass: 'calendar-event-dialog-white-backdrop'
+      backdropClass: 'calendar-event-dialog-white-backdrop',
+      panelClass: 'calendar-event-dialog'
     });
   }
 

@@ -1,0 +1,72 @@
+@import "~@angular/material/theming";
+
+@mixin calendar-event-dialog-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .calendar-event-dialog-title {
+    text-align: end;
+  }
+
+  .calendar-event-dialog .mat-list-base .mat-line {
+    color: #00355e;
+    height: 100%;
+    white-space: normal;
+    overflow: auto;
+    text-overflow: inherit;
+    padding: 8px;
+  }
+
+  .calendar-event-dialog .mat-list-item {
+    height: auto;
+  }
+
+  .calendar-event-dialog .mat-list-base .mat-list-item,
+  .mat-list-base .mat-list-option {
+    height: auto;
+  }
+
+  .calendar-event-dialog .mat-list-base .mat-list-item.mat-list-item-with-avatar {
+    height: auto;
+  }
+
+  .calendar-event-dialog .mat-dialog-container {
+    color: #00355e;
+    max-height: 85%;
+    padding: 12px;
+  }
+
+  .calendar-event-dialog .mat-dialog-content {
+    padding: 0;
+    margin: 0;
+    max-height: 75%;
+  }
+
+  .calendar-event-dialog .mat-icon {
+    color: #00355e;
+  }
+
+  .calendar-event-dialog .mat-list-item-content {
+    align-items: flex-start !important;
+  }
+
+  .calendar-event-line {
+    padding-top: 6px !important;
+  }
+
+  .calendar-event-dialog .mat-dialog-content::-webkit-scrollbar {
+    width: 4px;
+    scrollbar-color: mat-color($primary);
+  }
+
+  .calendar-event-dialog .mat-dialog-content::-webkit-scrollbar-track {
+    box-shadow: 1em;
+    border-radius: 10px;
+  }
+
+  .calendar-event-dialog .mat-dialog-content::-webkit-scrollbar-thumb {
+    background-color: mat-color($primary);
+    border-radius: 10px;
+    box-shadow: 1em;
+  }
+}

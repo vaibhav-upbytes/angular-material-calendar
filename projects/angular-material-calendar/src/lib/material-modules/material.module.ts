@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from  '@angular/material/list';
 import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatDialogModule,
     MatGridListModule,
     MatIconModule,
+    MatListModule,
     LayoutModule
   ]
 })
