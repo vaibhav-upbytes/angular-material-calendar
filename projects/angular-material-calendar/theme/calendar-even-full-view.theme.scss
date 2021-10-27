@@ -1,42 +1,36 @@
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 
 @mixin calendar-full-view-theme($theme) {
-  
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
-  
-       .calendar-full-view {
-           background-color: mat-color($primary, A100);
-           border-radius: 8px;
-           color: #00355e;
-           position: absolute;
-        }
 
-        .calendar-full-view:hover {
-          z-index:99 !important;
-        }
+  .calendar-full-view {
+    background-color: mat-color($primary, A100);
+    border-radius: 8px;
+    color: #00355e;
+    position: absolute;
+  }
 
-        .calendar-full-view-content {
-          border: 1px solid #fff;
-          color: #00355e;
-          display: flex;
-          flex-flow: column;
-          height: inherit;
-          padding: 2px !important;
-          min-height: 3em;
-          overflow: hidden;
-       }
+  .calendar-full-view-content {
+    border: 1px solid #fff;
+    color: #00355e;
+    display: flex;
+    flex-flow: column;
+    height: inherit;
+    padding: 2px !important;
+    min-height: 3em;
+    overflow: hidden;
+  }
 
-        .calendar-full-view-subtitle {
-          margin-bottom: 2px !important;
-          color: #00355e;
-          overflow: hidden;
-        }
+  .calendar-full-view-subtitle {
+    margin-bottom: 2px !important;
+    color: #00355e;
+    overflow: hidden;
+  }
 
-        .calendar-card-content {
-          margin-top: 2px !important;
-          color: #00355e;
-          overflow: hidden;
-        }
-
+  .calendar-card-content {
+    margin-top: 2px !important;
+    color: #00355e;
+    overflow: hidden;
+  }
 }

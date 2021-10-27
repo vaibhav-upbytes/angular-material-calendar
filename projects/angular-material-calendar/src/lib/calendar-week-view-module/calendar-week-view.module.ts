@@ -12,6 +12,7 @@ import {
 import {
   CalendarEventViewModule
 } from '../calendar-events-module/calendar-event-view.module';
+import { CalendarHourIndicatorModule } from '../calendar-hour-indicator-module/calendar-hour-indicator.module';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import {
     imports: [
       CommonModule,
       MaterialModule,
-      CalendarEventViewModule
+      CalendarEventViewModule,
+      CalendarHourIndicatorModule
     ],
     exports: [
       CalendarWeekViewComponent

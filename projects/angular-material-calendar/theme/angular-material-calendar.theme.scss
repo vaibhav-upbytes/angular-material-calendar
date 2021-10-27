@@ -11,6 +11,7 @@
 @import './calendar-event-view.theme.scss';
 @import './calendar-even-full-view.theme.scss';
 @import './calendar-even-dialog-view.theme.scss';
+@import './calendar-hour-indicator.theme.scss';
 
 @mixin angular-material-calendar($angular-material-calendar) {
   @include calendar-month-view-grid-header-theme($angular-material-calendar);
@@ -26,4 +27,5 @@
   @include calendar-event-view-theme($angular-material-calendar);
   @include calendar-full-view-theme($angular-material-calendar);
   @include calendar-event-dialog-theme($angular-material-calendar);
+  @include calendar-hour-indicator-theme($angular-material-calendar);
 }

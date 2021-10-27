@@ -14,6 +14,7 @@ import {
 import {
   CalendarDayViewGridComponent
 } from './calendar-day-view-grid/calendar-day-view-grid.component';
+import { CalendarHourIndicatorModule } from '../calendar-hour-indicator-module/calendar-hour-indicator.module';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import {
     imports: [
       CommonModule,
       MaterialModule,
-      CalendarEventViewModule
+      CalendarEventViewModule,
+      CalendarHourIndicatorModule
     ],
     exports: [
       CalendarDayViewComponent
