@@ -5,6 +5,8 @@ import { MonthViewService } from '../service/calendar-month-view.service';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 import { CalendarMonthView } from '../calendar-month-view';
 import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
+import { goto } from '../../actions/date.action';
+import { day } from '../../actions/calendar-view.action';
 
 @Component({
   selector: 'angular-material-calendar-month-view-grid',
@@ -36,6 +38,15 @@ export class CalendarMonthViewGridComponent implements OnInit {
 
     isCountVisible(events: CalendarEventInput[]): boolean {
       return events.length > 2;
+    }
+
+    switchView(e: CalendarMonthView) {
+      this.goto(this._monthViewService.setDate(e, this._currentDate!));
+      this.store.dispatch(day());
+    }
+
+    goto(_currentDate: CalendarDate) {
+      this.store.dispatch(goto(_currentDate));
     }
 
 }

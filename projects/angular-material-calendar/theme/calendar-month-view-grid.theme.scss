@@ -4,6 +4,7 @@
   
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
   
        .calendar-month-view-grid {
           background: #fff;
@@ -22,9 +23,17 @@
           bottom: 4.5em;
         }
 
+        .calendar-month-view-grid-date:hover {
+          color: mat-color($warn);
+          cursor: pointer;
+          text-decoration: underline;
+        }
+
         .calendar-month-view-grid-footer {
           position: absolute;
           right: .5em;
           bottom: .5em;
         }
+
+
 }
