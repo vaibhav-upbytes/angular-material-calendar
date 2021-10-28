@@ -16,14 +16,7 @@ export class MonthViewService {
     getMonthViewDates(date: CalendarDate): CalendarMonthView [] {
         let d = date;
         let monthDates: CalendarDate[] = this._dateService.getMonthDatesRange(d);
-        return monthDates.map((d) => {
-            return { 
-                     date: this._dateService.getDate(d),
-                     day: this._dateService.getDayName(d, 'short'),
-                     isEnable: this._dateService.getMonth(date) == this._dateService.getMonth(d),
-                     isToday: this._dateService.isToday(d)
-                }
-        });
+        return monthDates.map((d) => this.createMonthViewDate(d));
     }
 
     getCalendarDateEventMap(
@@ -56,6 +49,8 @@ export class MonthViewService {
         return { 
             date: this._dateService.getDate(date),
             day: this._dateService.getDayName(date, 'short'),
+            month: this._dateService.getMonth(date) + 1,
+            year: this._dateService.getYear(date),
             isEnable: this._dateService.getMonth(date) == this._dateService.getMonth(date),
             isToday: this._dateService.isToday(date)
        }
@@ -63,5 +58,9 @@ export class MonthViewService {
 
     getEventDisplay(event: CalendarEventInput): string{
         return `${this._dateService.getTimeFormat(event.start!)} ${event.title}`;
+    }
+
+    setDate(selected: CalendarMonthView, _currentDate: CalendarDate): CalendarDate {
+        return this._dateService.setDate(selected.date, selected.month, selected.year, _currentDate);
     }
 }

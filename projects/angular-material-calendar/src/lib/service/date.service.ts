@@ -203,4 +203,8 @@ export class DateService {
       return start < date.current.toMillis()
          && date.current.toMillis() < end;
    }
+   
+   setDate(date: number, month: number, year: number, _currentDate: CalendarDate) {
+      return {current : _currentDate.current.set({day: date, month: month, year: year})};
+   }
 }
