@@ -12,7 +12,7 @@ import { AngularMaterialCalendarModule } from 'angular-material-calendar';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularMaterialCalendarModule
+    AngularMaterialCalendarModule.forRoot({view: 'month'})
   ],
   providers: [],
   bootstrap: [AppComponent]

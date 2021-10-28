@@ -1,10 +1,11 @@
-import { NgModule, InjectionToken, inject } from '@angular/core';
+import { NgModule, InjectionToken, inject, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
-import { 
+import {
   LuxonDateModule,
   LuxonDateAdapter,
-  MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
+  MAT_LUXON_DATE_ADAPTER_OPTIONS
+} from "@angular/material-luxon-adapter";
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
 import { CalendarViewReducerService } from './reducer/calendar-view-reducer.service';
 import { CalendarViewPortService } from './service/calendar-view-port.service';
@@ -19,19 +20,20 @@ import { CalendarDayViewModule } from './calendar-day-module/calendar-day-view.m
 import { AngularMaterialCalendarComponent } from './angular-material-calendar.component';
 import { CalendarState } from './state/calendar-state';
 import { CalendarHourIndicatorModule } from './calendar-hour-indicator-module/calendar-hour-indicator.module';
+import { CalendarConfig } from './calendar-modal/calendar-config/calendar-config';
 
 export const CALENDAR_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarState>>
-('Registered Reducers', {
-  factory: () => {
-    const viewReducer = inject(CalendarViewReducerService).getReducer();
-    const dateReducer = inject(DateReducerService).getReducer();
-    const reducers: ActionReducerMap<CalendarState> = {
-      _date: dateReducer,
-      _view: viewReducer
-    };
-    return reducers;
-  }
-});
+  ('Registered Reducers', {
+    factory: () => {
+      const viewReducer = inject(CalendarViewReducerService).getReducer();
+      const dateReducer = inject(DateReducerService).getReducer();
+      const reducers: ActionReducerMap<CalendarState> = {
+        _date: dateReducer,
+        _view: viewReducer
+      };
+      return reducers;
+    }
+  });
 
 @NgModule({
   declarations: [
@@ -64,4 +66,20 @@ export const CALENDAR_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<Calend
     }
   ]
 })
-export class AngularMaterialCalendarModule { }
+export class AngularMaterialCalendarModule {
+  constructor(@Optional() @SkipSelf() parentModule?: AngularMaterialCalendarModule) {
+    if (parentModule) {
+      throw new Error(
+        'AngularMaterialCalendarModule is already loaded. Import it in the other module only');
+    }
+  }
+
+  static forRoot(config: CalendarConfig): ModuleWithProviders<AngularMaterialCalendarModule> {
+    return {
+      ngModule: AngularMaterialCalendarModule,
+      providers: [
+        { provide: CalendarConfig, useValue: config }
+      ]
+    };
+  }
+}
