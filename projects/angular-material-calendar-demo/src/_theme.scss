@@ -7,11 +7,18 @@ $angular-material-calendar-demo-primary: mat.define-palette(mat.$indigo-palette)
 $angular-material-calendar-demo-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 $angular-material-calendar-demo-warn: mat.define-palette(mat.$red-palette);
 
+$angular-material-calendar-demo-typography: mat.define-typography-config(
+  // Specify "Roboto, "Helvetica Neue", sans-serif" as the default font family for all levels.
+  $font-family: 'Roboto, "Helvetica Neue", sans-serif',
+);
+
 $angular-material-calendar-demo-theme: mat.define-light-theme((
  color: (
    primary: $angular-material-calendar-demo-primary,
    accent: $angular-material-calendar-demo-accent,
- )
+   warn: $angular-material-calendar-demo-warn
+ ),
+ typography: $angular-material-calendar-demo-typography,
 ));
 
 @include mat.all-component-themes($angular-material-calendar-demo-theme);
