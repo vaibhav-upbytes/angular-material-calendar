@@ -2,6 +2,8 @@ import { DateTime } from 'luxon';
 import { CalendarDate } from "../calendar-modal/calendar-date/calendar-date";
 import { DateAdapter } from "@angular/material/core";
 import { Injectable } from "@angular/core";
+import { _isNumberValue } from '@angular/cdk/coercion';
+import { CalendarServiceConfig } from './calendar-config.service';
 
 export function dateRange<T>(length: number, lamdaFunction: (index: number) => T): T[] {
    const dateArr = Array(length);
@@ -16,7 +18,8 @@ export function dateRange<T>(length: number, lamdaFunction: (index: number) => T
 })
 export class DateService {
    constructor(
-      private _dateAdapter: DateAdapter<DateTime>
+      private _dateAdapter: DateAdapter<DateTime>,
+      private calendarServiceConfig: CalendarServiceConfig
    ) { }
 
    today(): CalendarDate {
@@ -156,8 +159,17 @@ export class DateService {
       return `GMT ${this._dateAdapter.format(date.current, 'Z')}`;
    }
 
-   getDateTime(d: number): DateTime {
-      return DateTime.fromMillis(d);
+   getDateTime<T extends number | string>(d: T): DateTime {
+      return typeof d == 'number' ? DateTime.fromMillis(d) : this.getDateTimeFromFormat(d);
+   }
+
+   getDateTimeFromFormat(d: string): DateTime {
+      return this.calendarServiceConfig.format! ?
+         DateTime.fromFormat(d, this.calendarServiceConfig.format!) : DateTime.fromISO(d);
+   }
+
+   getDateTimeFromString(d: string): DateTime {
+      return DateTime.fromISO(d);
    }
 
    isSameHour(hours: string, eventDate: number): boolean {
@@ -203,8 +215,8 @@ export class DateService {
       return start < date.current.toMillis()
          && date.current.toMillis() < end;
    }
-   
+
    setDate(date: number, month: number, year: number, _currentDate: CalendarDate) {
-      return {current : _currentDate.current.set({day: date, month: month, year: year})};
+      return { current: _currentDate.current.set({ day: date, month: month, year: year }) };
    }
 }

@@ -1,4 +1,9 @@
 import { AfterContentChecked, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  CollectionViewer,
+  DataSource,
+  isDataSource
+} from '@angular/cdk/collections';
 import { BehaviorSubject, isObservable, Observable, of, Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
@@ -7,13 +12,11 @@ import { CalendarEventInput } from './calendar-modal/calendar-event/calendar-eve
 import { CalendarViewPortService } from './service/calendar-view-port.service';
 import { CalendarServiceConfig } from './service/calendar-config.service';
 import { day, month, week } from './actions/calendar-view.action';
-import {
-  CollectionViewer,
-  DataSource,
-  isDataSource
-} from '@angular/cdk/collections';
 
-export type CalendarEventDataSourceInput<T extends CalendarEventInput> = readonly T[] | DataSource<T> | Observable<readonly T[]>;
+import { CalendarEventInputAdapter } from './adapter/calendar-event-adapter';
+import { CalendarEvent } from './calendar-event-source/calendar-event';
+
+export type CalendarEventDataSourceInput<T extends CalendarEvent> = readonly T[] | DataSource<T> | Observable<readonly T[]>;
 
 @Component({
   selector: 'lib-angular-material-calendar',
@@ -22,7 +25,7 @@ export type CalendarEventDataSourceInput<T extends CalendarEventInput> = readonl
     './angular-material-calendar.component.scss'
   ]
 })
-export class AngularMaterialCalendarComponent<T extends CalendarEventInput>
+export class AngularMaterialCalendarComponent<T extends CalendarEvent>
   implements OnInit, AfterContentChecked, OnDestroy, CollectionViewer {
   private readonly _destroyed$ = new Subject<void>();
   private _dataSource?: CalendarEventDataSourceInput<T>;
@@ -35,7 +38,8 @@ export class AngularMaterialCalendarComponent<T extends CalendarEventInput>
   constructor(
     private store: Store<{ _view: CalendarView }>,
     private calendarViewPortService: CalendarViewPortService,
-    private calendarConfigService: CalendarServiceConfig
+    private calendarConfigService: CalendarServiceConfig,
+    private calendarEventInputAdapter: CalendarEventInputAdapter<T>
   ) {
     this.initialView(this.calendarConfigService.view!);
     this._view$ = store.select('_view');
@@ -100,7 +104,7 @@ export class AngularMaterialCalendarComponent<T extends CalendarEventInput>
     this._renderEventSubscription$ = dataStream$!
       .pipe(takeUntil(this._destroyed$))
       .subscribe(data => {
-        this._events = data.map((d) => this.createCalendarEventInput(d)) || [];
+        this._events = data.map((d) => this.calendarEventInputAdapter.adapt(d)) || [];
       });
   }
 
@@ -110,16 +114,6 @@ export class AngularMaterialCalendarComponent<T extends CalendarEventInput>
 
     if (isDataSource(this.dataSource)) {
       this.dataSource.disconnect(this);
-    }
-  }
-
-  createCalendarEventInput(data: T) {
-    return {
-      start: data.start,
-      end: data.end,
-      title: data.title,
-      color: data.color,
-      description: data.description
     }
   }
 

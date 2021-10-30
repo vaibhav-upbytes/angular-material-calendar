@@ -163,6 +163,12 @@ export class AppComponent {
     "title": "event21",
     "color": "#e2e6c7",
     "description": "https://fonts.google.com/icons?selected=Material+Icons git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all docker commands docker build docker build -t upbytes/angular-material-calendar-demo:latest .https://fonts.google.com/icons?selected=Material+Icons git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all docker commands docker build docker build -t upbytes/angular-material-calendar-demo:latest .https://fonts.google.com/icons?selected=Material+Icons git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all docker commands docker build docker build -t upbytes/angular-material-calendar-demo:latest ."
+  },
+  {
+    "start": "2021-10-29T09:08:34.123",
+    "end": "2021-10-29T12:08:34.123",
+    "title": "event22",
+    "color": "#d8c6d9"
   }
     ]
 }
