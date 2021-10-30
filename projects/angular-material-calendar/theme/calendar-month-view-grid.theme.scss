@@ -7,7 +7,6 @@
   $warn: map-get($theme, warn);
   
        .calendar-month-view-grid {
-          background: #fff;
           color: mat-color($primary);
           border: 1px solid mat-color($primary, 100);
         }

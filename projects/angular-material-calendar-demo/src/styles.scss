@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'theme';
+
+.light-theme {
+    @include angular-material-theme($angular-material-calendar-demo-theme);
+    @include angular-material-calendar($angular-material-calendar-demo-theme);
+}
+
+.dark-theme {
+    @include angular-material-theme($angular-material-calendar-demo-dark-theme);
+    @include angular-material-calendar($angular-material-calendar-demo-dark-theme);
+}
