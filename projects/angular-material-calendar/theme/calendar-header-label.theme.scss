@@ -1,11 +1,14 @@
 @import '~@angular/material/theming';
+@import '~@angular/material/core/theming/theming';
 
 @mixin calendar-header-label-theme($theme) {
   
   $primary: map-get($theme, primary);
+  $font-family: mat-font-family(map-get($theme, typography));
   
        .header-label-font-color {
           color: mat-color($primary);
+          font-family: $font-family;
         }
         
         .header-label-font-x-large {

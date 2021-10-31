@@ -4,11 +4,13 @@
   
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
+  $font-family: mat-font-family(map-get($theme, typography));
   
        .calendar-day-view-header {
           background: mat-color($primary);
-          color: #fff;
           border: 1px solid mat-color($primary, 100);
+          font-family: $font-family;
+          color: #fff;
           position: absolute;
           left: 1em;
         }

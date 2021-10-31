@@ -4,11 +4,13 @@
   
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
+  $font-family: mat-font-family(map-get($theme, typography));
   
        .calendar-day-view-grid {
           color: mat-color($primary);
           border-bottom: .5px solid mat-color($primary, 100);
           border-left: .5px solid mat-color($primary, 100);
+          font-family: $font-family;
         }
 
         .calendar-day-view-grid-hours {

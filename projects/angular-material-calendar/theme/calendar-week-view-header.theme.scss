@@ -4,6 +4,7 @@
   
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
+  $font-family: mat-font-family(map-get($theme, typography));
   
        .calendar-week-view-header {
           background: mat-color($primary);
@@ -31,10 +32,12 @@
 
         .calendar-week-view-header-font {
           font-size: x-large;
+          font-family: $font-family;
         }
 
         .calendar-week-view-header-day {
           text-align: center;
+          font-family: $font-family;
         }
       
 }
