@@ -1,38 +1,38 @@
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 
 @mixin calendar-month-view-grid-theme($theme) {
-  
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
-  
-       .calendar-month-view-grid {
-          color: mat-color($primary);
-          border: 1px solid mat-color($primary, 100);
-        }
+  $font-family: mat-font-family(map-get($theme, typography));
 
-        .calendar-month-view-grid-date-today {
-          color: mat-color($accent);
-          border-top: 2px solid mat-color($accent);
-        }
+  .calendar-month-view-grid {
+    border: 1px solid mat-color($primary, 100);
+    color: mat-color($primary);
+    font-family: $font-family;
+  }
 
-        .calendar-month-view-grid-date {
-          position: absolute;
-          left: .5em;
-          bottom: 4.5em;
-        }
+  .calendar-month-view-grid-date-today {
+    color: mat-color($accent);
+    border-top: 2px solid mat-color($accent);
+  }
 
-        .calendar-month-view-grid-date:hover {
-          color: mat-color($warn);
-          cursor: pointer;
-          text-decoration: underline;
-        }
+  .calendar-month-view-grid-date {
+    position: absolute;
+    left: 0.5em;
+    bottom: 4.5em;
+    font-family: $font-family;
+  }
 
-        .calendar-month-view-grid-footer {
-          position: absolute;
-          right: .5em;
-          bottom: .5em;
-        }
+  .calendar-month-view-grid-date:hover {
+    color: mat-color($warn);
+    cursor: pointer;
+    text-decoration: underline;
+  }
 
-
+  .calendar-month-view-grid-footer {
+    position: absolute;
+    right: 0.5em;
+    bottom: 0.5em;
+  }
 }
