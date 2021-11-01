@@ -43,4 +43,8 @@ export class CalendarEventInputAdapter<T extends CalendarEvent> implements Adapt
 
         return DateTime.now().toMillis();
     }
+
+    sort(e: CalendarEventInput[]): CalendarEventInput[]{
+        return e.sort((a, b) => a.start! - b.start!);
+    }
 }

@@ -10,15 +10,15 @@
 
 .calendar-demo-main {
     display: flex;
-    flex: 1 2 0px;
+    flex: 1 1 0px;
     flex-flow: row;
     justify-items: center;
 }
 
 .calendar-demo-calendar {
-    flex: 20;
-}
-
-.calendar-demo-side {
     flex: 1;
 }
+
+// .calendar-demo-side {
+//     flex: 0.5;
+// }
