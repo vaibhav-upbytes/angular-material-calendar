@@ -11,6 +11,7 @@ import { MatListModule } from  '@angular/material/list';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   exports: [
@@ -25,6 +26,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatListModule,
     MatToolbarModule,
     MatMenuModule,
+    MatSidenavModule,
     LayoutModule
   ]
 })

@@ -5,5 +5,20 @@
 }
 
 .calendar-header-demo {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
+}
+
+.calendar-demo-main {
+    display: flex;
+    flex: 1 2 0px;
+    flex-flow: row;
+    justify-items: center;
+}
+
+.calendar-demo-calendar {
+    flex: 20;
+}
+
+.calendar-demo-side {
+    flex: 1;
 }
