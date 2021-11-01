@@ -8,6 +8,5 @@ export interface CalendarEvent {
     end?: D,
     title?: string,
     color?: string,
-    format?: string,
     description?: string
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FontAwesomeModule, FaIconLibrary, FaConfig} from '@fortawesome/angular-fontawesome';
 import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
 import { AppRoutingModule } from './app-routing.module';
@@ -8,17 +9,21 @@ import { AngularMaterialCalendarModule } from 'angular-material-calendar';
 import { MaterialModule } from './material-module/material.module';
 import { CalendarDemoHeader } from './header/calendar-demo-header.component';
 import { CalendarDemoSideNav } from './sidenav/calendar-demo-sidenav.component';
+import { CalendarDemoEvents } from './calendar-demo-events/calendar-demo-events.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CalendarDemoHeader,
-    CalendarDemoSideNav
+    CalendarDemoSideNav,
+    CalendarDemoEvents
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     AngularMaterialCalendarModule.forRoot({view: 'month'})
   ],

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { AngularMaterialCalendarComponent } from 'angular-material-calendar';
+import { Subject } from 'rxjs';
+import { Event } from './model/calendar-event';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +9,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  @ViewChild(AngularMaterialCalendarComponent) calendar?: AngularMaterialCalendarComponent<Event>;
+  data = new Subject<Event>();
   title = 'angular-material-calendar-demo';
-  events?: [];
+  events?: Event[] = [];
 
   constructor() {
     this.events = JSON.parse(`{ "data" : 
@@ -173,5 +179,10 @@ export class AppComponent {
     ]
 }
       `).data;
+
+    this.data.subscribe(d => {
+      this.events!.push(d);
+      this.calendar!.dataSource = this.events;
+    });
   }
 }

@@ -7,6 +7,7 @@ import { CalendarMonthView } from '../calendar-month-view';
 import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
 import { goto } from '../../actions/date.action';
 import { day } from '../../actions/calendar-view.action';
+type d = [CalendarDate, CalendarEventInput[]];
 
 @Component({
   selector: 'angular-material-calendar-month-view-grid',

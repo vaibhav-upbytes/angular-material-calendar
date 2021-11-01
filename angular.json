@@ -67,7 +67,7 @@
             "tsConfig": "projects/angular-material-calendar-demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/angular-material-calendar-demo/src/favicon.ico",
+              "projects/angular-material-calendar-demo/src/main.ico",
               "projects/angular-material-calendar-demo/src/assets"
             ],
             "styles": [
@@ -139,7 +139,7 @@
             "karmaConfig": "projects/angular-material-calendar-demo/karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/angular-material-calendar-demo/src/favicon.ico",
+              "projects/angular-material-calendar-demo/src/main.ico",
               "projects/angular-material-calendar-demo/src/assets"
             ],
             "styles": [
