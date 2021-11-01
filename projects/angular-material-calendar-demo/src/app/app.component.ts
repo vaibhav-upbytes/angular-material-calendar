@@ -14,7 +14,7 @@ export class AppComponent {
   @ViewChild(AngularMaterialCalendarComponent) calendar?: AngularMaterialCalendarComponent<Event>;
   data = new Subject<Event>();
   title = 'angular-material-calendar-demo';
-  events: Event[]  = [];
+  events?: [];
 
   constructor() {
 //     this.events = of(JSON.parse(`{ "data" : 
@@ -181,12 +181,12 @@ export class AppComponent {
 // }
 //       `).data);
 
-      this.data.subscribe(d => {
-        console.log(d);
-        this.events.push(d);
-        console.log(this.events)
-        this.calendar!.dataSource = this.events;
-      });
+      // this.data.subscribe(d => {
+      //   console.log(d);
+      //   this.events.push(d);
+      //   console.log(this.events)
+      //   this.calendar!.dataSource = this.events;
+      // });
       // combineLatest(this.data, this.events).pipe(([d, e]) => {
       //   console.log(d,e);
 

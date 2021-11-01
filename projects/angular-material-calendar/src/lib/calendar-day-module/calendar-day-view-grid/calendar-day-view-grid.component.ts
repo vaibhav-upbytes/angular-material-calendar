@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, combineLatestWith } from 'rxjs';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 import { CalendarHours } from '../../calendar-modal/calendar-hours/calendar-hours';
 import { CalendarHoursService } from '../../service/calendar-hours.service';
@@ -18,7 +18,7 @@ import { DateService } from '../../service/date.service';
   ]
 })
 export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
-  @Input() events?: CalendarEventInput[] = []
+  @Input() events$?: Observable<CalendarEventInput[]>;
   date$?: Observable<CalendarDate>;
   _currentDate?: CalendarDate;
   calendarHours?: CalendarHours[][];
@@ -35,11 +35,13 @@ export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.date$!.subscribe((d: CalendarDate) => {
+    this.date$!.pipe(
+      combineLatestWith(this.events$!)
+    ).subscribe(([d, events]: [CalendarDate, CalendarEventInput[]]) => {
       this._currentDate = d;
       this.calendarHours = this._calendarWeekService
         .getCalndarDayHoursGridData(this._dateService.restoreFromStore(d));
-      let filteredEventsArr = this._calendarWeekService.filterMultipleDayEvents(this.events!);
+      let filteredEventsArr = this._calendarWeekService.filterMultipleDayEvents(events);
       this.multipleDayEvents = this._calendarWeekService
         .findLeftForMultiDaysEventDay(filteredEventsArr[0], this._dateService.restoreFromStore(d));
       this.calendarEventsFull = this._calendarWeekService

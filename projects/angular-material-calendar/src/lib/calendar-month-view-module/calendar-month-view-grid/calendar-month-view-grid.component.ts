@@ -1,15 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { combineAll, switchMap } from 'rxjs/operators';
+import { combineLatestWith, map, Observable } from 'rxjs';
 import { MonthViewService } from '../service/calendar-month-view.service';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 import { CalendarMonthView } from '../calendar-month-view';
 import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
 import { goto } from '../../actions/date.action';
 import { day } from '../../actions/calendar-view.action';
-import { map } from 'rxjs/operators';
-
 type d = [CalendarDate, CalendarEventInput[]];
 
 @Component({
@@ -34,29 +31,14 @@ export class CalendarMonthViewGridComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.date$!.subscribe((d: CalendarDate) => {
-    //   this._currentDate = d;
-    //   this.monthViewDates = this._monthViewService.getCalendarDateEventMap(d, this.events!);
-    // });
-    // const orderedData = combineLatest([this.date$, this.events$]).pipe(
-    //   map(([d, e]) => this._monthViewService.getCalendarDateEventMap(d, e)),
-    // );
-    this.date$!.pipe(
-      switchMap(this.events$!, (d: CalendarDate, e: CalendarEventInput[]) => {
-        this.events$?.pipe(
-          map((e: CalendarEventInput[]) => {
-            this._currentDate = d;
-            return this._monthViewService.getCalendarDateEventMap(d, e);
-          })
-        )
 
+    this.date$?.pipe(
+      combineLatestWith(this.events$!),
+      map(([date, events]) => {
+        this._currentDate = date;
+        return this._monthViewService.getCalendarDateEventMap(date, events);
       }),
-    );
-    // data.pipe()
-    //   .subscribe(x => {
-
-    //     this.monthViewDates = x;
-    //   });
+    ).subscribe(data => this.monthViewDates = data);
   }
 
   isCountVisible(events: CalendarEventInput[]): boolean {
