@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { AfterContentChecked, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import {
   CollectionViewer,
   DataSource,
@@ -26,7 +26,7 @@ export type CalendarEventDataSourceInput<T extends CalendarEvent> = readonly T[]
   ]
 })
 export class AngularMaterialCalendarComponent<T extends CalendarEvent>
-  implements OnInit, AfterContentChecked, OnDestroy, CollectionViewer, OnChanges {
+  implements OnInit, AfterContentChecked, OnDestroy, CollectionViewer {
   private readonly _destroyed$ = new Subject<void>();
   private _dataSource?: CalendarEventDataSourceInput<T>;
   protected _data?: readonly T[];
@@ -41,7 +41,6 @@ export class AngularMaterialCalendarComponent<T extends CalendarEvent>
     private calendarConfigService: CalendarServiceConfig,
     private calendarEventInputAdapter: CalendarEventInputAdapter<T>
   ) {
-    //this._events$?.next([]);
     this.initialView(this.calendarConfigService.view!);
     this._view$ = store.select('_view');
     this._view$!.subscribe((v) => this._view = v);
@@ -62,22 +61,13 @@ export class AngularMaterialCalendarComponent<T extends CalendarEvent>
     this.calendarViewPortService.viewportResize();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES 'someInput'**************/
-    //Write your code here
-     console.log("onchanges", changes);
-    }  
 
   @Input()
   get dataSource(): CalendarEventDataSourceInput<T> {
     return this._dataSource!;
   }
   set dataSource(dataSource: CalendarEventDataSourceInput<T>) {
-    console.log(dataSource);
-    
-    if (this._dataSource !== dataSource) {
-      this._switchDataSource(dataSource);
-    }
+    this._switchDataSource(dataSource);
   }
 
   private _switchDataSource(dataSource: CalendarEventDataSourceInput<T>) {
