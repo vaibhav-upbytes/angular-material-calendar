@@ -1,5 +1,8 @@
 <div class="mat-body calendar-demo">
     <calendar-demo-header class="calendar-header-demo"></calendar-demo-header>
-    <lib-angular-material-calendar [dataSource]="events">
-    </lib-angular-material-calendar>
+    <div class="calendar-demo-main">
+        <calendar-demo-sidenav class="calendar-demo-side"></calendar-demo-sidenav>
+        <lib-angular-material-calendar [dataSource]="events" class="calendar-demo-calendar">
+        </lib-angular-material-calendar>
+    </div>
 </div>

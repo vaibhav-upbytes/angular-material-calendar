@@ -7,10 +7,13 @@ import { AppComponent } from './app.component';
 import { AngularMaterialCalendarModule } from 'angular-material-calendar';
 import { MaterialModule } from './material-module/material.module';
 import { CalendarDemoHeader } from './header/calendar-demo-header.component';
+import { CalendarDemoSideNav } from './sidenav/calendar-demo-sidenav.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarDemoHeader
+    CalendarDemoHeader,
+    CalendarDemoSideNav
   ],
   imports: [
     BrowserModule,
