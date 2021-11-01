@@ -1,11 +1,11 @@
-import { AfterContentChecked, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import {
   CollectionViewer,
   DataSource,
   isDataSource
 } from '@angular/cdk/collections';
 import { BehaviorSubject, isObservable, Observable, of, Subject, Subscription } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { CalendarView } from './calendar-modal/calendar-view/calendar-view';
 import { CalendarEventInput } from './calendar-modal/calendar-event/calendar-event-input';
@@ -26,14 +26,15 @@ export type CalendarEventDataSourceInput<T extends CalendarEvent> = readonly T[]
   ]
 })
 export class AngularMaterialCalendarComponent<T extends CalendarEvent>
-  implements OnInit, AfterContentChecked, OnDestroy, CollectionViewer {
+  implements OnInit, AfterContentChecked, OnDestroy, CollectionViewer, OnChanges {
   private readonly _destroyed$ = new Subject<void>();
   private _dataSource?: CalendarEventDataSourceInput<T>;
   protected _data?: readonly T[];
   private _renderEventSubscription$?: Subscription;
   _view$?: Observable<CalendarView>;
   _view?: CalendarView;
-  _events?: CalendarEventInput[];
+  @Input()
+  _events?: Observable<CalendarEventInput[]>;
 
   constructor(
     private store: Store<{ _view: CalendarView }>,
@@ -61,11 +62,19 @@ export class AngularMaterialCalendarComponent<T extends CalendarEvent>
     this.calendarViewPortService.viewportResize();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES 'someInput'**************/
+    //Write your code here
+     console.log("onchanges", changes);
+    }  
+
   @Input()
   get dataSource(): CalendarEventDataSourceInput<T> {
     return this._dataSource!;
   }
   set dataSource(dataSource: CalendarEventDataSourceInput<T>) {
+    console.log(dataSource);
+    
     if (this._dataSource !== dataSource) {
       this._switchDataSource(dataSource);
     }
@@ -101,11 +110,11 @@ export class AngularMaterialCalendarComponent<T extends CalendarEvent>
       dataStream$ = of(this.dataSource);
     }
 
-    this._renderEventSubscription$ = dataStream$!
-      .pipe(takeUntil(this._destroyed$))
-      .subscribe(data => {
-        this._events = data.map((d) => this.calendarEventInputAdapter.adapt(d)) || [];
-      });
+    this._events = dataStream$!
+      .pipe(takeUntil(this._destroyed$),
+      map(data => {
+        return data.map((d) => this.calendarEventInputAdapter.adapt(d)) || [];
+      }));
   }
 
   ngOnDestroy() {

@@ -11,27 +11,26 @@ export class MonthViewService {
 
     constructor(
         private _dateService: DateService
-        ) {}
+    ) { }
 
-    getMonthViewDates(date: CalendarDate): CalendarMonthView [] {
+    getMonthViewDates(date: CalendarDate): CalendarMonthView[] {
         let d = date;
         let monthDates: CalendarDate[] = this._dateService.getMonthDatesRange(d);
         return monthDates.map((d) => this.createMonthViewDate(d));
     }
 
     getCalendarDateEventMap(
-        date: CalendarDate , events: CalendarEventInput[]
-        ): Map<CalendarMonthView, CalendarEventInput[]> {
-            let d = date;
+        date: CalendarDate, events: CalendarEventInput[]
+    ): Map<CalendarMonthView, CalendarEventInput[]> {
+        let d = date;
         let dates: CalendarDate[] = this._dateService.getMonthDatesRange(d);
         let data = new Map<CalendarMonthView, CalendarEventInput[]>();
         dates.map((d) => {
             let gridDate = this.createMonthViewDate(d);
             data.set(gridDate, []);
-            events.map((event) => {
-                if(this._dateService.isSameDate(d, event.start!) 
-                || this._dateService.isBetween(d, event.start!, event.end!)) 
-                {  
+            events!.map((event) => {
+                if (this._dateService.isSameDate(d, event.start!)
+                    || this._dateService.isBetween(d, event.start!, event.end!)) {
                     data.get(gridDate)?.push(event);
                 }
 
@@ -46,17 +45,17 @@ export class MonthViewService {
     }
 
     createMonthViewDate(date: CalendarDate): CalendarMonthView {
-        return { 
+        return {
             date: this._dateService.getDate(date),
             day: this._dateService.getDayName(date, 'short'),
             month: this._dateService.getMonth(date) + 1,
             year: this._dateService.getYear(date),
             isEnable: this._dateService.getMonth(date) == this._dateService.getMonth(date),
             isToday: this._dateService.isToday(date)
-       }
+        }
     }
 
-    getEventDisplay(event: CalendarEventInput): string{
+    getEventDisplay(event: CalendarEventInput): string {
         return `${this._dateService.getTimeFormat(event.start!)} ${event.title}`;
     }
 
