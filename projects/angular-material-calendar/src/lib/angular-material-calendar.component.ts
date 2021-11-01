@@ -16,7 +16,7 @@ import { day, month, week } from './actions/calendar-view.action';
 import { CalendarEventInputAdapter } from './adapter/calendar-event-adapter';
 import { CalendarEvent } from './calendar-event-source/calendar-event';
 
-export type CalendarEventDataSourceInput<T extends CalendarEvent> = readonly T[] | DataSource<T> | Observable<readonly T[]>;
+export type CalendarEventDataSourceInput<T extends CalendarEvent> = readonly T[] | DataSource<T> | Observable<readonly T[]> | [] | undefined;
 
 @Component({
   selector: 'lib-angular-material-calendar',
@@ -33,7 +33,7 @@ export class AngularMaterialCalendarComponent<T extends CalendarEvent>
   private _renderEventSubscription$?: Subscription;
   _view$?: Observable<CalendarView>;
   _view?: CalendarView;
-  _events?: CalendarEventInput[];
+  _events$?: BehaviorSubject<CalendarEventInput[]> = new BehaviorSubject<CalendarEventInput[]>([]);
 
   constructor(
     private store: Store<{ _view: CalendarView }>,
@@ -41,9 +41,10 @@ export class AngularMaterialCalendarComponent<T extends CalendarEvent>
     private calendarConfigService: CalendarServiceConfig,
     private calendarEventInputAdapter: CalendarEventInputAdapter<T>
   ) {
+    //this._events$?.next([]);
     this.initialView(this.calendarConfigService.view!);
     this._view$ = store.select('_view');
-    this._view$.subscribe((v) => this._view = v);
+    this._view$!.subscribe((v) => this._view = v);
   }
 
   ngAfterContentChecked(): void {
@@ -104,13 +105,16 @@ export class AngularMaterialCalendarComponent<T extends CalendarEvent>
     this._renderEventSubscription$ = dataStream$!
       .pipe(takeUntil(this._destroyed$))
       .subscribe(data => {
-        this._events = data.map((d) => this.calendarEventInputAdapter.adapt(d)) || [];
+        const d = data.map((d) => this.calendarEventInputAdapter.adapt(d)) || [];
+        this._events$?.next(d);
       });
   }
 
   ngOnDestroy() {
     this._destroyed$.next();
     this._destroyed$.complete();
+    this._events$?.next([]);
+    this._events$?.complete();
 
     if (isDataSource(this.dataSource)) {
       this.dataSource.disconnect(this);

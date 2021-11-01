@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-material-calendar-demo';
-  events: [];
+  events?: [];
 
   constructor() {
     this.events = JSON.parse(`{ "data" : 

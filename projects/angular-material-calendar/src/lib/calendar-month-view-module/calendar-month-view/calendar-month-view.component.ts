@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
 
 @Component({
@@ -10,5 +11,5 @@ import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar
 })
 export class CalendarMonthViewComponent {
   @Input()
-  events?: CalendarEventInput[] = [];
+  events$?: Observable<CalendarEventInput[]>;
 }
