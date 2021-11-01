@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, DoCheck, Input, OnChanges, OnDestroy, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { AfterContentChecked, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import {
   CollectionViewer,
   DataSource,
@@ -26,7 +26,7 @@ export type CalendarEventDataSourceInput<T extends CalendarEvent> = readonly T[]
   ]
 })
 export class AngularMaterialCalendarComponent<T extends CalendarEvent>
-  implements OnInit, AfterContentChecked, OnDestroy, CollectionViewer, OnChanges {
+  implements OnInit, AfterContentChecked, OnDestroy, CollectionViewer {
   private readonly _destroyed$ = new Subject<void>();
   private _dataSource?: CalendarEventDataSourceInput<T>;
   protected _data?: readonly T[];
