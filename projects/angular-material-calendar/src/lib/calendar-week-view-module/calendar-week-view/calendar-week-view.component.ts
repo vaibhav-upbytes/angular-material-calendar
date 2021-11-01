@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { CalendarHoursService } from '../../service/calendar-hours.service';
 import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'angular-material-calendar-week-view',
   templateUrl: './calendar-week-view.component.html',
@@ -10,6 +10,6 @@ import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar
 })
 export class CalendarWeekViewComponent {
     @Input()
-    events?: CalendarEventInput[] = [];
-    constructor(private c: CalendarHoursService) {}
+    events$?: Observable<CalendarEventInput[]>;
+    constructor() {}
 }

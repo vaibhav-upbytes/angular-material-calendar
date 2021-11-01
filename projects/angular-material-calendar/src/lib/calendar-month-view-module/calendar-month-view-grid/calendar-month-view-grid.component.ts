@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { combineLatestWith, map, Observable } from 'rxjs';
 import { MonthViewService } from '../service/calendar-month-view.service';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 import { CalendarMonthView } from '../calendar-month-view';
@@ -16,37 +16,41 @@ import { day } from '../../actions/calendar-view.action';
   ]
 })
 export class CalendarMonthViewGridComponent implements OnInit {
-    date$?: Observable<CalendarDate>;
-    _currentDate?: CalendarDate;
-    monthViewDates?: Map<CalendarMonthView, CalendarEventInput[]>;
-    @Input()
-    events?: CalendarEventInput[] = [];
-    
-    constructor(
-        private store: Store<{ _date: CalendarDate}>,
-        private _monthViewService: MonthViewService, 
-    ) {
-      this.date$ = store.select('_date');
-    }
+  date$?: Observable<CalendarDate>;
+  _currentDate?: CalendarDate;
+  monthViewDates?: Map<CalendarMonthView, CalendarEventInput[]>;
+  @Input()
+  events$?: Observable<CalendarEventInput[]>;
 
-    ngOnInit(): void {
-      this.date$!.subscribe((d: CalendarDate) => {
-        this._currentDate = d;
-        this.monthViewDates  = this._monthViewService.getCalendarDateEventMap(d, this.events!);
-       });
-    }
+  constructor(
+    private store: Store<{ _date: CalendarDate }>,
+    private _monthViewService: MonthViewService,
+  ) {
+    this.date$ = store.select('_date');
+  }
 
-    isCountVisible(events: CalendarEventInput[]): boolean {
-      return events.length > 2;
-    }
+  ngOnInit(): void {
 
-    switchView(e: CalendarMonthView) {
-      this.goto(this._monthViewService.setDate(e, this._currentDate!));
-      this.store.dispatch(day());
-    }
+    this.date$?.pipe(
+      combineLatestWith(this.events$!),
+      map(([date, events]) => {
+        this._currentDate = date;
+        return this._monthViewService.getCalendarDateEventMap(date, events);
+      }),
+    ).subscribe(data => this.monthViewDates = data);
+  }
 
-    goto(_currentDate: CalendarDate) {
-      this.store.dispatch(goto(_currentDate));
-    }
+  isCountVisible(events: CalendarEventInput[]): boolean {
+    return events.length > 2;
+  }
+
+  switchView(e: CalendarMonthView) {
+    this.goto(this._monthViewService.setDate(e, this._currentDate!));
+    this.store.dispatch(day());
+  }
+
+  goto(_currentDate: CalendarDate) {
+    this.store.dispatch(goto(_currentDate));
+  }
 
 }
