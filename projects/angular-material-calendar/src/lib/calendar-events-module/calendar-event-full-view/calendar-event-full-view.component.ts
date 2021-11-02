@@ -12,7 +12,7 @@ const TOP = "5em";
 const HEIGHT = "5em";
 
 @Component({
-  selector: 'angular-material-calendar-event-full-view',
+  selector: 'upbytes-angular-material-calendar-event-full-view',
   templateUrl: './calendar-event-full-view.component.html',
   styleUrls: [
     './calendar-event-full-view.component.scss'

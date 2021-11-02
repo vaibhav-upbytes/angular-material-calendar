@@ -6,7 +6,7 @@ import { DateService } from '../../../service/date.service';
 import { CalendarViewPortService } from '../../../service/calendar-view-port.service';
 
 @Component({
-    selector: 'angular-material-calendar-label',
+    selector: 'upbytes-angular-material-calendar-label',
     templateUrl: './calendar-label.component.html',
   })
 export class CalendarHeaderLabelComponent {

@@ -10,7 +10,7 @@ import { CalendarEventService } from '../../service/calendar-event.service';
 
 
 @Component({
-  selector: 'angular-material-calendar-week-view-grid',
+  selector: 'upbytes-angular-material-calendar-week-view-grid',
   templateUrl: './calendar-week-view-grid.component.html',
   styleUrls: [
     './calendar-week-view-grid.component.scss'

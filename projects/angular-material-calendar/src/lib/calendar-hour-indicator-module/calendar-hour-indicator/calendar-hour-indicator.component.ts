@@ -10,7 +10,7 @@ const ID = "-hour-indicator";
 const TOP ="5em";
 
 @Component({
-    selector: 'angular-material-calendar-hour-indicator',
+    selector: 'upbytes-angular-material-calendar-hour-indicator',
     templateUrl: './calendar-hour-indicator.component.html',
     styleUrls: [
         './calendar-hour-indicator.component.scss'

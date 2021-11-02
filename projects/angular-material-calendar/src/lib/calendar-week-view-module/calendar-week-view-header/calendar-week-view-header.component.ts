@@ -7,7 +7,7 @@ import { CalendarHoursService } from '../../service/calendar-hours.service';
 
 
 @Component({
-  selector: 'angular-material-calendar-week-view-header',
+  selector: 'upbytes-angular-material-calendar-week-view-header',
   templateUrl: './calendar-week-view-header.component.html',
   styleUrls: [
     './calendar-week-view-header.component.scss'

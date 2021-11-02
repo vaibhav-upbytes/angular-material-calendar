@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MonthViewService } from '../service/calendar-month-view.service';
 
 @Component({
-  selector: 'angular-material-calendar-month-view-grid-header',
+  selector: 'upbytes-angular-material-calendar-month-view-grid-header',
   templateUrl: './calendar-month-view-grid-header.component.html',
   styleUrls: [
     './calendar-month-view-grid-header.component.scss'
