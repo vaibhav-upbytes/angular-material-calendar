@@ -14,7 +14,14 @@
 
   .calendar-month-view-grid-date-today {
     color: mat-color($accent);
-    border-top: 2px solid mat-color($accent);
+    border-top: 3px solid mat-color($accent);
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .calendar-month-view-grid-date-today-border {
+    border-top: 1px solid mat-color($accent);
   }
 
   .calendar-month-view-grid-date {
