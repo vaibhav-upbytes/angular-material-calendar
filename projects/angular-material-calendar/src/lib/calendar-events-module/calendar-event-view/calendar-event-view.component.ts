@@ -7,7 +7,7 @@ import { CalendarEventDialogeService } from '../../service/calendar-event-dialog
 import { CalendarEventService } from '../../service/calendar-event.service';
 
 @Component({
-  selector: 'angular-material-calendar-event-view',
+  selector: 'upbytes-angular-material-calendar-event-view',
   templateUrl: './calendar-event-view.component.html',
   styleUrls: [
     './calendar-event-view.component.scss'

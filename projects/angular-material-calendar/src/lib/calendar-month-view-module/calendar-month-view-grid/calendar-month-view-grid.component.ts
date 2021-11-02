@@ -10,7 +10,7 @@ import { day } from '../../actions/calendar-view.action';
 type d = [CalendarDate, CalendarEventInput[]];
 
 @Component({
-  selector: 'angular-material-calendar-month-view-grid',
+  selector: 'upbytes-angular-material-calendar-month-view-grid',
   templateUrl: './calendar-month-view-grid.component.html',
   styleUrls: [
     './calendar-month-view-grid.component.scss'

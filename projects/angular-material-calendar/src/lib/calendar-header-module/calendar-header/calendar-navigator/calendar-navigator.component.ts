@@ -7,7 +7,7 @@ import { CalendarView } from '../../../calendar-modal/calendar-view/calendar-vie
 import { CalendarViewPortService } from '../../../service/calendar-view-port.service';
 
 @Component({
-    selector: 'angular-material-calendar-navigator',
+    selector: 'upbytes-angular-material-calendar-navigator',
     templateUrl: './calendar-navigator.component.html',
     styleUrls: [
       'calendar-navigator.component.scss'

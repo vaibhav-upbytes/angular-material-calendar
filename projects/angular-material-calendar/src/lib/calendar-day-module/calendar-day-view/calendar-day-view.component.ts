@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
 
 @Component({
-  selector: 'angular-material-calendar-day-view',
+  selector: 'upbytes-angular-material-calendar-day-view',
   templateUrl: './calendar-day-view.component.html',
   styleUrls: [
     './calendar-day-view.component.scss'
