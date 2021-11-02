@@ -1,0 +1,20 @@
+@import "~@angular/material/theming";
+
+@mixin calendar-demo-sidenav-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+
+    .calendar-demo-sidenav-container {
+        height: 100%;
+        margin-right: 0.5em;
+    }
+
+    .calendar-demo-side .mat-drawer-container {
+        background-color: mat-color($primary) !important;
+    }
+
+    .calendar-demo-sidenav-content {
+        padding: 20px;
+        width: 200px;
+    }
+}
