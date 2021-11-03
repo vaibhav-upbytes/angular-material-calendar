@@ -11,3 +11,15 @@
     @include angular-material-calendar($angular-material-calendar-demo-dark-theme);
     @include angular-material-calendar-demo($angular-material-calendar-demo-dark-theme);
 }
+
+.purple-dark-theme {
+    @include angular-material-theme($angular-material-calendar-purple-dark-theme);
+    @include angular-material-calendar($angular-material-calendar-purple-dark-theme);
+    @include angular-material-calendar-demo($angular-material-calendar-purple-dark-theme);
+}
+
+.purple-ligth-theme {
+    @include angular-material-theme($angular-material-calendar-purple-light-theme);
+    @include angular-material-calendar($angular-material-calendar-purple-light-theme);
+    @include angular-material-calendar-demo($angular-material-calendar-purple-light-theme);
+}

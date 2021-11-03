@@ -15,21 +15,21 @@ export const THEMES: CalendarTheme[] = [
         theme: '',
         class: 'dark-theme',
         isDisabled: false,
-        isChecked: true
+        isChecked: false
     },
     {
         label: 'Upbytes Light',
         icon: '',
-        theme: '',
-        isDisabled: true,
+        class: 'purple-ligth-theme',
+        isDisabled: false,
         isChecked: false
     },
     {
         label: 'Upbytes Dark',
         icon: '',
-        theme: '',
-        isDisabled: true,
-        isChecked: false
+        class: 'purple-dark-theme',
+        isDisabled: false,
+        isChecked: true
     }
     
 ]
