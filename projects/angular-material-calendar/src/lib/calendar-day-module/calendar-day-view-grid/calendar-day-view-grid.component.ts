@@ -11,7 +11,7 @@ import { DateService } from '../../service/date.service';
 
 
 @Component({
-  selector: 'angular-material-calendar-day-view-grid',
+  selector: 'upbytes-angular-material-calendar-day-view-grid',
   templateUrl: './calendar-day-view-grid.component.html',
   styleUrls: [
     './calendar-day-view-grid.component.scss'

@@ -5,7 +5,6 @@
   $accent: map-get($theme, accent);
 
   .calendar-full-view {
-    background-color: mat-color($primary, A100);
     border-radius: 8px;
     color: #00355e;
     position: absolute;

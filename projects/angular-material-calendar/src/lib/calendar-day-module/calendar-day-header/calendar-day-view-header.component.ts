@@ -5,7 +5,7 @@ import { DateService } from '../../service/date.service';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 
 @Component({
-  selector: 'angular-material-calendar-day-view-header',
+  selector: 'upbytes-angular-material-calendar-day-view-header',
   templateUrl: './calendar-day-view-header.component.html',
   styleUrls: [
     './calendar-day-view-header.component.scss'

@@ -19,7 +19,7 @@ import { CalendarEvent } from './calendar-event-source/calendar-event';
 export type CalendarEventDataSourceInput<T extends CalendarEvent> = readonly T[] | DataSource<T> | Observable<readonly T[]> | [] | undefined;
 
 @Component({
-  selector: 'lib-angular-material-calendar',
+  selector: 'upbytes-angular-material-calendar',
   templateUrl: './angular-material-calendar.component.html',
   styleUrls: [
     './angular-material-calendar.component.scss'

@@ -4,7 +4,7 @@ import { CalendarEventFull } from "../../calendar-modal/calendar-event/calendar-
 import { CalendarEventService } from "../../service/calendar-event.service";
 
 @Component({
-    selector: 'angular-material-calendar-event-dialog',
+    selector: 'upbytes-angular-material-calendar-event-dialog',
     templateUrl: 'calendar-event-dialog.component.html',
     styleUrls: ['calendar-event-dialog.component.scss']
 })

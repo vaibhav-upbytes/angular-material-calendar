@@ -6,7 +6,7 @@ import { CalendarView } from '../../../calendar-modal/calendar-view/calendar-vie
 import { CalendarViewPortService } from '../../../service/calendar-view-port.service';
 
 @Component({
-    selector: 'angular-material-calendar-toggel',
+    selector: 'upbytes-angular-material-calendar-toggel',
     templateUrl: './calendar-toggel.component.html',
     styleUrls: [
         './calendar-toggel.component.scss'
