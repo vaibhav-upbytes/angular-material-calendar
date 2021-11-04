@@ -23,8 +23,8 @@ export class CalendarDemoEvents implements OnInit {
         const month = today.getMonth();
         const year = today.getFullYear();
         this.form = this.fb.group({
-            start: new FormControl(moment().format("yyyy-MM-DDThh:mm")),
-            end: new FormControl(moment().format("yyyy-MM-DDThh:mm")),
+            start: new FormControl(moment().format("yyyy-MM-DDTHH:mm")),
+            end: new FormControl(moment().format("yyyy-MM-DDTHH:mm")),
             title: new FormControl(""),
             description: new FormControl(""),
             color: new FormControl("#5e0d0d")
@@ -32,7 +32,6 @@ export class CalendarDemoEvents implements OnInit {
     }
 
     save() {
-        console.log(this.form!.value)
         this.dialogRef.close(this.form!.value);
     }
 

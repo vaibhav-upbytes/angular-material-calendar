@@ -104,7 +104,8 @@ export class AngularMaterialCalendarComponent<T extends CalendarEvent>
       .pipe(takeUntil(this._destroyed$))
       .subscribe(data => {
         const d = data.map((d) => this.calendarEventInputAdapter.adapt(d)) || [];
-        this._events$?.next(d);
+
+        this._events$?.next(this.calendarEventInputAdapter.sort(d));
       });
   }
 

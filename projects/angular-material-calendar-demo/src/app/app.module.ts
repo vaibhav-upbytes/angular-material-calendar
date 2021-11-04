@@ -10,6 +10,7 @@ import { MaterialModule } from './material-module/material.module';
 import { CalendarDemoHeader } from './header/calendar-demo-header.component';
 import { CalendarDemoSideNav } from './sidenav/calendar-demo-sidenav.component';
 import { CalendarDemoEvents } from './calendar-demo-events/calendar-demo-events.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CalendarDemoEvents } from './calendar-demo-events/calendar-demo-events.
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    HttpClientModule,
     AngularMaterialCalendarModule.forRoot({view: 'month'})
   ],
   providers: [],
