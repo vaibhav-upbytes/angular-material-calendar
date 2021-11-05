@@ -1,52 +1,93 @@
 import { Injectable } from "@angular/core";
 import { CalendarEventFull } from "../calendar-modal/calendar-event/calendar-event-full";
 
+class Interval {
+	low: number = 0;
+	high: number = 0;
+
+}
+
+class EventNode {
+	max: number = 0;
+	left?: EventNode;
+	right?: EventNode;
+	i?: CalendarEventFull;
+}
+
 @Injectable({
 	providedIn: "root"
 })
 export class CalendarEventConflictService {
 	constructor() { }
 
-	newNodeDouble(e: CalendarEventFull) {
-		return e;
+	private eventNode(i: CalendarEventFull) {
+		var temp = new EventNode();
+		temp.i = i;
+		temp.max = i.end!;
+		return temp;
+	}
+	private insertNode(root: EventNode, i: CalendarEventFull) {
+
+		if (root == null)
+			return this.eventNode(i);
+
+		let l = root.i?.start!;
+
+		if (i.start! < l)
+			root.left = this.insertNode(root.left!, i);
+
+		else
+			root.right = this.insertNode(root.right!, i);
+
+		if (root.max < i.end!)
+			root.max = i.end!;
+		return root;
 	}
 
+	private isConflict(i1: CalendarEventFull, i2: CalendarEventFull) {
+		if (i1.start! < i2.end! && i2.start! < i1.end!)
+			return true;
+		return false;
+	}
 
-	doOVerlap(i1: CalendarEventFull, i2: CalendarEventFull, conflics: CalendarEventFull[]) {
-		if (i1.start! <= i2.start! && i1.end! >= i2.start!) {
-			i1.conflics!++;
-			i2.conflics!++;
-			conflics.push(i2);
-			i2.leftFr = i1.leftFr! + 1;
+	private conflictSearch(root: EventNode, i: CalendarEventFull, conflictingEvents: CalendarEventFull[]): CalendarEventFull {
+
+		if (root == null)
+			return {};
+
+		if (this.isConflict(root.i!, i))
+			conflictingEvents.push(root.i!);
+		if (root.left != null &&
+			root.left.max >= i.start!)
+			return this.conflictSearch(root.left, i, conflictingEvents);
+
+		return this.conflictSearch(root.right!, i, conflictingEvents);
+	}
+
+	conflicting(events: CalendarEventFull[], DAYS: number) {
+
+		let root: EventNode;
+		root = this.insertNode(root!, events[0]);
+
+		for (let i = 1; i < events.length; i++) {
+			let conflictingEvents: CalendarEventFull[] = [];
+
+			this.conflictSearch(root, events[i], conflictingEvents);
+
+			events[i].conflics = conflictingEvents.length;
+			conflictingEvents.push(events[i]);
+			this.conflictedEventFr(conflictingEvents, DAYS);
+
+			root = this.insertNode(root, events[i]);
 		}
 	}
 
-	conflicting(events: CalendarEventFull[]): CalendarEventFull[] {
-		let conflicfs: CalendarEventFull[] = [];
-
-		for (let i = 0; i < events.length; i++) {
-			for (let j = i + 1; j < events.length; j++) {
-				this.doOVerlap(events[i], events[j], conflicfs);
-			}
-			if (conflicfs.length > 0) {
-				let n = this.eventsConflics(conflicfs);
-				events[i].conflics = n > 0 ? events[i].conflics : 1;
-			}
-		}
-		return events;
-	}
-
-	eventsConflics(conflics: CalendarEventFull[]): number {
-		let n: number = 0;
-		for (let i = 0; i < conflics.length; i++) {
-			for (let j = i + 1; j < conflics.length; j++) {
-				if (conflics[i].start! <= conflics[j].start!
-					&& conflics[i].end! >= conflics[j].start!) {
-					n++;
-				}
-			}
-		}
-		return n;
+	conflictedEventFr(conflicts: CalendarEventFull[], DAYS: number) {
+		conflicts.forEach((c, index) => {
+			c.widthFr = 1 / conflicts.length;
+			c.leftFr = c.left! + (DAYS * index) / conflicts.length;
+		});
+		return conflicts
 	}
 
 }
