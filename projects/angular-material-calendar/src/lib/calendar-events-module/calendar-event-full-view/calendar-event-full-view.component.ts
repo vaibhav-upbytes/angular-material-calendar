@@ -43,7 +43,7 @@ export class CalendarEventFullViewComponent implements OnInit {
     this.event = this._view?.view == 'week' ? 
     this.calendarEventService.allDayEventWidth(this.event!) : this.event;
     this.calendarEventService.setEventStyle(this.event!,
-      this._element, LEFT, TOP, width!, HEIGHT, days);
+      this._element, LEFT, TOP, width!, HEIGHT);
     this.time = this.calendarEventService.eventsubtitle(this.event!);
   }
 

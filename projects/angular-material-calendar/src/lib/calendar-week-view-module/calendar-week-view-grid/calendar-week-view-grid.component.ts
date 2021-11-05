@@ -45,7 +45,7 @@ export class CalendarWeekViewGridComponent implements OnInit, AfterViewInit {
       this.calendarEventsFull = this._calendarWeekService
         .filterEventsByDateAndStartTime(filteredEventsArr[1], this.calendarHours!);
       this.calendarEventsFull = this._calendarEventService
-        .filteredConflictedEvents(this.calendarEventsFull);
+        .filteredConflictedEvents(this.calendarEventsFull, 1);
     });
   }
 

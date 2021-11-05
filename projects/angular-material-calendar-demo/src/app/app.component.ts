@@ -11,7 +11,7 @@ import { CalendarDemoDataService } from './service/calendar-demo-data.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterContentInit {
+export class AppComponent implements OnInit {
 
   @ViewChild(AngularMaterialCalendarComponent) calendar?: AngularMaterialCalendarComponent<Event>;
   data = new BehaviorSubject<Event>({});
@@ -38,17 +38,14 @@ export class AppComponent implements OnInit, AfterContentInit {
 
     // });
   }
-  ngAfterContentInit(): void {
+
+  ngOnInit(): void {
     const updated = this.data!.pipe(debounceTime(0));
 
     updated.subscribe(s => {
-      this.display = s.start! ?   [...this.display , s] : this.display;
+      this.display = s! && s.start! ?   [...this.display , s] : this.display;
       this.events?.next(this.display)
     })
-  }
-
-  ngOnInit(): void {
-
   }
 
 }

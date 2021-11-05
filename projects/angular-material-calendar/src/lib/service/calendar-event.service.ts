@@ -15,9 +15,9 @@ export class CalendarEventService {
 
     setEventStyle(
         event: CalendarEventFull, _element: ElementRef<HTMLElement>,
-        LEFT: string, TOP: string, WIDTH: number, HEIGHT: string, DAYS: number): void {
+        LEFT: string, TOP: string, WIDTH: number, HEIGHT: string): void {
         this.styleWidth(event, _element, WIDTH);
-        this.styleLeft(event, _element, LEFT, WIDTH, DAYS);
+        this.styleLeft(event, _element, LEFT);
         this.styleTop(event, _element, TOP);
         this.styleHeight(event, _element, HEIGHT);
         this.styleBackground(event, _element, HEIGHT);
@@ -28,12 +28,10 @@ export class CalendarEventService {
     }
 
     styleLeft(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
-        LEFT: string, WIDTH: number, DAYS: number): void {
+        LEFT: string): void {
         if (event.conflics! > 0 && event.leftFr! > 1) {
-            let wf = DAYS / (event.conflics! + 1) * (event.leftFr! - 1);
-            let lwf = event.left! + wf;
             (_element.nativeElement.style as any)['left'] =
-                this.calc(`(${LEFT} - 0px + 0px) * ${lwf}`);
+                this.calc(`(${LEFT} - 0px + 0px) * ${event.leftFr!}`);
         } else
             (_element.nativeElement.style as any)['left'] = this.calc(`(${LEFT} - 0px + 0px) * ${event.left}`);
     }
@@ -47,7 +45,7 @@ export class CalendarEventService {
 
     styleWidth(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
         WIDTH: number): void {
-             (_element.nativeElement.style as any)['width'] = this.calc(`(${WIDTH}% - 0px) * ${event.widthFr! / (event.conflics! + 1)} + 0px`);
+             (_element.nativeElement.style as any)['width'] = this.calc(`(${WIDTH}% - 0px) * ${event.widthFr!} + 0px`);
     }
 
     styleHeight(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
@@ -110,10 +108,10 @@ export class CalendarEventService {
         return eventMap;
     }
 
-    filteredConflictedEvents(events: CalendarEventFull[]): CalendarEventFull[] {
+    filteredConflictedEvents(events: CalendarEventFull[], DAYS: number): CalendarEventFull[] {
         let eventMap: Map<number, CalendarEventFull[]> = this.filterEventsBySameLeft(events);
         eventMap.forEach((v: CalendarEventFull[], k: number) => {
-            this._calendarEventConflictService.conflicting(v);
+            this._calendarEventConflictService.conflicting(v, DAYS);
         });
         return events;
     }
