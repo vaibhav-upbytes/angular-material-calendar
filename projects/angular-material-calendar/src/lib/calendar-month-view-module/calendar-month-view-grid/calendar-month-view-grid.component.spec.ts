@@ -12,6 +12,7 @@ import { MaterialModule } from '../../material-modules/material.module';
 import { BehaviorSubject } from 'rxjs';
 import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
 import { CalendarEventViewComponent } from '../../calendar-events-module/calendar-event-view/calendar-event-view.component';
+import { By } from '@angular/platform-browser';
 
 let loader: HarnessLoader;
 let component: CalendarMonthViewGridComponent;
@@ -70,10 +71,13 @@ describe('calendar-month-view-grid', () => {
         expect(date.weekdayLong).toEqual('Friday');
     });
 
-    // it('should work', async () => {
-    //     const footerLoader = await loader.getChildLoader('.calendar-month-view-grid-date');
-    //     expect(footerLoader).toBeTruthy();
-
-    // });
+    it('click on date should switch dates', async () => {
+        const footerLoader = await fixture.debugElement.query(By.css(".calendar-month-view-grid-date"));
+        expect(footerLoader).toBeTruthy();
+        let clicked = footerLoader.nativeElement.textContent.trim();
+        footerLoader.nativeElement.click();
+        fixture.detectChanges();
+        expect(component._currentDate?.current.day).toEqual(parseInt(clicked));
+    });
 })
 
