@@ -35,9 +35,7 @@ describe('calendar-header-label', () => {
     });
 
     it('should work', async () => {
-        const footerLoader = await loader.getChildLoader('.header-label-font-x-large');
         expect(component).toBeTruthy();
-        expect(footerLoader).toBeTruthy();
     });
 
     it('label should show month and year', async () => {
