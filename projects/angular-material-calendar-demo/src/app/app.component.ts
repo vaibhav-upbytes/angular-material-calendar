@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { AfterContentInit, Component, OnInit, ViewChild } from '@angular/core';
+
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularMaterialCalendarComponent } from 'angular-material-calendar';
-import { BehaviorSubject, combineLatestWith, debounce, debounceTime, map, Observable, of, ReplaySubject, Subject } from 'rxjs';
+import { BehaviorSubject,  debounceTime, map,  Subject } from 'rxjs';
+import { CalendarDataSource } from './data/calendar-data-source';
 // import { AngularMaterialCalendarComponent } from 'angular-material-calendar';
 import { Event } from './model/calendar-event';
 import { CalendarDemoDataService } from './service/calendar-demo-data.service';
@@ -18,13 +19,14 @@ export class AppComponent implements OnInit {
   title = 'angular-material-calendar-demo';
   events?: Subject<Event[]> = new Subject<Event[]>();
   display: Event[] = [];
-
+  dataSource = new CalendarDataSource(this.display);
   //events?: Event[] = [];
 
   constructor(private calendarDemoDataService: CalendarDemoDataService) {
   this.calendarDemoDataService.getEventsData().pipe(
       map((d: any) => {
         this.display = d.data;
+        this.dataSource.setData(this.display)
         return this.display;
       })
     ).subscribe(s => this.events?.next(this.display));
@@ -44,8 +46,9 @@ export class AppComponent implements OnInit {
 
     updated.subscribe(s => {
       this.display = s! && s.start! ?   [...this.display , s] : this.display;
-      this.events?.next(this.display)
-    })
+      //this.events?.next(this.display)
+      this.dataSource.setData(this.display)
+    });
   }
 
 }

@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AngularMaterialCalendarComponent } from './angular-material-calendar.component';
-import { CalendarEventInput } from './calendar-modal/calendar-event/calendar-event-input';
+import { CalendarEvent } from './calendar-event-source/calendar-event';
 
 describe('AngularMaterialCalendarComponent', () => {
-  let component: AngularMaterialCalendarComponent<CalendarEventInput>;
-  let fixture: ComponentFixture<AngularMaterialCalendarComponent<CalendarEventInput>>;
+  let component: AngularMaterialCalendarComponent<CalendarEvent>;
+  let fixture: ComponentFixture<AngularMaterialCalendarComponent<CalendarEvent>>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

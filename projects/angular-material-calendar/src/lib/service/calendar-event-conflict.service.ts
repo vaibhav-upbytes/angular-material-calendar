@@ -76,14 +76,13 @@ export class CalendarEventConflictService {
 
 			events[i].conflics = conflictingEvents.length;
 			conflictingEvents.push(events[i]);
-			this.conflictedEventWidthFr(conflictingEvents, DAYS);
+			this.conflictedEventFr(conflictingEvents, DAYS);
 
 			root = this.insertNode(root, events[i]);
 		}
 	}
 
-
-	conflictedEventWidthFr(conflicts: CalendarEventFull[], DAYS: number) {
+	conflictedEventFr(conflicts: CalendarEventFull[], DAYS: number) {
 		conflicts.forEach((c, index) => {
 			c.widthFr = 1 / conflicts.length;
 			c.leftFr = c.left! + (DAYS * index) / conflicts.length;
