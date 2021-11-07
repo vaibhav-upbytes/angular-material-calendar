@@ -6,6 +6,7 @@ import { CalendarView } from '../../../calendar-modal/calendar-view/calendar-vie
 import { CalendarViewPortService } from '../../../service/calendar-view-port.service';
 
 /**
+ * @author vaibhav
  * Calendar toggel component will be display right top corner of the calendar header. Toggle 
  * button will switch view in between day/week/month. 
  */
