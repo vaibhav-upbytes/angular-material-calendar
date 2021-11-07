@@ -6,6 +6,7 @@ import { DateService } from '../../../service/date.service';
 import { CalendarViewPortService } from '../../../service/calendar-view-port.service';
 
 /**
+ * @author vaibhav
  * The calendar header label component display month name and year. 
  */
 
