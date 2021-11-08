@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { CalendarDate } from "../calendar-modal/calendar-date/calendar-date";
 import { DateAdapter } from "@angular/material/core";
-import { Injectable } from "@angular/core";
+import { Injectable, Optional } from "@angular/core";
 import { _isNumberValue } from '@angular/cdk/coercion';
 import { CalendarServiceConfig } from './calendar-config.service';
 
@@ -19,7 +19,7 @@ export function dateRange<T>(length: number, lamdaFunction: (index: number) => T
 export class DateService {
    constructor(
       private _dateAdapter: DateAdapter<DateTime>,
-      private calendarServiceConfig: CalendarServiceConfig
+      @Optional() private calendarServiceConfig: CalendarServiceConfig
    ) { }
 
    today(): CalendarDate {
