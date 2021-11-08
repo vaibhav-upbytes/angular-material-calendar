@@ -15,9 +15,16 @@ import { day, month, week } from './actions/calendar-view.action';
 
 import { CalendarEventInputAdapter } from './adapter/calendar-event-adapter';
 import { CalendarEvent } from './calendar-event-source/calendar-event';
-
+/**
+ * define generic type for input data.
+ */
 export type CalendarEventDataSourceInput<T extends CalendarEvent> = readonly T[] | DataSource<T> | Observable<readonly T[]> | [] | undefined;
 
+/**
+ * @author vaibhav
+ * Angular material component is entry coponent for this library.
+ * It takes input as array, datasource and observable. 
+ */
 @Component({
   selector: 'upbytes-angular-material-calendar',
   templateUrl: './angular-material-calendar.component.html',
