@@ -6,6 +6,11 @@ import { MonthViewService } from '../../calendar-month-view-module/service/calen
 import { CalendarEventDialogeService } from '../../service/calendar-event-dialog.service';
 import { CalendarEventService } from '../../service/calendar-event.service';
 
+/**
+ * @author vaibhav
+ * Calendar event view component is used to display events on month view grid
+ */
+
 @Component({
   selector: 'upbytes-angular-material-calendar-event-view',
   templateUrl: './calendar-event-view.component.html',
@@ -23,14 +28,20 @@ export class CalendarEventViewComponent {
     private calendarEventService: CalendarEventService,
     private calendarEventDialogService: CalendarEventDialogeService) { }
 
-  getDisplay(tile: CalendarEventInput): string {
-    return this.monthViewService.getEventDisplay(tile);
-  }
 
+  /**
+   * use to display title on mat-card subtitle
+   * @param e CalendarEventFull  
+   * @returns combine start datetime and end datetime
+   */  
   getTitle(e: CalendarEventFull): string {
     return this.time = this.calendarEventService.eventsubtitle(e);
   }
 
+  /**
+   * open mat-dialog to display event content
+   * @param e CalendarEventFull
+   */
   openEventDialog(e: CalendarEventFull) {
     this.calendarEventDialogService.openDialog({
       edata: e,
