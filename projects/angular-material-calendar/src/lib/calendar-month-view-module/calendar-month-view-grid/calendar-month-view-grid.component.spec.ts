@@ -72,10 +72,10 @@ describe('calendar-month-view-grid', () => {
     });
 
     it('click on date should switch dates', async () => {
-        const footerLoader = await fixture.debugElement.query(By.css(".calendar-month-view-grid-date"));
-        expect(footerLoader).toBeTruthy();
-        let clicked = footerLoader.nativeElement.textContent.trim();
-        footerLoader.nativeElement.click();
+        const dateElement = await fixture.debugElement.query(By.css(".calendar-month-view-grid-date"));
+        expect(dateElement).toBeTruthy();
+        let clicked = dateElement.nativeElement.textContent.trim();
+        dateElement.nativeElement.click();
         fixture.detectChanges();
         expect(component._currentDate?.current.day).toEqual(parseInt(clicked));
     });
