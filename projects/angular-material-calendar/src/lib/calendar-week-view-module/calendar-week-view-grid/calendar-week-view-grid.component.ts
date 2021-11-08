@@ -14,7 +14,6 @@ import { CalendarEventService } from '../../service/calendar-event.service';
  * calendar week view gird component will display grid view of week date and time.
  * 
  */
-
 @Component({
   selector: 'upbytes-angular-material-calendar-week-view-grid',
   templateUrl: './calendar-week-view-grid.component.html',
