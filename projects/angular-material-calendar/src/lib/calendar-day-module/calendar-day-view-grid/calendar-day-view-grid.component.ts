@@ -9,7 +9,11 @@ import { CalendarEventFull } from '../../calendar-modal/calendar-event/calendar-
 import { CalendarEventService } from '../../service/calendar-event.service';
 import { DateService } from '../../service/date.service';
 
-
+/**
+ * @author vaibhav
+ * calendar day view gird component will display grid view of selected date and time.
+ * 
+ */
 @Component({
   selector: 'upbytes-angular-material-calendar-day-view-grid',
   templateUrl: './calendar-day-view-grid.component.html',
@@ -51,8 +55,11 @@ export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   * component lifecycle hook will scroll view to current hour.
+   */
   ngAfterViewInit() {
-    document.getElementById(`day-hour-indicator`)!.scrollIntoView({
+    document.getElementById(`day-hour-indicator`)?.scrollIntoView({
       behavior: "smooth",
       block: "center",
       inline: "center"
