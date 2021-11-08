@@ -6,21 +6,21 @@ import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from '@angular/mater
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { StoreModule } from '@ngrx/store';
 import { CALENDAR_REDUCER_TOKEN } from '../../angular-material-calendar.module';
-import { CalendarMonthViewGridHeaderComponent } from './calendar-month-view-grid-header.component';
+import { CalendarWeekViewHeaderComponent } from './calendar-week-view-header.component';
 import { MaterialModule } from '../../material-modules/material.module';
 
 let loader: HarnessLoader;
-let component: CalendarMonthViewGridHeaderComponent;
-let fixture: ComponentFixture<CalendarMonthViewGridHeaderComponent>;
+let component: CalendarWeekViewHeaderComponent;
+let fixture: ComponentFixture<CalendarWeekViewHeaderComponent>;
 
-describe('calendar-month-view-grid-header', () => {
+describe('calendar-week-view-grid-header', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [
                 StoreModule.forRoot(CALENDAR_REDUCER_TOKEN),
                 MaterialModule
             ],
-            declarations: [CalendarMonthViewGridHeaderComponent],
+            declarations: [CalendarWeekViewHeaderComponent],
             providers: [
                 {
                     provide: DateAdapter,
@@ -30,7 +30,7 @@ describe('calendar-month-view-grid-header', () => {
             ]
 
         }).compileComponents();
-        fixture = TestBed.createComponent(CalendarMonthViewGridHeaderComponent);
+        fixture = TestBed.createComponent(CalendarWeekViewHeaderComponent);
         fixture.detectChanges();
         component = fixture.componentInstance;
         loader = TestbedHarnessEnvironment.loader(fixture);
@@ -48,19 +48,19 @@ describe('calendar-month-view-grid-header', () => {
 
     it('should be able to month view grid tiles', async () => {
         const harnesses = await loader.getAllHarnesses(MatGridTileHarness);
-        expect(harnesses.length).toEqual(7);
+        expect(harnesses.length).toEqual(8);
     });
 
     it('month view first tile should be monday', async () => {
         const tiles = await loader.getAllHarnesses(MatGridTileHarness);
         const first = await (await tiles[0].host()).text();
-        expect(first).toEqual('Mon');
+        expect(first).toContain('GMT');
     });
 
     it('month view last tile should be sunday', async () => {
         const tiles = await loader.getAllHarnesses(MatGridTileHarness);
-        const last = await (await tiles[6].host()).text();
-        expect(last).toEqual('Sun');
+        const last = await (await tiles[7].host()).text();
+        expect(last).toContain('Sun');
     });
 
 })

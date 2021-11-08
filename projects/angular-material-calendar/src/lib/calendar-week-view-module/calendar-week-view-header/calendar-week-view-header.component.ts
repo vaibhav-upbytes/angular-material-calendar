@@ -5,6 +5,10 @@ import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 import { CalendarHours } from '../../calendar-modal/calendar-hours/calendar-hours';
 import { CalendarHoursService } from '../../service/calendar-hours.service';
 
+/**
+ * @author vaibhav
+ * calendar week view header comoponent should be displayed short weekdays name and GTM +timezone
+ */
 
 @Component({
   selector: 'upbytes-angular-material-calendar-week-view-header',
@@ -19,14 +23,14 @@ export class CalendarWeekViewHeaderComponent {
   _currentDate?: CalendarDate;
   calendarHours?: CalendarHours[];
 
-    constructor(
-      private store: Store<{ _date: CalendarDate}>,
-      private _calendarWeekService: CalendarHoursService
-    ) {
-      this.date$ = store.select('_date');
-      this.date$.subscribe((d: CalendarDate) => {
-          this._currentDate = d;
-          this.calendarHours = this._calendarWeekService.getCalendarWeekRange(this._currentDate!);
-          });
-    }
+  constructor(
+    private store: Store<{ _date: CalendarDate }>,
+    private _calendarWeekService: CalendarHoursService
+  ) {
+    this.date$ = store.select('_date');
+    this.date$.subscribe((d: CalendarDate) => {
+      this._currentDate = d;
+      this.calendarHours = this._calendarWeekService.getCalendarWeekRange(this._currentDate!);
+    });
+  }
 }
