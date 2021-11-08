@@ -11,6 +11,10 @@ const LEFT = "12.5%";
 const TOP = "5em";
 const HEIGHT = "5em";
 
+/**
+ * @author vaibhav
+ * calendar event full view component is use to display events on day/week view
+ */
 @Component({
   selector: 'upbytes-angular-material-calendar-event-full-view',
   templateUrl: './calendar-event-full-view.component.html',
@@ -47,6 +51,9 @@ export class CalendarEventFullViewComponent implements OnInit {
     this.time = this.calendarEventService.eventsubtitle(this.event!);
   }
 
+  /**
+   * open mat-dialoge to display event content
+   */
   openEventDialog() {
     this.calendarEventDialogService.openDialog({
       edata: this.event,

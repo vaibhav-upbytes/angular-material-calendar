@@ -7,27 +7,27 @@ import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { StoreModule } from '@ngrx/store';
 import { CALENDAR_REDUCER_TOKEN } from '../../angular-material-calendar.module';
 import { MaterialModule } from '../../material-modules/material.module';
-import { CalendarEventViewComponent } from './calendar-event-view.component';
+import { CalendarEventFullViewComponent } from './calendar-event-full-view.component';
 
 let loader: HarnessLoader;
-let component: CalendarEventViewComponent;
-let fixture: ComponentFixture<CalendarEventViewComponent>;
+let component: CalendarEventFullViewComponent;
+let fixture: ComponentFixture<CalendarEventFullViewComponent>;
 
-export const events =     [{
+export const event =     {
     "start": 1634621592000,
     "end": 1634625192000,
     "title": "string  string string string string string" ,
     "color": "#e2e6c7"
-}]
+};
 
-describe('calendar-event-view', () => {
+describe('calendar-event-full-view', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [
                 StoreModule.forRoot(CALENDAR_REDUCER_TOKEN),
                 MaterialModule
             ],
-            declarations: [CalendarEventViewComponent],
+            declarations: [CalendarEventFullViewComponent],
             providers: [
                 {
                     provide: DateAdapter,
@@ -37,9 +37,9 @@ describe('calendar-event-view', () => {
             ]
 
         }).compileComponents();
-        fixture = TestBed.createComponent(CalendarEventViewComponent);
+        fixture = TestBed.createComponent(CalendarEventFullViewComponent);
         component = fixture.componentInstance;
-        component.events = events;
+        component.event = event;
         fixture.detectChanges();
         loader = TestbedHarnessEnvironment.loader(fixture);
 
@@ -54,10 +54,11 @@ describe('calendar-event-view', () => {
         expect(cards.length).toBe(1);
     });
 
-    it('event card should be displayed', async () => {
+    it('event full card should be displayed', async () => {
         const cards = await loader.getAllHarnesses(MatCardHarness);
         expect(cards.length).toBe(1);
-        expect(await cards[0].getSubtitleText()).toBe(component.getTitle(component.events![0]));
+        expect(await cards[0].getSubtitleText()).toBe(component.time!);
+        expect(await cards[0].getText()).toBe(`${component.time}${component.event?.title!}`);
     });
 })
 
