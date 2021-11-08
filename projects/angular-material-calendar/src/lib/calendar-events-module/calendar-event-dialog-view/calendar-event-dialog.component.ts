@@ -3,6 +3,10 @@ import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angular/materia
 import { CalendarEventFull } from "../../calendar-modal/calendar-event/calendar-event-full";
 import { CalendarEventService } from "../../service/calendar-event.service";
 
+/**
+ * @author vaibhav
+ * calendar event dialog component is used to display event complete data.
+ */
 @Component({
     selector: 'upbytes-angular-material-calendar-event-dialog',
     templateUrl: 'calendar-event-dialog.component.html',
@@ -27,6 +31,10 @@ export class CalendarEventDialog implements OnInit {
         this.setDialogBackground();
     }
 
+    /**
+     * use to set dialoge position according to event clicked.
+     * @returns MatDialogConfig
+     */
     setDialogPosition(): MatDialogConfig {
         const matDialogConfig = new MatDialogConfig()
         const rect: DOMRect = this.positionRelativeToElement!.nativeElement.getBoundingClientRect();
@@ -44,6 +52,9 @@ export class CalendarEventDialog implements OnInit {
         return matDialogConfig;
     }
 
+    /**
+     * display dialoge backgrond accroding to event color
+     */
     setDialogBackground() {
         this._element.nativeElement.parentElement!.style.background = this.event.edata.color!;
     } 
