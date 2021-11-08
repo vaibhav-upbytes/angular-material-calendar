@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 import { DateService } from '../../service/date.service';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 
+/**
+ * @author vaibhav
+ * calendar day view header comoponent should be displayed date/weekdaylong and GTM +timezone
+ */
 @Component({
   selector: 'upbytes-angular-material-calendar-day-view-header',
   templateUrl: './calendar-day-view-header.component.html',

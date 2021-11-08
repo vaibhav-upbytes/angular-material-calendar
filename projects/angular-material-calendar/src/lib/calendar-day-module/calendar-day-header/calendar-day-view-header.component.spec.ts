@@ -6,22 +6,22 @@ import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from '@angular/mater
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { StoreModule } from '@ngrx/store';
 import { CALENDAR_REDUCER_TOKEN } from '../../angular-material-calendar.module';
-import { CalendarWeekViewHeaderComponent } from './calendar-week-view-header.component';
+import { CalendarDayViewHeaderComponent } from './calendar-day-view-header.component';
 import { MaterialModule } from '../../material-modules/material.module';
 import { DateTime } from 'luxon';
 
 let loader: HarnessLoader;
-let component: CalendarWeekViewHeaderComponent;
-let fixture: ComponentFixture<CalendarWeekViewHeaderComponent>;
+let component: CalendarDayViewHeaderComponent;
+let fixture: ComponentFixture<CalendarDayViewHeaderComponent>;
 
-describe('calendar-week-view-grid-header', () => {
+describe('calendar-day-view-grid-header', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [
                 StoreModule.forRoot(CALENDAR_REDUCER_TOKEN),
                 MaterialModule
             ],
-            declarations: [CalendarWeekViewHeaderComponent],
+            declarations: [CalendarDayViewHeaderComponent],
             providers: [
                 {
                     provide: DateAdapter,
@@ -31,7 +31,7 @@ describe('calendar-week-view-grid-header', () => {
             ]
 
         }).compileComponents();
-        fixture = TestBed.createComponent(CalendarWeekViewHeaderComponent);
+        fixture = TestBed.createComponent(CalendarDayViewHeaderComponent);
         fixture.detectChanges();
         component = fixture.componentInstance;
         loader = TestbedHarnessEnvironment.loader(fixture);
@@ -42,26 +42,26 @@ describe('calendar-week-view-grid-header', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should be able load week view grid', async () => {
+    it('should be able load day view grid', async () => {
         const harnesses = await loader.getAllHarnesses(MatGridListHarness);
         expect(harnesses.length).toBe(1);
     });
 
-    it('should be able to week view grid tiles', async () => {
+    it('should be able to day view grid tiles', async () => {
         const harnesses = await loader.getAllHarnesses(MatGridTileHarness);
-        expect(harnesses.length).toEqual(8);
+        expect(harnesses.length).toEqual(2);
     });
 
-    it('week view first tile should be monday', async () => {
+    it('day view first tile should be monday', async () => {
         const tiles = await loader.getAllHarnesses(MatGridTileHarness);
         const first = await (await tiles[0].host()).text();
         expect(first).toContain('GMT');
     });
 
-    it('week view last tile should be sunday', async () => {
+    it('day view last tile should be sunday', async () => {
         const tiles = await loader.getAllHarnesses(MatGridTileHarness);
-        const last = await (await tiles[7].host()).text();
-        expect(last).toContain('Sun');
+        const last = await (await tiles[1].host()).text();
+        expect(last).toEqual(`${DateTime.now().day}${DateTime.now().weekdayLong}`);
     });
 
 })
