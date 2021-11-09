@@ -1,6 +1,4 @@
 import { TestBed } from "@angular/core/testing";
-import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from "@angular/material-luxon-adapter";
-import { DateAdapter, MAT_DATE_LOCALE } from "@angular/material/core";
 import { CalendarEventConflictService } from "../calendar-event-conflict.service";
 
 export const events = [{

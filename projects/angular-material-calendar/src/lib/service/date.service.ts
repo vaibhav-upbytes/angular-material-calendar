@@ -5,6 +5,13 @@ import { Injectable, Optional } from "@angular/core";
 import { _isNumberValue } from '@angular/cdk/coercion';
 import { CalendarServiceConfig } from './calendar-config.service';
 
+/**
+ * helps to return range of given length.
+ * @param length 
+ * @param lamdaFunction 
+ * @returns T[]
+ */
+
 export function dateRange<T>(length: number, lamdaFunction: (index: number) => T): T[] {
    const dateArr = Array(length);
    for (let i = 0; i < length; i++) {
@@ -13,6 +20,13 @@ export function dateRange<T>(length: number, lamdaFunction: (index: number) => T
    return dateArr;
 }
 
+/**
+ * @author vaibhav
+ * Date service is perform various operation on dateTime. it is based on DateAdapter implementation 
+ * of angular material and DateTime object of Luxon library.
+ * Manipulate date in number. 
+ * 
+ */
 @Injectable({
    providedIn: 'root'
 })
