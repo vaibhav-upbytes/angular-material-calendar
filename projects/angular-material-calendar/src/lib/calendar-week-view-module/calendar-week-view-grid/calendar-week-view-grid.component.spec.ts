@@ -17,13 +17,40 @@ import { BehaviorSubject } from 'rxjs';
 import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
 import { By } from '@angular/platform-browser';
 
+export const events = [{
+    "start": 1634639410000,
+    "end": 1634661010000,
+    "title": "event16",
+    "color": "#d8c6d9",
+    "leftFr": 1,
+    "left": 1
+},
+{
+    "start": 1634639410000,
+    "end": 1634653810000,
+    "title": "event17",
+    "color": "#d8c6d9",
+    "leftFr": 1,
+    "left": 1
+}
+    ,
+{
+    "start": 1634654710000,
+    "end": 1634661010000,
+    "title": "event18",
+    "color": "#d8c6d9",
+    "leftFr": 1,
+    "left": 1
+}];
+
+
 let loader: HarnessLoader;
 let component: CalendarWeekViewGridComponent;
 let fixture: ComponentFixture<CalendarWeekViewGridComponent>;
 
 describe('calendar-week-view-grid', () => {
     beforeEach(async () => {
-        await TestBed.configureTestingModule({
+        await TestBed.configureTestingModule({ 
             imports: [
                 StoreModule.forRoot(CALENDAR_REDUCER_TOKEN),
                 MaterialModule
@@ -43,7 +70,7 @@ describe('calendar-week-view-grid', () => {
 
         }).compileComponents();
         fixture = TestBed.createComponent(CalendarWeekViewGridComponent);
-        fixture.componentInstance.events$ = new BehaviorSubject<CalendarEventInput[]>([]);
+        fixture.componentInstance.events$ = new BehaviorSubject<CalendarEventInput[]>(events);
         fixture.detectChanges();
         component = fixture.componentInstance;
         loader = TestbedHarnessEnvironment.loader(fixture); 

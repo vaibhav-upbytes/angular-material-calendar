@@ -55,10 +55,6 @@ export class MonthViewService {
         }
     }
 
-    getEventDisplay(event: CalendarEventInput): string {
-        return `${this._dateService.getTimeFormat(event.start!)} ${event.title}`;
-    }
-
     setDate(selected: CalendarMonthView, _currentDate: CalendarDate): CalendarDate {
         return this._dateService.setDate(selected.date, selected.month, selected.year, _currentDate);
     }

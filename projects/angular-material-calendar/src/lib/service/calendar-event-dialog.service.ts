@@ -3,6 +3,10 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { CalendarEventDialog } from '../calendar-events-module/calendar-event-dialog-view/calendar-event-dialog.component'
 import { CalendarEventFull } from '../calendar-modal/calendar-event/calendar-event-full'
 
+/**
+ * @author vaibhav
+ * use to open and close calendar event dialog.
+ */
 @Injectable({
     providedIn: 'root'
 })

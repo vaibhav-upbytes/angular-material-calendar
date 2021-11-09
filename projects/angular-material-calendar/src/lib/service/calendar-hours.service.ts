@@ -11,6 +11,10 @@ export function bifilter<C>(f: (c: C) => boolean, xs: any): [C[], C[]] {
         !f(e) ? [T, [...F, e]] : [[...T, e], F], [[], []]);
 }
 
+/**
+ * @author vaibhav
+ * used by day/week view to create grid data.
+ */
 @Injectable({
     providedIn: 'root'
 })
