@@ -76,6 +76,7 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["dist"]
+              
             },
             "scripts": []
           },
@@ -145,6 +146,10 @@
             "styles": [
               "projects/angular-material-calendar-demo/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["dist"]
+              
+            },
             "scripts": []
           }
         },
