@@ -4,6 +4,10 @@ import { CalendarEventInput } from "../calendar-modal/calendar-event/calendar-ev
 import { CalendarEventConflictService } from "./calendar-event-conflict.service";
 import { DateService } from "./date.service";
 
+/**
+ * @author vaibhav
+ * calendar event servies is use to input style on event snippets.
+ */
 @Injectable({
     providedIn: 'root'
 })
@@ -68,12 +72,6 @@ export class CalendarEventService {
         return `${this._dateService.timeDiffinMinutes(event.start!, event.end!)! / 12}em`
     }
 
-    styleMargin(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
-        margin: number): void {
-        (_element.nativeElement.style as any)['margin-left'] =
-            !event.isAllDay ? this.calc(`${this.calculateEventHeight(event)}`) : `${1.5}em`;
-    }
-
     eventsubtitle(event: CalendarEventFull): string {
         return `${this._dateService.getTimeFormat(event.start!)} - ${this._dateService.getTimeFormat(event.end!)}`;
     }
@@ -114,11 +112,6 @@ export class CalendarEventService {
             this._calendarEventConflictService.conflicting(v, DAYS);
         });
         return events;
-    }
-
-    filterNotAllDayEvents(events: CalendarEventFull[]): CalendarEventFull[] {
-        return events.filter((e: CalendarEventFull) =>
-            this._dateService.isSameDate(e.end!, e.start!));
     }
 
     isAllDayEvent(event: CalendarEventFull): CalendarEventFull {

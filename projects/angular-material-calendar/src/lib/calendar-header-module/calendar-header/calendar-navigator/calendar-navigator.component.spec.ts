@@ -44,19 +44,80 @@ describe('calendar-navigator-component', () => {
     it('Previous month should be displayed', async () => {
         const previous = await loader.getHarness(MatButtonHarness.with({ selector: '#calendar-navigator-previous' }));
         await previous.click();
-        expect(fixture.componentInstance._currentDate!.current.month).toEqual(DateTime.now().minus({ months : 1}).month);
+        expect(fixture.componentInstance._currentDate!.current.month).toEqual(DateTime.now().minus({ months: 1 }).month);
     });
 
     it('Next month should be displayed', async () => {
         const next = await loader.getHarness(MatButtonHarness.with({ selector: '#calendar-navigator-next' }));
         await next.click();
-        expect(fixture.componentInstance._currentDate!.current.month).toEqual(DateTime.now().plus({ months : 1}).month);
+        expect(fixture.componentInstance._currentDate!.current.month).toEqual(DateTime.now().plus({ months: 1 }).month);
     });
 
     it('Current month should be displayed', async () => {
         const today = await loader.getHarness(MatButtonHarness.with({ selector: '#calendar-navigator-today' }));
         await today.click();
         expect(fixture.componentInstance._currentDate!.current.month).toEqual(DateTime.now().month);
+    });
+
+    it('Next week should be displayed', async () => {
+        fixture.componentInstance._view = { view: 'week' };
+        fixture.detectChanges();
+        const next = await loader.getHarness(MatButtonHarness.with({ selector: '#calendar-navigator-next' }));
+        await next.click();
+        fixture.detectChanges();
+        let c = fixture.componentInstance._currentDate!.current;
+        expect(DateTime.fromMillis(c.toMillis()).weekNumber).toEqual(DateTime.now().weekNumber + 1);
+    });
+
+    it('Previous week should be displayed', async () => {
+        fixture.componentInstance._view = { view: 'week' };
+        fixture.detectChanges();
+        const next = await loader.getHarness(MatButtonHarness.with({ selector: '#calendar-navigator-previous' }));
+        await next.click();
+        fixture.detectChanges();
+        let c = fixture.componentInstance._currentDate!.current;
+        expect(DateTime.fromMillis(c.toMillis()).weekNumber).toEqual(DateTime.now().weekNumber - 1);
+    });
+
+
+    it('Next day should be displayed', async () => {
+        fixture.componentInstance._view = { view: 'day' };
+        fixture.detectChanges();
+        const next = await loader.getHarness(MatButtonHarness.with({ selector: '#calendar-navigator-next' }));
+        await next.click();
+        fixture.detectChanges();
+        let c = fixture.componentInstance._currentDate!.current;
+        expect(DateTime.fromMillis(c.toMillis()).day).toEqual(DateTime.now().day + 1);
+    });
+
+    it('Previous day should be displayed', async () => {
+        fixture.componentInstance._view = { view: 'day' };
+        fixture.detectChanges();
+        const next = await loader.getHarness(MatButtonHarness.with({ selector: '#calendar-navigator-previous' }));
+        await next.click();
+        fixture.detectChanges();
+        let c = fixture.componentInstance._currentDate!.current;
+        expect(DateTime.fromMillis(c.toMillis()).day).toEqual(DateTime.now().day - 1);
+    });
+
+    it('Next day should be displayed if view is undefined', async () => {
+        fixture.componentInstance._view = undefined;
+        fixture.detectChanges();
+        const next = await loader.getHarness(MatButtonHarness.with({ selector: '#calendar-navigator-next' }));
+        await next.click();
+        fixture.detectChanges();
+        let c = fixture.componentInstance._currentDate!.current;
+        expect(DateTime.fromMillis(c.toMillis()).day).toEqual(DateTime.now().day + 1);
+    });
+
+    it('Previous day should be displayed if view is undefined', async () => {
+        fixture.componentInstance._view = undefined;
+        fixture.detectChanges();
+        const next = await loader.getHarness(MatButtonHarness.with({ selector: '#calendar-navigator-previous' }));
+        await next.click();
+        fixture.detectChanges();
+        let c = fixture.componentInstance._currentDate!.current;
+        expect(DateTime.fromMillis(c.toMillis()).day).toEqual(DateTime.now().day - 1);
     });
 })
 

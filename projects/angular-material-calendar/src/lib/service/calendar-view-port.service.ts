@@ -2,7 +2,11 @@ import { Inject, Injectable, OnDestroy } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
+/**
+ * @author vaibhav
+ * implementaion of angular material Breakpoint.
+ * 
+ */
 const displayNameMap = new Map([
   [Breakpoints.XSmall, 'XSmall'],
   [Breakpoints.Small, 'Small'],

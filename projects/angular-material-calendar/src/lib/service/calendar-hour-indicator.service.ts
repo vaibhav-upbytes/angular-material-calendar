@@ -2,6 +2,11 @@ import { ElementRef, Injectable } from "@angular/core";
 import { DateTime } from "luxon";
 import { DateService } from "./date.service";
 
+/**
+ * @author vaibhav
+ * will move hour indicator in every minute.
+ * 
+ */
 @Injectable({
     providedIn: "root"
 })
