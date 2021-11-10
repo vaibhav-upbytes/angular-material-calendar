@@ -1,6 +1,6 @@
 {
   "name": "@upbytes.in/angular-material-calendar",
-  "version": "0.1.4",
+  "version": "0.1.8",
   "schematics": "./schematics/collection.json",
   "scripts": {
     "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
