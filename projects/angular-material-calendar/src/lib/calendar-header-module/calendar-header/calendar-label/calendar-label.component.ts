@@ -32,7 +32,9 @@ export class CalendarHeaderLabelComponent {
      * @returns month long name
      */
     get month(): string {
-        return this._dateService.getMonthNames(this._currentDate!, 'long');
+        return this.size ? 
+        this._dateService.getMonthNames(this._currentDate!, 'long')
+        : this._dateService.getMonthNames(this._currentDate!, 'short');
     }
 
     /**
