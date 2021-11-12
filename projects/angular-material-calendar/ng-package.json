@@ -6,7 +6,6 @@
     "theme/**/*.theme.scss"
   ],
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "styleIncludePaths": ["src/lib/theme"]
+    "entryFile": "src/public-api.ts"
   }
 }

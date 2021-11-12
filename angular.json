@@ -72,7 +72,27 @@
             ],
             "styles": [
               "projects/angular-material-calendar-demo/src/styles.scss",
-              "projects/angular-material-calendar-demo/src/_theme.scss"
+              "projects/angular-material-calendar-demo/src/_theme.scss",
+              {
+                "input": "projects/angular-material-calendar/theme/prebuilt/purple-green.theme.scss",
+                "bundleName": "purple-green.theme",
+                "inject": false
+              },
+              {
+                "input": "projects/angular-material-calendar/theme/prebuilt/indigo-pink.theme.scss",
+                "bundleName": "indigo-pink.theme",
+                "inject": false
+              },
+              {
+                "input": "projects/angular-material-calendar/theme/prebuilt/deeppurple-amber.theme.scss",
+                "bundleName": "deeppurple-amber.theme",
+                "inject": false
+              },
+              {
+                "input": "projects/angular-material-calendar/theme/prebuilt/pink-bluegrey.theme.scss",
+                "bundleName": "pink-bluegrey.theme",
+                "inject": false
+              }
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["dist"]
