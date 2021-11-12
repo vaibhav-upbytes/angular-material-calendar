@@ -1,0 +1,12 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .calendar-demo-header-icon {
+      font-size: 24px;
+      height: 1em;
+  }
+
+  .calendar-header .mat-toolbar-row, .mat-toolbar-single-row {
+      max-height: 50px;
+  }

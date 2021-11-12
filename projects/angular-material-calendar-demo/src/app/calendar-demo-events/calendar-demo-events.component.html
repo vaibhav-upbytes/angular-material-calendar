@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Add Events</h2>
+
+<mat-dialog-content [formGroup]="form!">
+    <div class="calendar-demo-event-form">
+        <mat-form-field>
+            <input matInput placeholder="Event Title" formControlName="title">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Choose a start date</mat-label>
+            <input matInput type="datetime-local" formControlName="start">
+
+           </mat-form-field>
+        <mat-form-field>
+            <mat-label>Choose a end date</mat-label>
+            <input matInput type="datetime-local" formControlName="end">
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Choose a end date</mat-label>
+            <input matInput type="color" formControlName="color">
+
+        </mat-form-field>
+        <mat-form-field>
+
+            <textarea matInput placeholder="Description" formControlName="description">
+
+        </textarea>
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+</mat-dialog-actions>

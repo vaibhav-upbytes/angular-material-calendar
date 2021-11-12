@@ -1,0 +1,21 @@
+<div class="calendar-week-view-header-border">
+    <mat-grid-list cols="8" rowHeight="5em" gutterSize="0">
+
+        <mat-grid-tile class="calendar-week-view-header"
+            [ngClass]="tile.isToday ? 'calendar-week-view-header-today' : ''"
+            *ngFor="let tile of calendarHours; let i=index; ">
+            <div *ngIf="tile.isFirst" class="calendar-week-view-header-first">
+                {{tile.timeZone}}
+            </div>
+            <div class="calendar-week-view-header-content">
+            <div class="calendar-week-view-header-font">
+                {{tile.date}}
+            </div>
+            <div class="calendar-week-view-header-day">
+                {{tile.day}}
+            </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</div>

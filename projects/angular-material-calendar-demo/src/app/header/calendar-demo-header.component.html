@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" class="calendar-header">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon class="material-icons-round">event</mat-icon>
+    </button>
+
+    <span>Upbytes Calendar</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="theme_menu"
+        aria-label="Example icon-button with heart icon">
+        <mat-icon class="material-icons-round"> format_color_fill</mat-icon>
+    </button>
+    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+    </button> -->
+    <a mat-icon-button target="_blank" href="https://github.com/vaibhav-upbytes/angular-material-calendar">
+        <fa-icon class="calendar-demo-header-icon" [icon]="['fab', 'github']"></fa-icon>
+    </a>
+</mat-toolbar>
+
+<mat-menu #theme_menu="matMenu">
+    <button mat-menu-item *ngFor="let option of themes" (click)="changeTheme(option)" [disabled]="option.isDisabled">
+        <mat-icon *ngIf="!option.isChecked" class="material-icons-round">radio_button_unchecked</mat-icon>
+        <mat-icon *ngIf="option.isChecked" class="material-icons-round">radio_button_checked</mat-icon>
+        <span>{{option.label}}</span>
+    </button>
+
+</mat-menu>

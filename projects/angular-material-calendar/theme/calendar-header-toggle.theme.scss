@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+
+@mixin calendar-header-toggle-theme($theme) {
+  
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .calendar-header-toggle-selected {
+      background-color: mat-color($accent);
+  }
+
+}

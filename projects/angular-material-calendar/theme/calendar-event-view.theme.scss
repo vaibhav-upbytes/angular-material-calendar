@@ -1,0 +1,30 @@
+@import "~@angular/material/theming";
+
+@mixin calendar-event-view-theme($theme) {
+   $primary: map-get($theme, primary);
+   $accent: map-get($theme, accent);
+   $font-family: mat-font-family(map-get($theme, typography));
+
+   .calendar-event-view {
+      font-family: $font-family;
+      height: 0.5em;
+   }
+
+   .calendar-event-chip {
+      background-color: mat-color($primary, 100);
+      color: #fff;
+      border-radius: 0px;
+   }
+
+   .calendar-event-view-content {
+      border: 1px solid #fff;
+      color: #00355e;
+      display: flex;
+      flex-flow: column;
+      max-height: 1.3em;
+      max-width: 11em;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding: 2px !important;
+   }
+}

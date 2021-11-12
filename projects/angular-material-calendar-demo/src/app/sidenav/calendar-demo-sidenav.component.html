@@ -1,0 +1,17 @@
+<mat-drawer-container class="calendar-demo-sidenav-container" autosize>
+    <mat-drawer #sidenav class="calendar-demo-sidenav-content" mode="side">
+        <mat-nav-list>
+            <mat-list-item>
+                <button mat-button color="primary" (click)="openDialog()">Add Events</button>
+            </mat-list-item>
+        </mat-nav-list>
+
+    </mat-drawer>
+
+    <button mat-icon-button class="example-icon" (click)="sidenav.toggle()"
+        aria-label="Example icon-button with menu icon">
+        <mat-icon class="material-icons-round">menu</mat-icon>
+    </button>
+
+
+</mat-drawer-container>

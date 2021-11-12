@@ -1,0 +1,48 @@
+@import "~@angular/material/theming";
+
+@mixin calendar-month-view-grid-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $font-family: mat-font-family(map-get($theme, typography));
+
+  .calendar-month-view-grid {
+    border: 1px solid mat-color($primary, 100);
+    color: mat-color($primary);
+    font-family: $font-family;
+  }
+
+  .calendar-month-view-grid-date-today {
+    border-top: 3px solid mat-color($accent);
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .calendar-month-view-grid-date-today-text {
+    color: mat-color($accent);
+  }
+
+  .calendar-month-view-grid-date-today-border {
+    border-top: 1px solid mat-color($accent);
+  }
+
+  .calendar-month-view-grid-date {
+    position: absolute;
+    left: 0.5em;
+    bottom: 4.5em;
+    font-family: $font-family;
+  }
+
+  .calendar-month-view-grid-date:hover {
+    color: mat-color($warn);
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .calendar-month-view-grid-footer {
+    position: absolute;
+    right: 0.5em;
+    bottom: 0.5em;
+  }
+}

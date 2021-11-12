@@ -67,12 +67,37 @@
             "tsConfig": "projects/angular-material-calendar-demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/angular-material-calendar-demo/src/favicon.ico",
+              "projects/angular-material-calendar-demo/src/main.ico",
               "projects/angular-material-calendar-demo/src/assets"
             ],
             "styles": [
-              "projects/angular-material-calendar-demo/src/styles.scss"
+              "projects/angular-material-calendar-demo/src/styles.scss",
+              "projects/angular-material-calendar-demo/src/_theme.scss",
+              {
+                "input": "projects/angular-material-calendar/theme/prebuilt/purple-green.theme.scss",
+                "bundleName": "purple-green.theme",
+                "inject": false
+              },
+              {
+                "input": "projects/angular-material-calendar/theme/prebuilt/indigo-pink.theme.scss",
+                "bundleName": "indigo-pink.theme",
+                "inject": false
+              },
+              {
+                "input": "projects/angular-material-calendar/theme/prebuilt/deeppurple-amber.theme.scss",
+                "bundleName": "deeppurple-amber.theme",
+                "inject": false
+              },
+              {
+                "input": "projects/angular-material-calendar/theme/prebuilt/pink-bluegrey.theme.scss",
+                "bundleName": "pink-bluegrey.theme",
+                "inject": false
+              }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["dist"]
+              
+            },
             "scripts": []
           },
           "configurations": {
@@ -80,8 +105,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -135,12 +160,16 @@
             "karmaConfig": "projects/angular-material-calendar-demo/karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/angular-material-calendar-demo/src/favicon.ico",
+              "projects/angular-material-calendar-demo/src/main.ico",
               "projects/angular-material-calendar-demo/src/assets"
             ],
             "styles": [
               "projects/angular-material-calendar-demo/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["dist"]
+              
+            },
             "scripts": []
           }
         },

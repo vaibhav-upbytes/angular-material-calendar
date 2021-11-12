@@ -1,1 +1,10 @@
-<lib-angular-material-calendar></lib-angular-material-calendar>
+<div class="mat-body calendar-demo">
+    <calendar-demo-header class="calendar-header-demo"></calendar-demo-header>
+    <div class="calendar-demo-main">
+        <calendar-demo-sidenav class="calendar-demo-side" [data]="data"></calendar-demo-sidenav>
+        <upbytes-angular-material-calendar [dataSource]="dataSource" class="calendar-demo-calendar">
+        </upbytes-angular-material-calendar>
+       
+        <div>This panel should be used for ads</div>
+    </div>
+</div>

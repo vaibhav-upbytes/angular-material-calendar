@@ -1,0 +1,24 @@
+.calendar-demo {
+    display: flex;
+    flex-flow: column;
+    justify-items: center;
+}
+
+.calendar-header-demo {
+    margin-bottom: 0.2em;
+}
+
+.calendar-demo-main {
+    display: flex;
+    flex: 1 1 0px;
+    flex-flow: row;
+    justify-items: center;
+}
+
+.calendar-demo-calendar {
+    flex: 1;
+}
+
+// .calendar-demo-side {
+//     flex: 0.5;
+// }

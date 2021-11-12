@@ -1,0 +1,9 @@
+<mat-grid-list cols="7" 
+               rowHeight="1.5em" 
+               gutterSize="0"
+>
+    <mat-grid-tile class="calendar-month-view-grid-header"
+        *ngFor="let name of dayOfWeekNames">
+             {{name}}
+    </mat-grid-tile>
+</mat-grid-list>

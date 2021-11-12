@@ -1,0 +1,16 @@
+@import "~@angular/material/theming";
+
+@mixin calendar-hour-indicator-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+
+    .calendar-hour-indicator {
+        position: absolute;
+        top: 100em;
+        border-top-color: mat-color($warn) !important;
+        border: 3px;
+        width: 100%;
+        border-top-style: solid;
+    }
+}

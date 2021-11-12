@@ -1,0 +1,84 @@
+@use "~@angular/material" as mat;
+@import "angular-material-calendar/theme/angular-material-calendar.theme.scss";
+@import "../theme/angular-material-calendar-demo.theme.scss";
+@include mat.core();
+
+mat.$theme-ignore-duplication-warnings: true;
+
+$angular-material-calendar-demo-primary: mat.define-palette(mat.$indigo-palette);
+$angular-material-calendar-demo-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$angular-material-calendar-demo-warn: mat.define-palette(mat.$red-palette);
+
+$angular-material-calendar-demo-typography: mat.define-typography-config(
+  $font-family: 'Roboto'
+);
+
+$angular-material-calendar-dark-typography: mat.define-typography-config(
+  $font-family: 'Noto Sans'
+);
+
+$angular-material-calendar-dark-fruktur-typography: mat.define-typography-config(
+  $font-family: 'Fruktur'
+);
+
+
+$angular-material-calendar-light-poppins-typography: mat.define-typography-config(
+  $font-family: 'Poppins'
+);
+
+$angular-material-calendar-demo-dark-primary: mat.define-palette(mat.$pink-palette);
+$angular-material-calendar-demo-dark-accent: mat.define-palette(mat.$blue-gray-palette);
+
+$angular-material-calendar-demo-deep-primary: mat.define-palette(mat.$green-palette);
+$angular-material-calendar-demo-amber-accent: mat.define-palette(mat.$deep-orange-palette);
+
+$angular-material-calendar-demo-purple-primary: mat.define-palette(mat.$blue-palette);
+$angular-material-calendar-demo-green-accent: mat.define-palette(mat.$yellow-palette);
+
+$angular-material-calendar-demo-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $angular-material-calendar-demo-dark-primary,
+      accent: $angular-material-calendar-demo-dark-accent,
+      warn: $angular-material-calendar-demo-warn,
+    ),
+    typography: $angular-material-calendar-dark-typography
+  )
+);
+
+$angular-material-calendar-purple-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $angular-material-calendar-demo-purple-primary,
+      accent: $angular-material-calendar-demo-green-accent,
+      warn: $angular-material-calendar-demo-warn,
+    ),
+    typography: $angular-material-calendar-dark-fruktur-typography
+  )
+);
+
+$angular-material-calendar-demo-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $angular-material-calendar-demo-primary,
+      accent: $angular-material-calendar-demo-accent,
+      warn: $angular-material-calendar-demo-warn,
+    ),
+    typography: $angular-material-calendar-demo-typography
+  )
+);
+
+$angular-material-calendar-purple-light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $angular-material-calendar-demo-deep-primary,
+      accent: $angular-material-calendar-demo-amber-accent,
+      warn: $angular-material-calendar-demo-warn,
+    ),
+    typography: $angular-material-calendar-light-poppins-typography
+  )
+);
+
+@include mat.all-component-themes($angular-material-calendar-purple-dark-theme);
+@include angular-material-calendar($angular-material-calendar-purple-dark-theme);
+@include angular-material-calendar-demo($angular-material-calendar-purple-dark-theme);
