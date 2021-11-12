@@ -1,5 +1,4 @@
-@import '~@angular/material/theming';
-@import '~@angular/material/core/theming/theming';
+@import '@angular/material/theming';
 
 @mixin calendar-header-label-theme($theme) {
   
