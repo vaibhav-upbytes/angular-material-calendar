@@ -1,11 +1,12 @@
 {
   "name": "@upbytes.in/angular-material-calendar",
-  "version": "0.1.8",
+  "version": "0.2.2",
   "schematics": "./schematics/collection.json",
   "scripts": {
     "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
     "copy:collection": "cp schematics/collection.json ../../dist/angular-material-calendar/schematics/collection.json",
-    "postbuild": "npm run copy:collection"
+    "copy:styles": "cp ../../dist/angular-material-calendar-demo/*.theme.css ../../dist/angular-material-calendar/theme/prebuilt/",
+    "postbuild": "npm run copy:collection & npm run copy:styles"  
   },
   "peerDependencies": {
     "@angular/common": "^12.2.0",
