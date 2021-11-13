@@ -1,8 +1,8 @@
 import { Component, Renderer2 } from '@angular/core';
-import { DomSanitizer } from "@angular/platform-browser";
+import { DomSanitizer } from '@angular/platform-browser';
 import { THEMES } from '../data/calendar-theme-data';
 import { CalendarTheme } from '../model/calendar-theme';
-import { MatIconRegistry } from "@angular/material/icon";
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
     selector: 'calendar-demo-header',
@@ -18,8 +18,8 @@ export class CalendarDemoHeader {
         private domSanitizer: DomSanitizer) {
         this.matIconRegistry.addSvgIcon(
             `upbytes-calendar-icon`,
-            this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/upbytes-calendar-icon.svg")
-          );    
+            this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/upbytes-calendar-icon.svg')
+          );
     }
 
     changeTheme(option: CalendarTheme) {
