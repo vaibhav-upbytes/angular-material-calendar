@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "angular-material-calendar-ng-add",
+    "title": "Angular Material Calendar ng-add schematic",
+    "type": "object",
+    "properties": {
+      "project": {
+        "type": "string",
+        "description": "Name of the project.",
+        "$default": {
+          "$source": "projectName"
+        }
+      },
+      "theme": {
+        "description": "The theme to apply",
+        "type": "string",
+        "default": "indigo-pink.theme",
+        "x-prompt": {
+          "message": "Choose a prebuilt theme name, or \"custom\" for a custom theme:",
+          "type": "list",
+          "items": [
+            { "value": "indigo-pink.theme",       "label": "Indigo/Pink        [ Preview: https://material.angular.io?theme=indigo-pink ]" },
+            { "value": "deeppurple-amber.theme",  "label": "Deep Purple/Amber  [ Preview: https://material.angular.io?theme=deeppurple-amber ]" },
+            { "value": "pink-bluegrey.theme",     "label": "Pink/Blue Grey     [ Preview: https://material.angular.io?theme=pink-bluegrey ]" },
+            { "value": "purple-green.theme",      "label": "Purple/Green       [ Preview: https://material.angular.io?theme=purple-green ]" },
+            { "value": "custom",            "label": "Custom" }
+          ]
+        }
+      }
+    },
+    "required": []
+  }
+  

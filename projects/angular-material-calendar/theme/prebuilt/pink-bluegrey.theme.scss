@@ -21,5 +21,4 @@ $angular-material-calendar-demo-theme: mat.define-dark-theme(
   )
 );
 
-@include mat.all-component-themes($angular-material-calendar-demo-theme);
 @include angular-material-calendar($angular-material-calendar-demo-theme);
