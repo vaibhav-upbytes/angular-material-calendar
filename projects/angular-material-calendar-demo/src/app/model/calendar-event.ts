@@ -3,5 +3,5 @@ export interface Event  {
     end?: any,
     title?: any,
     description?: any,
-    color?: any 
+    color?: any
   }

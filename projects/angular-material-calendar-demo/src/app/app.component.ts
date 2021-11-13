@@ -26,10 +26,10 @@ export class AppComponent implements OnInit {
   this.calendarDemoDataService.getEventsData().pipe(
       map((d: any) => {
         this.display = d.data;
-        this.dataSource.setData(this.display)
+        this.dataSource.setData(this.display);
         return this.display;
       })
-    ).subscribe(s => this.events?.next(this.display));
+    ).subscribe(s => this.events?.next(s));
 
     // this.data.subscribe(d => {
 
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
     updated.subscribe(s => {
       this.display = s! && s.start! ?   [...this.display , s] : this.display;
       //this.events?.next(this.display)
-      this.dataSource.setData(this.display)
+      this.dataSource.setData(this.display);
     });
   }
 

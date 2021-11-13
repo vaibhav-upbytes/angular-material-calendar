@@ -11,7 +11,7 @@ import { Event } from '../model/calendar-event';
 })
 export class CalendarDemoSideNav {
 
-    @Input() data?: Subject<Event> 
+    @Input() data?: Subject<Event>;
 
     constructor(private dialog: MatDialog) { }
     openDialog() {
@@ -31,12 +31,12 @@ export class CalendarDemoSideNav {
             title: '',
             color: '',
             description: ''
-        }
+        };
 
         const dialogRef = this.dialog.open(CalendarDemoEvents, dialogConfig);
 
         dialogRef.afterClosed().subscribe(
             d=> this.data?.next(d)
-        );  
+        );
     }
 }
