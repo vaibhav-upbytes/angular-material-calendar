@@ -1,5 +1,6 @@
 @use "@angular/material" as mat;
 @import "angular-material-calendar/theme/angular-material-calendar.theme.scss";
+@import "angular-material-calendar/theme/upbytes-palette/palette";
 @import "../theme/angular-material-calendar-demo.theme.scss";
 @include mat.core();
 
@@ -29,11 +30,11 @@ $angular-material-calendar-light-poppins-typography: mat.define-typography-confi
 $angular-material-calendar-demo-dark-primary: mat.define-palette(mat.$pink-palette);
 $angular-material-calendar-demo-dark-accent: mat.define-palette(mat.$blue-gray-palette);
 
-$angular-material-calendar-demo-deep-primary: mat.define-palette(mat.$green-palette);
-$angular-material-calendar-demo-amber-accent: mat.define-palette(mat.$deep-orange-palette);
+$angular-material-calendar-demo-deep-primary: mat.define-palette($peacock-palette);
+$angular-material-calendar-demo-amber-accent: mat.define-palette($lion-palette);
 
-$angular-material-calendar-demo-purple-primary: mat.define-palette(mat.$blue-palette);
-$angular-material-calendar-demo-green-accent: mat.define-palette(mat.$yellow-palette);
+$angular-material-calendar-demo-purple-primary: mat.define-palette($peacock-palette);
+$angular-material-calendar-demo-green-accent: mat.define-palette($lion-palette);
 
 $angular-material-calendar-demo-dark-theme: mat.define-dark-theme(
   (

@@ -67,7 +67,7 @@
             "tsConfig": "projects/angular-material-calendar-demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/angular-material-calendar-demo/src/main.ico",
+              "projects/angular-material-calendar-demo/src/upbytes-calendar-logo.ico",
               "projects/angular-material-calendar-demo/src/assets"
             ],
             "styles": [
