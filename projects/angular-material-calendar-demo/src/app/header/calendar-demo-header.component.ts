@@ -1,6 +1,8 @@
 import { Component, Renderer2 } from '@angular/core';
+import { DomSanitizer } from "@angular/platform-browser";
 import { THEMES } from '../data/calendar-theme-data';
 import { CalendarTheme } from '../model/calendar-theme';
+import { MatIconRegistry } from "@angular/material/icon";
 
 @Component({
     selector: 'calendar-demo-header',
@@ -10,7 +12,15 @@ import { CalendarTheme } from '../model/calendar-theme';
 export class CalendarDemoHeader {
     themes: CalendarTheme[] = THEMES;
 
-    constructor(private _renderer: Renderer2) {}
+    constructor(
+        private _renderer: Renderer2,
+        private matIconRegistry: MatIconRegistry,
+        private domSanitizer: DomSanitizer) {
+        this.matIconRegistry.addSvgIcon(
+            `upbytes-calendar-icon`,
+            this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/upbytes-calendar-icon.svg")
+          );    
+    }
 
     changeTheme(option: CalendarTheme) {
         this.clearTheme();
