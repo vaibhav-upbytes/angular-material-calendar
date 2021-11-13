@@ -4,6 +4,12 @@
       "ng-add": {
         "description": "Add Angular Material Calendar library to the project.",
         "factory": "./ng-add/index#ngAdd"
+      },
+      "ng-add-setup-calendar": {
+        "description": "Sets up the angular material calendar after the ng-add dependencies have been installed.",
+        "private": true,
+        "factory": "./ng-add/setup-calendar",
+        "schema": "./ng-add/schema.json"
       }
     }
   }
