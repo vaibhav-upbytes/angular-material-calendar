@@ -1,7 +1,8 @@
 # Angular Material Calendar
 
 This calendar library is devloped on Angular13+ and AngularMaterial13+ version.
-This support material design, prebuilt and custom theme and typography.     
+This support material design, prebuilt and custom theme and typography.
+[Angular Material Calendar Demo](http://ec2-3-109-181-49.ap-south-1.compute.amazonaws.com)
 
 ## Install
 
