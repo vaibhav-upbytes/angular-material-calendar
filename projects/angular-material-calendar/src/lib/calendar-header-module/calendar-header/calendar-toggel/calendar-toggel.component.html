@@ -1,6 +1,6 @@
 <ng-template [ngIf]="size">
         <button mat-raised-button id="calendar-toggel-day" [ngClass]="_view!.view === 'day' ? 'calendar-header-toggle-selected' : 'mat-primary'"
-                aria-label="Select Month View" (click)="day()">
+                aria-label="Select Day View" (click)="day()">
                 <mat-icon class="calendar-toggel-button material-icons-round">calendar_view_day</mat-icon>
                 Day
         </button>
@@ -18,7 +18,7 @@
 </ng-template>
 <ng-template [ngIf]="!size">
         <button mat-icon-button [ngClass]="_view!.view === 'day' ? 'calendar-header-toggle-selected' : 'mat-primary'"
-                aria-label="Select Month View" (click)="day()">
+                aria-label="Select Day View" (click)="day()">
                 <mat-icon class="calendar-toggel-button material-icons-round">calendar_view_day</mat-icon>
                 
         </button>

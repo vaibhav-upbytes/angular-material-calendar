@@ -3,12 +3,11 @@
         <mat-grid-tile class="calendar-month-view-grid"
             [ngClass]="tile.key.isToday ? 'calendar-month-view-grid-date-today-border' : ''">
             <div *ngIf="tile.key.isToday" class="calendar-month-view-grid-date-today"></div>
-            <div [ngClass]="tile.key.isToday ? 'calendar-month-view-grid-date-today-text' : ''"
-            class="calendar-month-view-grid-date"
-            (click)="switchView(tile.key)" (keydown)="switchView(tile.key)">{{tile.key.date}}</div>
-            <upbytes-angular-material-calendar-event-view [events]="tile.value">
+            <div tabindex="0" [ngClass]="tile.key.isToday ? 'calendar-month-view-grid-date-today-text' : ''"
+                class="calendar-month-view-grid-date" (click)="switchView(tile.key)">{{tile.key.date}}</div>
+            <upbytes-angular-material-calendar-event-view *ngIf="tile.value.length > 0" tabindex="0" [events]="tile.value">
             </upbytes-angular-material-calendar-event-view>
-            <div *ngIf="isCountVisible(tile.value)" class="calendar-month-view-grid-footer">
+            <div tabindex="0" *ngIf="isCountVisible(tile.value)" class="calendar-month-view-grid-footer">
                 +{{tile.value.length}}
             </div>
         </mat-grid-tile>
