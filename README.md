@@ -6,25 +6,34 @@ This support material design, prebuilt and custom theme and typography.
 ## Install
 
 ### angular-cli
-Run `ng add  @upbytes.in/angular-material-calendar` to add this library in your project.
+Run below to add this library in your project.
+```
+ng add  @upbytes.in/angular-material-calendar
+```
 
 ### npm
-Run `npm install  @upbytes.in/angular-material-calendar` to add this library in your project.
+Run below to add this library in your project.
+```
+npm install  @upbytes.in/angular-material-calendar
+```
 
 ## Add in your module.ts
+```
+import { AngularMaterialCalendarModule } from 'angular-material-calendar';
 
-`import { AngularMaterialCalendarModule } from 'angular-material-calendar';`
-
-```imports: [
+imports: [
     ....
     MaterialModule,
     AngularMaterialCalendarModule
-]```
+]
+```
 
 ## Add in your component html
 
-```<upbytes-angular-material-calendar [dataSource]="dataSource">
-</upbytes-angular-material-calendar>```
+```
+<upbytes-angular-material-calendar [dataSource]="dataSource">
+</upbytes-angular-material-calendar>
+```
 
 A datasource could be an array, obserable or material Datasource. You can remove `[dataSource]` if you dont have any event to display.
 
@@ -32,12 +41,14 @@ A datasource could be an array, obserable or material Datasource. You can remove
 ## Event
 
 an event object should contain below fields.
-```export interface Event  {
+```
+export interface Event  {
     start: number | string | Moment | DateTime | Date,
     end: number | string | Moment | DateTime | Date,
     color: any
     title?: any,
     description?: any
-  }```
+  }
+  ```
 
 
