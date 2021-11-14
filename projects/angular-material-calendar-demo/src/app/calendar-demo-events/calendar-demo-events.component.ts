@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
 
 @Component({
@@ -15,19 +15,15 @@ export class CalendarDemoEvents implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private dialogRef: MatDialogRef<CalendarDemoEvents>,
-        @Inject(MAT_DIALOG_DATA) data: any
+        private dialogRef: MatDialogRef<CalendarDemoEvents>
     ) { }
     ngOnInit(): void {
-        const today = new Date();
-        const month = today.getMonth();
-        const year = today.getFullYear();
         this.form = this.fb.group({
-            start: new FormControl(moment().format("yyyy-MM-DDTHH:mm")),
-            end: new FormControl(moment().format("yyyy-MM-DDTHH:mm")),
-            title: new FormControl(""),
-            description: new FormControl(""),
-            color: new FormControl("#5e0d0d")
+            start: new FormControl(moment().format('yyyy-MM-DDTHH:mm')),
+            end: new FormControl(moment().format('yyyy-MM-DDTHH:mm')),
+            title: new FormControl(''),
+            description: new FormControl(''),
+            color: new FormControl('#5e0d0d')
         });
     }
 

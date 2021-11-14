@@ -1,12 +1,13 @@
-import { Injectable } from "@angular/core";
-import { CalendarDate } from "../calendar-modal/calendar-date/calendar-date";
-import { CalendarEventFull } from "../calendar-modal/calendar-event/calendar-event-full";
-import { CalendarEventInput } from "../calendar-modal/calendar-event/calendar-event-input";
-import { CalendarHours } from "../calendar-modal/calendar-hours/calendar-hours";
-import { CalendarEventService } from "./calendar-event.service";
-import { DateService } from "./date.service";
+import { Injectable } from '@angular/core';
+import { CalendarDate } from '../calendar-modal/calendar-date/calendar-date';
+import { CalendarEventFull } from '../calendar-modal/calendar-event/calendar-event-full';
+import { CalendarEventInput } from '../calendar-modal/calendar-event/calendar-event-input';
+import { CalendarHours } from '../calendar-modal/calendar-hours/calendar-hours';
+import { CalendarEventService } from './calendar-event.service';
+import { DateService } from './date.service';
 
 export function bifilter<C>(f: (c: C) => boolean, xs: any): [C[], C[]] {
+    /* eslint-disable @typescript-eslint/naming-convention */
     return xs.reduce(([T, F]: [C[], C[]], e: C) =>
         !f(e) ? [T, [...F, e]] : [[...T, e], F], [[], []]);
 }
@@ -26,15 +27,13 @@ export class CalendarHoursService {
     ) { }
 
     getCalendarHours(): CalendarHours[] {
-        let hours = this._dateService.getHoursFormat().map((d) => {
-            return {
+        const hours = this._dateService.getHoursFormat().map((d) => ({
                 hours: d,
                 isHourNow: this._dateService.isHoursNow(d),
                 date: 0,
                 day: '',
                 isAllDay: false
-            }
-        });
+            }));
         hours.unshift(this.addAllDayEventRow());
         return hours;
     }
@@ -49,7 +48,7 @@ export class CalendarHoursService {
         return this.getCalendarHours().map((c) =>
             dates.map((h) => {
                 const ch = this.createCalendarHours(h, c);
-                return ch
+                return ch;
             }));
     }
 
@@ -58,24 +57,22 @@ export class CalendarHoursService {
         return this.getCalendarHours().map((c) =>
             dates.map((h) => {
                 const ch = this.createCalendarHours(h, c);
-                return ch
+                return ch;
             }));
     }
 
 
     pushFirstRowForGrid(dates: CalendarDate[]): CalendarHours[] {
-        const hours: CalendarHours[] = dates.map((d, i) => {
-            return {
+        const hours: CalendarHours[] = dates.map((d) => ({
                 day: this._dateService.getDayName(d, 'short'),
                 date: this._dateService.getDate(d),
                 isToday: this._dateService.isToday(d),
                 month: this._dateService.getMonth(d),
                 year: this._dateService.getYear(d),
                 cDate: d
-            };
-        });
+            }));
         hours.unshift(this.createFirstRowDate(dates[0]));
-        return hours
+        return hours;
     }
 
     createFirstRowDate(date: CalendarDate): CalendarHours {
@@ -101,7 +98,7 @@ export class CalendarHoursService {
     filterEventsByDateAndStartTime(
         events: CalendarEventInput[], calendarHours: CalendarHours[][]
     ): CalendarEventFull[] {
-        let filteredEvents: CalendarEventFull[] = [];
+        const filteredEvents: CalendarEventFull[] = [];
         calendarHours.forEach((hours: CalendarHours[], i) => {
             hours.forEach((h: CalendarHours, j) => {
                 events.forEach((e: CalendarEventInput) => {
@@ -116,8 +113,8 @@ export class CalendarHoursService {
         return filteredEvents;
     }
 
-    filterMultipleDayEvents
-        (events: CalendarEventFull[]): [CalendarEventFull[], CalendarEventFull[]] {
+    filterMultipleDayEvents(events: CalendarEventFull[]):
+    [CalendarEventFull[], CalendarEventFull[]] {
         return bifilter(((e: CalendarEventFull) =>
             !this._dateService.isSameDate(e.end!, e.start!)), events);
     }
@@ -125,7 +122,7 @@ export class CalendarHoursService {
     findLeftForMultiDaysEventWeek(
         events: CalendarEventFull[],
         calendarDate: CalendarDate): CalendarEventFull[] {
-        let filteredEvents: CalendarEventFull[] = [];
+        const filteredEvents: CalendarEventFull[] = [];
         this.getCalendarWeekRange(calendarDate).forEach((hours: CalendarHours, i) => {
             events.forEach((e: CalendarEventInput) => {
                 if (hours.cDate! && this._dateService.isSameDate(hours.cDate!, e.start!)) {
@@ -140,10 +137,10 @@ export class CalendarHoursService {
     findLeftForMultiDaysEventDay(
         events: CalendarEventFull[],
         calendarDate: CalendarDate): CalendarEventFull[] {
-        let filteredEvents: CalendarEventFull[] = [];
+        const filteredEvents: CalendarEventFull[] = [];
         this.pushFirstRowForGrid(Array.of(calendarDate)).forEach((hours: CalendarHours, i) => {
             events.forEach((e: CalendarEventInput) => {
-                if (hours.cDate! && this._dateService.isSameDate(hours.cDate!, e.start!) 
+                if (hours.cDate! && this._dateService.isSameDate(hours.cDate!, e.start!)
                 || hours.cDate! && this._dateService.isBetween(hours.cDate!, e.start!, e.end!)) {
                     filteredEvents.push(
                         this._calendarEventService.createCalendarEventFull(e, 0, i));
@@ -155,7 +152,7 @@ export class CalendarHoursService {
 
     addAllDayEventRow() {
         return {
-            hours: "0",
+            hours: '0',
             isHourNow: false,
             date: 0,
             day: '',

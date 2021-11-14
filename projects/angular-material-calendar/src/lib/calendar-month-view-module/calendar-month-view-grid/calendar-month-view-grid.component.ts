@@ -10,9 +10,9 @@ import { day } from '../../actions/calendar-view.action';
 
 /**
  * @author vaibhav
- * 
- * CalendarMonthViewGridComponent: this component will display grid view of month dates 
- * Events: events will be merge with calendar dates and display by 
+ *
+ * CalendarMonthViewGridComponent: this component will display grid view of month dates
+ * Events: events will be merge with calendar dates and display by
  * using calendar view dates template.
  */
 
@@ -52,7 +52,7 @@ export class CalendarMonthViewGridComponent implements OnInit {
   }
 
   /**
-   * This function will return true if array have more than 2 events. 
+   * This function will return true if array have more than 2 events.
    * used to display event count
    * @param events calendar event input array as a parameter
    * @returns return boolean value is array has more than 2 events.
@@ -62,7 +62,7 @@ export class CalendarMonthViewGridComponent implements OnInit {
   }
 
   /**
-   * This function is used with user click on date value. 
+   * This function is used with user click on date value.
    * it will switch month view to day view.
    * @param e will take current calendar state as a input.
    */

@@ -1,8 +1,12 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { CalendarEventFull } from '../../calendar-modal/calendar-event/calendar-event-full';
 
-import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
-import { MonthViewService } from '../../calendar-month-view-module/service/calendar-month-view.service';
+import {
+  CalendarEventInput
+} from '../../calendar-modal/calendar-event/calendar-event-input';
+import {
+  MonthViewService
+} from '../../calendar-month-view-module/service/calendar-month-view.service';
 import { CalendarEventDialogeService } from '../../service/calendar-event-dialog.service';
 import { CalendarEventService } from '../../service/calendar-event.service';
 
@@ -19,7 +23,7 @@ import { CalendarEventService } from '../../service/calendar-event.service';
   ]
 })
 export class CalendarEventViewComponent {
-  @ViewChild('eventView', { read: ElementRef }) public eventViewRef?: ElementRef
+  @ViewChild('eventView', { read: ElementRef }) public eventViewRef?: ElementRef;
   @Input() events?: CalendarEventInput[];
   time?: string;
 
@@ -31,9 +35,9 @@ export class CalendarEventViewComponent {
 
   /**
    * use to display title on mat-card subtitle
-   * @param e CalendarEventFull  
+   * @param e CalendarEventFull
    * @returns combine start datetime and end datetime
-   */  
+   */
   getTitle(e: CalendarEventFull): string {
     return this.time = this.calendarEventService.eventsubtitle(e);
   }

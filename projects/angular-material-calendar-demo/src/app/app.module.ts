@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FontAwesomeModule, FaIconLibrary, FaConfig} from '@fortawesome/angular-fontawesome';
 import { faStackOverflow, faGithub, faMedium } from '@fortawesome/free-brands-svg-icons';
 import { AppRoutingModule } from './app-routing.module';
@@ -35,7 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class AppModule {
   constructor(private library: FaIconLibrary, faconfig: FaConfig) {
     library.addIcons( faStackOverflow, faGithub, faMedium);
-    faconfig.defaultPrefix = 'fab'
+    faconfig.defaultPrefix = 'fab';
 
   }
 }

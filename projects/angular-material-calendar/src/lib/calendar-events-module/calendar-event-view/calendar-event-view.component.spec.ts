@@ -14,11 +14,11 @@ let component: CalendarEventViewComponent;
 let fixture: ComponentFixture<CalendarEventViewComponent>;
 
 export const events =     [{
-    "start": 1634621592000,
-    "end": 1634625192000,
-    "title": "string  string string string string string" ,
-    "color": "#e2e6c7"
-}]
+    'start': 1634621592000,
+    'end': 1634625192000,
+    'title': 'string  string string string string string' ,
+    'color': '#e2e6c7'
+}];
 
 describe('calendar-event-view', () => {
     beforeEach(async () => {
@@ -59,5 +59,5 @@ describe('calendar-event-view', () => {
         expect(cards.length).toBe(1);
         expect(await cards[0].getSubtitleText()).toBe(component.getTitle(component.events![0]));
     });
-})
+});
 

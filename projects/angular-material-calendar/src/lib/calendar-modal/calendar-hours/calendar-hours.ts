@@ -1,5 +1,4 @@
-import { CalendarDate } from "../calendar-date/calendar-date";
-import { CalendarEventInput } from "../calendar-event/calendar-event-input";
+import { CalendarDate } from '../calendar-date/calendar-date';
 
 export interface CalendarHours {
     hours?: string,

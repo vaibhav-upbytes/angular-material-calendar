@@ -1,4 +1,4 @@
-import { CalendarTheme } from "../model/calendar-theme";
+import { CalendarTheme } from '../model/calendar-theme';
 
 export const THEMES: CalendarTheme[] = [
     {
@@ -31,5 +31,5 @@ export const THEMES: CalendarTheme[] = [
         isDisabled: false,
         isChecked: true
     }
-    
-]
+
+];

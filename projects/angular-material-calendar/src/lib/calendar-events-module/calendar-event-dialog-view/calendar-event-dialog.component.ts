@@ -1,7 +1,7 @@
-import { Component, ElementRef, Inject, OnInit } from "@angular/core";
-import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { CalendarEventFull } from "../../calendar-modal/calendar-event/calendar-event-full";
-import { CalendarEventService } from "../../service/calendar-event.service";
+import { Component, ElementRef, Inject, OnInit } from '@angular/core';
+import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CalendarEventFull } from '../../calendar-modal/calendar-event/calendar-event-full';
+import { CalendarEventService } from '../../service/calendar-event.service';
 
 /**
  * @author vaibhav
@@ -26,7 +26,7 @@ export class CalendarEventDialog implements OnInit {
     }
 
     ngOnInit(): void {
-        const matDialogConfig = this.setDialogPosition(); 
+        const matDialogConfig = this.setDialogPosition();
         this.dialogRef.updatePosition(matDialogConfig.position);
         this.setDialogBackground();
     }
@@ -36,11 +36,11 @@ export class CalendarEventDialog implements OnInit {
      * @returns MatDialogConfig
      */
     setDialogPosition(): MatDialogConfig {
-        const matDialogConfig = new MatDialogConfig()
+        const matDialogConfig = new MatDialogConfig();
         const rect: DOMRect = this.positionRelativeToElement!.nativeElement.getBoundingClientRect();
         matDialogConfig.position = {
             top: `${10}em`
-        }
+        };
         if (this.event.edata.left! > 4) {
             matDialogConfig.position!.right = `${rect.left}px`;
         } else {
@@ -48,7 +48,7 @@ export class CalendarEventDialog implements OnInit {
         }
         matDialogConfig.position = {
             top: `${10}em`
-        }
+        };
         return matDialogConfig;
     }
 
@@ -57,7 +57,7 @@ export class CalendarEventDialog implements OnInit {
      */
     setDialogBackground() {
         this._element.nativeElement.parentElement!.style.background = this.event.edata.color!;
-    } 
+    }
 
     close() {
         this.dialogRef.close();

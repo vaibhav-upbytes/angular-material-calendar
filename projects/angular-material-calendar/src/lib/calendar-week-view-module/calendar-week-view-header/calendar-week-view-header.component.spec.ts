@@ -8,7 +8,6 @@ import { StoreModule } from '@ngrx/store';
 import { CALENDAR_REDUCER_TOKEN } from '../../angular-material-calendar.module';
 import { CalendarWeekViewHeaderComponent } from './calendar-week-view-header.component';
 import { MaterialModule } from '../../material-modules/material.module';
-import { DateTime } from 'luxon';
 
 let loader: HarnessLoader;
 let component: CalendarWeekViewHeaderComponent;
@@ -64,5 +63,5 @@ describe('calendar-week-view-grid-header', () => {
         expect(last).toContain('Sun');
     });
 
-})
+});
 

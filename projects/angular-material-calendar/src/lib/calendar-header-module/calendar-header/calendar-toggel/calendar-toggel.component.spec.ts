@@ -2,7 +2,10 @@ import { HarnessLoader } from '@angular/cdk/testing';
 import { MatButtonHarness } from '@angular/material/button/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { LuxonDateAdapter, MAT_LUXON_DATE_ADAPTER_OPTIONS } from '@angular/material-luxon-adapter';
+import {
+    LuxonDateAdapter,
+    MAT_LUXON_DATE_ADAPTER_OPTIONS
+} from '@angular/material-luxon-adapter';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import { StoreModule } from '@ngrx/store';
 import { CALENDAR_REDUCER_TOKEN } from '../../../angular-material-calendar.module';
@@ -41,21 +44,24 @@ describe('calendar-navigator-component', () => {
     });
 
     it('Previous month should be displayed', async () => {
-        const previous = await loader.getHarness(MatButtonHarness.with({ selector: '#calendar-toggel-month' }));
+        const previous = await loader.getHarness(
+            MatButtonHarness.with({ selector: '#calendar-toggel-month' }));
         await previous.click();
         expect(fixture.componentInstance._view?.view).toEqual('month');
     });
 
     it('Next month should be displayed', async () => {
-        const next = await loader.getHarness(MatButtonHarness.with({ selector: '#calendar-toggel-week' }));
+        const next = await loader.getHarness(
+            MatButtonHarness.with({ selector: '#calendar-toggel-week' }));
         await next.click();
         expect(fixture.componentInstance._view?.view).toEqual('week');
     });
 
     it('Current month should be displayed', async () => {
-        const today = await loader.getHarness(MatButtonHarness.with({ selector: '#calendar-toggel-day' }));
+        const today = await loader.getHarness(
+            MatButtonHarness.with({ selector: '#calendar-toggel-day' }));
         await today.click();
         expect(fixture.componentInstance._view?.view).toEqual('day');
     });
-})
+});
 

@@ -7,7 +7,7 @@ import { CalendarViewPortService } from '../../../service/calendar-view-port.ser
 
 /**
  * @author vaibhav
- * The calendar header label component display month name and year. 
+ * The calendar header label component display month name and year.
  */
 
 @Component({
@@ -18,7 +18,7 @@ export class CalendarHeaderLabelComponent {
     date$?: Observable<CalendarDate>;
     _currentDate?: CalendarDate;
     viewport?: string;
-  
+
     constructor(
         private store: Store<{ _date: CalendarDate}>,
         private calendarViewPortService: CalendarViewPortService,
@@ -32,16 +32,16 @@ export class CalendarHeaderLabelComponent {
      * @returns month long name
      */
     get month(): string {
-        return this.size ? 
+        return this.size ?
         this._dateService.getMonthNames(this._currentDate!, 'long')
         : this._dateService.getMonthNames(this._currentDate!, 'short');
     }
 
     /**
-     * @returns year long name 
+     * @returns year long name
      */
     get year(): string {
-        return this._dateService.getYearName(this._currentDate!, 'long');
+        return this._dateService.getYearName(this._currentDate!);
     }
 
     /**

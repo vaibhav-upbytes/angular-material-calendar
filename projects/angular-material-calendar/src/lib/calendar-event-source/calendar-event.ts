@@ -1,5 +1,5 @@
-import { DateTime } from "luxon";
-import { Moment } from "moment";
+import { DateTime } from 'luxon';
+import { Moment } from 'moment';
 
 export type D = number |string | Moment | DateTime | Date;
 

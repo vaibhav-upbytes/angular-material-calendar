@@ -10,15 +10,11 @@ import { BehaviorSubject } from 'rxjs';
 import { AngularMaterialCalendarComponent } from './angular-material-calendar.component';
 import { CALENDAR_REDUCER_TOKEN } from './angular-material-calendar.module';
 import { CalendarDayViewModule } from './calendar-day-module/calendar-day-view.module';
-import { CalendarDayViewComponent } from './calendar-day-module/calendar-day-view/calendar-day-view.component';
 import { CalendarEvent } from './calendar-event-source/calendar-event';
 import { CalendarHeaderModule } from './calendar-header-module/calendar-header.module';
-import { CalendarHeaderComponent } from './calendar-header-module/calendar-header/calendar-header.component';
 import { CalendarEventInput } from './calendar-modal/calendar-event/calendar-event-input';
 import { CalendarMonthViewModule } from './calendar-month-view-module/calendar-month-view.module';
-import { CalendarMonthViewComponent } from './calendar-month-view-module/calendar-month-view/calendar-month-view.component';
 import { CalendarWeekViewModule } from './calendar-week-view-module/calendar-week-view.module';
-import { CalendarWeekViewComponent } from './calendar-week-view-module/calendar-week-view/calendar-week-view.component';
 import { MaterialModule } from './material-modules/material.module';
 
 let loader: HarnessLoader;
@@ -76,14 +72,14 @@ describe('AngularMaterialCalendarComponent', () => {
     it('should be able load week view grid', async () => {
         component.initialView('week');
         fixture.detectChanges();
-        const weekGrid = await fixture.debugElement.query(By.css(".mat-grid-tile"));
+        const weekGrid = await fixture.debugElement.query(By.css('.mat-grid-tile'));
         expect(weekGrid).toBeTruthy();
     });
 
     it('should be able load day view grid', async () => {
         component.initialView('day');
         fixture.detectChanges();
-        const weekGrid = await fixture.debugElement.query(By.css(".mat-grid-tile"));
+        const weekGrid = await fixture.debugElement.query(By.css('.mat-grid-tile'));
         expect(weekGrid).toBeTruthy();
     });
 
