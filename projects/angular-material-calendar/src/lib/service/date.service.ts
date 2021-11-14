@@ -1,14 +1,13 @@
 import { DateTime } from 'luxon';
-import { CalendarDate } from "../calendar-modal/calendar-date/calendar-date";
-import { DateAdapter } from "@angular/material/core";
-import { Injectable, Optional } from "@angular/core";
-import { _isNumberValue } from '@angular/cdk/coercion';
+import { CalendarDate } from '../calendar-modal/calendar-date/calendar-date';
+import { DateAdapter } from '@angular/material/core';
+import { Injectable, Optional } from '@angular/core';
 import { CalendarServiceConfig } from './calendar-config.service';
 
 /**
  * helps to return range of given length.
- * @param length 
- * @param lamdaFunction 
+ * @param length
+ * @param lamdaFunction
  * @returns T[]
  */
 
@@ -22,10 +21,10 @@ export function dateRange<T>(length: number, lamdaFunction: (index: number) => T
 
 /**
  * @author vaibhav
- * Date service is perform various operation on dateTime. it is based on DateAdapter implementation 
+ * Date service is perform various operation on dateTime. it is based on DateAdapter implementation
  * of angular material and DateTime object of Luxon library.
- * Manipulate date in number. 
- * 
+ * Manipulate date in number.
+ *
  */
 @Injectable({
    providedIn: 'root'
@@ -73,15 +72,15 @@ export class DateService {
    }
 
    getMonthNames(date: CalendarDate, style: 'long' | 'short' | 'narrow'): string {
-      return style == 'long' ? date.current.monthLong : date.current.monthShort;
+      return style === 'long' ? date.current.monthLong : date.current.monthShort;
    }
 
-   getYearName(date: CalendarDate, style: 'long' | 'short' | 'narrow'): string {
+   getYearName(date: CalendarDate): string {
       return this._dateAdapter.getYearName(date.current);
    }
 
    getDayName(date: CalendarDate, style: 'long' | 'short' | 'narrow'): string {
-      return style == 'long' ? date.current.weekdayLong : date.current.weekdayShort;
+      return style === 'long' ? date.current.weekdayLong : date.current.weekdayShort;
    }
 
    getYear(date: CalendarDate): number {
@@ -129,7 +128,7 @@ export class DateService {
    }
 
    getDayOfWeekNamesFromMonday(style: 'long' | 'short' | 'narrow'): string[] {
-      let days = this.getDayOfWeekNames(style);
+      const days = this.getDayOfWeekNames(style);
       return [...days.slice(1), days[0]];
    }
 
@@ -147,7 +146,7 @@ export class DateService {
    getWeekDatesRange(date: CalendarDate): CalendarDate[] {
       const dates: CalendarDate[] = Array(7);
       let first = this.getFirstDayOfWeek(date);
-      dates[0] = first
+      dates[0] = first;
       for (let i = 1; i < 7; i++) {
          first = this.addCalendarDays(first, 1);
          dates[i] = first;
@@ -157,16 +156,16 @@ export class DateService {
 
    getHoursFormat(): string[] {
       return dateRange(24, (i) => this.today().current
-         .set({ hour: i, minute: 0 }).toFormat("hh:mm a"));
+         .set({ hour: i, minute: 0 }).toFormat('hh:mm a'));
    }
 
    isToday(date: CalendarDate): boolean {
-      return this.today().current.startOf("day").equals(date.current.startOf("day"));
+      return this.today().current.startOf('day').equals(date.current.startOf('day'));
    }
 
    isHoursNow(hours: string): boolean {
       return this.today().current.set({ minute: 0 })
-         .toFormat("hh:mm a") == hours;
+         .toFormat('hh:mm a') === hours;
    }
 
    getTimeZoneFormat(date: CalendarDate): string {
@@ -174,7 +173,7 @@ export class DateService {
    }
 
    getDateTime<T extends number | string>(d: T): DateTime {
-      return typeof d == 'number' ? DateTime.fromMillis(d) : this.getDateTimeFromFormat(d);
+      return typeof d === 'number' ? DateTime.fromMillis(d) : this.getDateTimeFromFormat(d);
    }
 
    getDateTimeFromFormat(d: string): DateTime {
@@ -188,11 +187,11 @@ export class DateService {
 
    isSameHour(hours: string, eventDate: number): boolean {
       return this.getDateTime(eventDate)
-         .set({ minute: 0 }).toFormat("hh:mm a") == hours;
+         .set({ minute: 0 }).toFormat('hh:mm a') === hours;
    }
 
    isSameDate<T extends CalendarDate | number>(date: T, eventDate: number): boolean {
-      return typeof date == 'object' ?
+      return typeof date === 'object' ?
          this._dateAdapter.sameDate(date.current, this.getDateTime(eventDate)) :
          this._dateAdapter.sameDate(this.getDateTime(date), this.getDateTime(eventDate));
    }
@@ -208,7 +207,7 @@ export class DateService {
    }
 
    timeDiffinMinutes(start: number, end: number): number | undefined {
-      let diff = this.timeDiff(start, end);
+      const diff = this.timeDiff(start, end);
       return diff.hours! * 60 + diff.minutes!;
    }
 
@@ -217,7 +216,7 @@ export class DateService {
    }
 
    getTimeFormat(d: number): string {
-      return this.getDateTime(d).toFormat("hh:mm a");
+      return this.getDateTime(d).toFormat('hh:mm a');
    }
 
    restoreFromStore(d: CalendarDate): CalendarDate {

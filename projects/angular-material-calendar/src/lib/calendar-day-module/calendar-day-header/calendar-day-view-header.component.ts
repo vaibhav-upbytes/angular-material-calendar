@@ -27,7 +27,7 @@ export class CalendarDayViewHeaderComponent {
     ) {
       this.currentdate$ = store.select('_date');
       this.currentdate$.subscribe((d: CalendarDate) => {
-          let redate = this._dateService.restoreFromStore(d);
+          const redate = this._dateService.restoreFromStore(d);
           this.day = redate.current.weekdayLong;
           this.date = redate.current.day;
           this.timeZone = this._dateService.getTimeZoneFormat(d);

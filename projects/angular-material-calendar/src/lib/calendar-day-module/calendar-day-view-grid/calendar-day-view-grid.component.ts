@@ -12,7 +12,7 @@ import { DateService } from '../../service/date.service';
 /**
  * @author vaibhav
  * calendar day view gird component will display grid view of selected date and time.
- * 
+ *
  */
 @Component({
   selector: 'upbytes-angular-material-calendar-day-view-grid',
@@ -45,7 +45,7 @@ export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
       this._currentDate = d;
       this.calendarHours = this._calendarWeekService
         .getCalndarDayHoursGridData(this._dateService.restoreFromStore(d));
-      let filteredEventsArr = this._calendarWeekService.filterMultipleDayEvents(events);
+      const filteredEventsArr = this._calendarWeekService.filterMultipleDayEvents(events);
       this.multipleDayEvents = this._calendarWeekService
         .findLeftForMultiDaysEventDay(filteredEventsArr[0], this._dateService.restoreFromStore(d));
       this.calendarEventsFull = this._calendarWeekService
@@ -60,9 +60,9 @@ export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
    */
   ngAfterViewInit() {
     document.getElementById(`day-hour-indicator`)?.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "center"
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'center'
     });
   }
 

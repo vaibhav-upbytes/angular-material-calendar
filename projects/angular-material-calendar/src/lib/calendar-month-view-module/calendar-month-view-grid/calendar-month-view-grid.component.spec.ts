@@ -10,8 +10,12 @@ import { CALENDAR_REDUCER_TOKEN } from '../../angular-material-calendar.module';
 import { CalendarMonthViewGridComponent } from './calendar-month-view-grid.component';
 import { MaterialModule } from '../../material-modules/material.module';
 import { BehaviorSubject } from 'rxjs';
-import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
-import { CalendarEventViewComponent } from '../../calendar-events-module/calendar-event-view/calendar-event-view.component';
+import {
+    CalendarEventInput
+} from '../../calendar-modal/calendar-event/calendar-event-input';
+import {
+    CalendarEventViewComponent
+} from '../../calendar-events-module/calendar-event-view/calendar-event-view.component';
 import { By } from '@angular/platform-browser';
 
 let loader: HarnessLoader;
@@ -60,24 +64,25 @@ describe('calendar-month-view-grid', () => {
     it('month view first tile should be monday', async () => {
         const tiles = await loader.getAllHarnesses(MatGridTileHarness);
         const first = await (await tiles[0].host()).text();
-        let date = DateTime.now().set({ day: parseInt(first) });
+        const date = DateTime.now().set({ day: parseInt(first, 10) });
         expect(date.weekdayLong).toEqual('Monday');
     });
 
     it('month view last tile should be sunday', async () => {
         const tiles = await loader.getAllHarnesses(MatGridTileHarness);
         const last = await (await tiles[34].host()).text();
-        let date = DateTime.now().set({ day: parseInt(last) });
+        const date = DateTime.now().set({ day: parseInt(last, 10) });
         expect(date.weekdayLong).toEqual('Friday');
     });
 
     it('click on date should switch dates', async () => {
-        const dateElement = await fixture.debugElement.query(By.css(".calendar-month-view-grid-date"));
+        const dateElement = await fixture.debugElement
+            .query(By.css('.calendar-month-view-grid-date'));
         expect(dateElement).toBeTruthy();
-        let clicked = dateElement.nativeElement.textContent.trim();
+        const clicked = dateElement.nativeElement.textContent.trim();
         dateElement.nativeElement.click();
         fixture.detectChanges();
-        expect(component._currentDate?.current.day).toEqual(parseInt(clicked));
+        expect(component._currentDate?.current.day).toEqual(parseInt(clicked, 10));
     });
-})
+});
 

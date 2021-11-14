@@ -63,5 +63,5 @@ describe('calendar-month-view-grid-header', () => {
         expect(last).toEqual('Sun');
     });
 
-})
+});
 

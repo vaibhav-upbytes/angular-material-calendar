@@ -1,14 +1,14 @@
-import { ElementRef, Injectable } from "@angular/core";
-import { DateTime } from "luxon";
-import { DateService } from "./date.service";
+import { ElementRef, Injectable } from '@angular/core';
+import { DateTime } from 'luxon';
+import { DateService } from './date.service';
 
 /**
  * @author vaibhav
  * will move hour indicator in every minute.
- * 
+ *
  */
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class CalendarHourIndicatorService {
 
@@ -17,7 +17,7 @@ export class CalendarHourIndicatorService {
     minute?: number;
     constructor(
         private _dateService: DateService
-    ) { 
+    ) {
         this.updateTop();
 
     }
@@ -28,14 +28,16 @@ export class CalendarHourIndicatorService {
         this.minute = this.currentTime.minute;
     }
 
+    /* esling-disable */
     styleTop( _element: ElementRef<HTMLElement>,
-        TOP: string): void {
+        top: string): void {
         (_element!.nativeElement.style as any)['top']
-            = this.calc(`(${TOP} + 0px) * ${this.hour! + 1} + ${this.calculateEventStartOffset()}`);
+            = this.calc(`(${top} + 0px) * ${this.hour! + 1}
+            + ${this.calculateEventStartOffset()}`);
     }
 
     calculateEventStartOffset(): string {
-        return `${this.minute! /12}em`
+        return `${this.minute! /12}em`;
     }
 
     calc(exp: string): string {

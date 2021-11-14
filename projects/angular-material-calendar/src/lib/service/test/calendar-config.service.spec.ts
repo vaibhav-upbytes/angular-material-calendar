@@ -1,11 +1,11 @@
-import { TestBed } from "@angular/core/testing";
-import { CalendarConfig } from "../../calendar-modal/calendar-config/calendar-config";
-import { CalendarServiceConfig } from "../calendar-config.service";
+import { TestBed } from '@angular/core/testing';
+import { CalendarConfig } from '../../calendar-modal/calendar-config/calendar-config';
+import { CalendarServiceConfig } from '../calendar-config.service';
 
 export const config = {
-    "format": "DD/MM/YYYY",
-    "local": "en",
-    "view": "month"
+    'format': 'DD/MM/YYYY',
+    'local': 'en',
+    'view': 'month'
 };
 
 let calendarConfigService: CalendarServiceConfig;

@@ -8,11 +8,12 @@ import { CalendarViewPortService } from '../../../service/calendar-view-port.ser
 
 /**
  * @author vaibhav
- * 
- * calendar navigator component display left side of calednar header. 
+ *
+ * calendar navigator component display left side of calednar header.
  * Prev: this button will move current view of calendar to previous view according to view selected
  * Next: this button will move current view of calendar to next view according to view selected
- * Today: this button will move current view of calendar to current date view according to view selected
+ * Today: this button will move current view of calendar to
+ * current date view according to view selected
  */
 
 @Component({

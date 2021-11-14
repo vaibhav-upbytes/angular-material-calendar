@@ -6,13 +6,15 @@ import { CalendarWeekViewComponent } from './calendar-week-view/calendar-week-vi
 import {
   CalendarWeekViewGridComponent
 } from './calendar-week-view-grid/calendar-week-view-grid.component';
-import { 
+import {
   CalendarWeekViewHeaderComponent
 } from './calendar-week-view-header/calendar-week-view-header.component';
 import {
   CalendarEventViewModule
 } from '../calendar-events-module/calendar-event-view.module';
-import { CalendarHourIndicatorModule } from '../calendar-hour-indicator-module/calendar-hour-indicator.module';
+import {
+  CalendarHourIndicatorModule
+} from '../calendar-hour-indicator-module/calendar-hour-indicator.module';
 
 @NgModule({
     declarations: [

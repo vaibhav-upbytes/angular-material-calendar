@@ -12,7 +12,7 @@ import { CalendarEventService } from '../../service/calendar-event.service';
 /**
  * @author vaibhav
  * calendar week view gird component will display grid view of week date and time.
- * 
+ *
  */
 @Component({
   selector: 'upbytes-angular-material-calendar-week-view-grid',
@@ -39,7 +39,7 @@ export class CalendarWeekViewGridComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Component lifecycle ngOnInit will initialize view  
+   * Component lifecycle ngOnInit will initialize view
    */
   ngOnInit(): void {
     this.date$?.pipe(
@@ -48,7 +48,7 @@ export class CalendarWeekViewGridComponent implements OnInit, AfterViewInit {
       this._currentDate = d;
       this.calendarHours = this._calendarWeekService
         .getCalndarWeekHoursGridData(this._currentDate!);
-      let filteredEventsArr = this._calendarWeekService.filterMultipleDayEvents(events!);
+      const filteredEventsArr = this._calendarWeekService.filterMultipleDayEvents(events!);
       this.multipleDayEvents = this._calendarWeekService
         .findLeftForMultiDaysEventWeek(filteredEventsArr[0], this._currentDate!);
       this.calendarEventsFull = this._calendarWeekService
@@ -63,9 +63,9 @@ export class CalendarWeekViewGridComponent implements OnInit, AfterViewInit {
    */
   ngAfterViewInit() {
     document.getElementById(`week-hour-indicator`)?.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "center"
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'center'
     });
   }
 

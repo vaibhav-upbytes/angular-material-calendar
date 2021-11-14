@@ -1,8 +1,8 @@
-import { ElementRef, Injectable } from "@angular/core";
-import { CalendarEventFull } from "../calendar-modal/calendar-event/calendar-event-full";
-import { CalendarEventInput } from "../calendar-modal/calendar-event/calendar-event-input";
-import { CalendarEventConflictService } from "./calendar-event-conflict.service";
-import { DateService } from "./date.service";
+import { ElementRef, Injectable } from '@angular/core';
+import { CalendarEventFull } from '../calendar-modal/calendar-event/calendar-event-full';
+import { CalendarEventInput } from '../calendar-modal/calendar-event/calendar-event-input';
+import { CalendarEventConflictService } from './calendar-event-conflict.service';
+import { DateService } from './date.service';
 
 /**
  * @author vaibhav
@@ -19,12 +19,12 @@ export class CalendarEventService {
 
     setEventStyle(
         event: CalendarEventFull, _element: ElementRef<HTMLElement>,
-        LEFT: string, TOP: string, WIDTH: number, HEIGHT: string): void {
-        this.styleWidth(event, _element, WIDTH);
-        this.styleLeft(event, _element, LEFT);
-        this.styleTop(event, _element, TOP);
-        this.styleHeight(event, _element, HEIGHT);
-        this.styleBackground(event, _element, HEIGHT);
+        left: string, top: string, width: number, height: string): void {
+        this.styleWidth(event, _element, width);
+        this.styleLeft(event, _element, left);
+        this.styleTop(event, _element, top);
+        this.styleHeight(event, _element, height);
+        this.styleBackground(event, _element);
     }
 
     calc(exp: string): string {
@@ -32,48 +32,52 @@ export class CalendarEventService {
     }
 
     styleLeft(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
-        LEFT: string): void {
+        left: string): void {
         if (event.conflics! > 0 && event.leftFr! > 1) {
             (_element.nativeElement.style as any)['left'] =
-                this.calc(`(${LEFT} - 0px + 0px) * ${event.leftFr!}`);
-        } else
-            (_element.nativeElement.style as any)['left'] = this.calc(`(${LEFT} - 0px + 0px) * ${event.left}`);
+                this.calc(`(${left} - 0px + 0px) * ${event.leftFr!}`);
+        } else {
+            (_element.nativeElement.style as any)['left']
+            = this.calc(`(${left} - 0px + 0px) * ${event.left}`);
+        }
     }
 
     styleTop(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
-        TOP: string): void {
+        top: string): void {
         (_element.nativeElement.style as any)['top']
             = !event.isAllDay ?
-                this.calc(`(${TOP} + 0px) * ${event.top} + ${this.calculateEventStartOffset(event)}`) : "5px";
+                this.calc(`(${top} + 0px) * ${event.top}
+                + ${this.calculateEventStartOffset(event)}`) : '5px';
     }
 
     styleWidth(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
-        WIDTH: number): void {
-             (_element.nativeElement.style as any)['width'] = this.calc(`(${WIDTH}% - 0px) * ${event.widthFr!} + 0px`);
+        width: number): void {
+        (_element.nativeElement.style as any)['width']
+            = this.calc(`(${width}% - 0px) * ${event.widthFr!} + 0px`);
     }
 
     styleHeight(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
-        HEIGHT: string): void {
+        height: string): void {
         (_element.nativeElement.style as any)['height'] =
-            !event.isAllDay ? this.calc(`${this.calculateEventHeight(event)}`) : "4em";
+            !event.isAllDay ? this.calc(`${this.calculateEventHeight(event)}`) : height;
     }
 
-    styleBackground(event: CalendarEventFull, _element: ElementRef<HTMLElement>,
-        HEIGHT: string): void {
+    styleBackground(event: CalendarEventFull, _element: ElementRef<HTMLElement>): void {
         (_element.nativeElement.style as any)['background-color'] =
             `${event.color}`;
     }
 
     calculateEventStartOffset(event: CalendarEventFull): string {
-        return `${this._dateService.minute(event.start!) / 12}em`
+        return `${this._dateService.minute(event.start!) / 12}em`;
     }
 
     calculateEventHeight(event: CalendarEventFull): string {
-        return `${this._dateService.timeDiffinMinutes(event.start!, event.end!)! / 12}em`
+        return `${this._dateService.timeDiffinMinutes(event.start!, event.end!)! / 12}em`;
     }
 
     eventsubtitle(event: CalendarEventFull): string {
-        return `${this._dateService.getTimeFormat(event.start!)} - ${this._dateService.getTimeFormat(event.end!)}`;
+        return `${this._dateService.getTimeFormat(event.start!)}
+        - ${this._dateService.getTimeFormat(event.end!)}`;
     }
 
     createCalendarEventFull(final: CalendarEventInput,
@@ -99,17 +103,21 @@ export class CalendarEventService {
     }
 
     filterEventsBySameLeft(events: CalendarEventInput[]): Map<number, CalendarEventFull[]> {
-        let eventMap: Map<number, CalendarEventFull[]> = new Map<number, CalendarEventFull[]>();
+        const eventMap: Map<number, CalendarEventFull[]> = new Map<number, CalendarEventFull[]>();
         events.forEach((e: CalendarEventFull) => {
-            eventMap.has(e.left!) ? eventMap.get(e.left!)?.push(e) : eventMap.set(e.left!, Array.of(e));
+            if (eventMap.has(e.left!)) {
+                eventMap.get(e.left!)?.push(e);
+            } else {
+                eventMap.set(e.left!, Array.of(e));
+            }
         });
         return eventMap;
     }
 
-    filteredConflictedEvents(events: CalendarEventFull[], DAYS: number): CalendarEventFull[] {
-        let eventMap: Map<number, CalendarEventFull[]> = this.filterEventsBySameLeft(events);
-        eventMap.forEach((v: CalendarEventFull[], k: number) => {
-            this._calendarEventConflictService.conflicting(v, DAYS);
+    filteredConflictedEvents(events: CalendarEventFull[], days: number): CalendarEventFull[] {
+        const eventMap: Map<number, CalendarEventFull[]> = this.filterEventsBySameLeft(events);
+        eventMap.forEach((v: CalendarEventFull[]) => {
+            this._calendarEventConflictService.conflicting(v, days);
         });
         return events;
     }
@@ -121,7 +129,7 @@ export class CalendarEventService {
 
     allDayEventWidth(event: CalendarEventFull): CalendarEventFull {
         if (event.isAllDay) {
-            let diff = this._dateService.getDateTime(event.end!).day
+            const diff = this._dateService.getDateTime(event.end!).day
                 - this._dateService.getDateTime(event.start!).day + 1;
             event.widthFr = diff;
         }
@@ -129,9 +137,11 @@ export class CalendarEventService {
     }
 
     eventFullTime(event: CalendarEventFull): string {
-        let start = this._dateService.getDateTime(event.start!)
-
-        return `${start.weekdayShort} ${start.day}/${start.month}/${start.year} ${this._dateService.getTimeFormat(event.start!)} - ${this._dateService.getTimeFormat(event.end!)}`;
+        const start = this._dateService.getDateTime(event.start!);
+        return `${start.weekdayShort} ${start.day}
+        /${start.month}/${start.year} 
+        ${this._dateService.getTimeFormat(event.start!)}
+         - ${this._dateService.getTimeFormat(event.end!)}`;
     }
 
 
