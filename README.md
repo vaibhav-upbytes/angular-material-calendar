@@ -11,6 +11,7 @@ Run below to add this library in your project.
 ```
 ng add  @upbytes.in/angular-material-calendar
 ```
+This will prompt you to select color theme.<b>Please select same color theme which you have selected for material installation.</b>
 
 ### npm
 Run below to add this library in your project.
