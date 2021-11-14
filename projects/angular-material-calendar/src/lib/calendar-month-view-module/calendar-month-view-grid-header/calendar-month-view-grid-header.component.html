@@ -2,7 +2,7 @@
                rowHeight="1.5em" 
                gutterSize="0"
 >
-    <mat-grid-tile class="calendar-month-view-grid-header"
+    <mat-grid-tile tabindex="0" class="calendar-month-view-grid-header" aria-label="name"
         *ngFor="let name of dayOfWeekNames">
              {{name}}
     </mat-grid-tile>
