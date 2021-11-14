@@ -1,7 +1,9 @@
-import { ElementRef, Injectable } from '@angular/core'
-import { MatDialog, MatDialogRef } from '@angular/material/dialog'
-import { CalendarEventDialog } from '../calendar-events-module/calendar-event-dialog-view/calendar-event-dialog.component'
-import { CalendarEventFull } from '../calendar-modal/calendar-event/calendar-event-full'
+import { ElementRef, Injectable } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {
+    CalendarEventDialog
+} from '../calendar-events-module/calendar-event-dialog-view/calendar-event-dialog.component';
+import { CalendarEventFull } from '../calendar-modal/calendar-event/calendar-event-full';
 
 /**
  * @author vaibhav
@@ -18,7 +20,9 @@ export class CalendarEventDialogeService {
         hasBackdrop = false, height = '25em', width = '30em', backdropClass,
         panelClass }:
         {
-            edata?: CalendarEventFull, positionRelativeToElement?: ElementRef, hasBackdrop?: boolean,
+            edata?: CalendarEventFull,
+            positionRelativeToElement?: ElementRef,
+            hasBackdrop?: boolean,
             height?: string, width?: string, backdropClass?: string, panelClass?: string
         }): MatDialogRef<CalendarEventDialog> {
 
@@ -29,11 +33,11 @@ export class CalendarEventDialogeService {
                 width: width,
                 panelClass: panelClass,
                 backdropClass: backdropClass,
-                data: { 
+                data: {
                     positionRelativeToElement: positionRelativeToElement,
                     edata: edata
                 }
-            })
-        return dialogRef
+            });
+        return dialogRef;
     }
 }

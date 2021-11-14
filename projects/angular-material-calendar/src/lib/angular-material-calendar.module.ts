@@ -1,11 +1,18 @@
-import { NgModule, InjectionToken, inject, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
+import {
+  NgModule,
+  InjectionToken,
+  inject,
+  ModuleWithProviders,
+  Optional,
+  SkipSelf
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import {
   LuxonDateModule,
   LuxonDateAdapter,
   MAT_LUXON_DATE_ADAPTER_OPTIONS
-} from "@angular/material-luxon-adapter";
+} from '@angular/material-luxon-adapter';
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
 import { CalendarViewReducerService } from './reducer/calendar-view-reducer.service';
 import { CalendarViewPortService } from './service/calendar-view-port.service';
@@ -19,7 +26,9 @@ import { MaterialModule } from './material-modules/material.module';
 import { CalendarDayViewModule } from './calendar-day-module/calendar-day-view.module';
 import { AngularMaterialCalendarComponent } from './angular-material-calendar.component';
 import { CalendarState } from './state/calendar-state';
-import { CalendarHourIndicatorModule } from './calendar-hour-indicator-module/calendar-hour-indicator.module';
+import {
+  CalendarHourIndicatorModule
+} from './calendar-hour-indicator-module/calendar-hour-indicator.module';
 import { CalendarConfig } from './calendar-modal/calendar-config/calendar-config';
 
 export const CALENDAR_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<CalendarState>>

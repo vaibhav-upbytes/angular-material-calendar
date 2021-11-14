@@ -64,5 +64,5 @@ describe('calendar-day-view-grid-header', () => {
         expect(last).toEqual(`${DateTime.now().day}${DateTime.now().weekdayLong}`);
     });
 
-})
+});
 

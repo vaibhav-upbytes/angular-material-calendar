@@ -1,4 +1,4 @@
-import { DeviceInfo } from 'ngx-device-detector'
+import { DeviceInfo } from 'ngx-device-detector';
 
 export interface CalendarDeviceDetail {
     deviceInfo: DeviceInfo;

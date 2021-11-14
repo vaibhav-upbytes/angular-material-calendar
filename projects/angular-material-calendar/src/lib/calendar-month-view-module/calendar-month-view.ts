@@ -4,5 +4,5 @@ export interface CalendarMonthView {
     month: number;
     year: number;
     isEnable: boolean;
-    isToday:boolean;
+    isToday: boolean;
 }

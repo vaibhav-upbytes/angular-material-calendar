@@ -3,7 +3,7 @@ import { MonthViewService } from '../service/calendar-month-view.service';
 
 /**
  * @author vaibhav
- * calendar month view grid header component will display short weekday name 
+ * calendar month view grid header component will display short weekday name
  */
 
 @Component({
@@ -17,7 +17,7 @@ export class CalendarMonthViewGridHeaderComponent {
     dayOfWeekNames?: string[];
 
     constructor(
-        private _monthViewService: MonthViewService, 
+        private _monthViewService: MonthViewService,
     ) {
         this.dayOfWeekNames = this._monthViewService.getDayOfWeeksNames('short');
     }

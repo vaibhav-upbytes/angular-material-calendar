@@ -1,11 +1,11 @@
-import { Injectable, Optional } from "@angular/core";
-import { CalendarConfig } from "../calendar-modal/calendar-config/calendar-config";
+import { Injectable, Optional } from '@angular/core';
+import { CalendarConfig } from '../calendar-modal/calendar-config/calendar-config';
 
 
 /**
  * @author vaibhav
- * Calendar config service is used to config calendar data. 
- * 
+ * Calendar config service is used to config calendar data.
+ *
  */
 @Injectable({
     providedIn: 'root'
@@ -16,7 +16,7 @@ export class CalendarServiceConfig {
     private _view?: string;
 
     constructor(@Optional() config?: CalendarConfig) {
-        if (config) { 
+        if (config) {
             this._format = config.format;
             this._local = config.local;
             this._view = config.view;

@@ -5,7 +5,7 @@ import {
   isDataSource
 } from '@angular/cdk/collections';
 import { BehaviorSubject, isObservable, Observable, of, Subject, Subscription } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { CalendarView } from './calendar-modal/calendar-view/calendar-view';
 import { CalendarEventInput } from './calendar-modal/calendar-event/calendar-event-input';
@@ -18,12 +18,13 @@ import { CalendarEvent } from './calendar-event-source/calendar-event';
 /**
  * define generic type for input data.
  */
-export type CalendarEventDataSourceInput<T extends CalendarEvent> = readonly T[] | DataSource<T> | Observable<readonly T[]> | [] | undefined;
+export type CalendarEventDataSourceInput<T extends CalendarEvent> =
+  readonly T[] | DataSource<T> | Observable<readonly T[]> | [] | undefined;
 
 /**
  * @author vaibhav
  * Angular material component is entry coponent for this library.
- * It takes input as array, datasource and observable. 
+ * It takes input as array, datasource and observable.
  */
 @Component({
   selector: 'upbytes-angular-material-calendar',
@@ -110,9 +111,9 @@ export class AngularMaterialCalendarComponent<T extends CalendarEvent>
     this._renderEventSubscription$ = dataStream$!
       .pipe(takeUntil(this._destroyed$))
       .subscribe(data => {
-        const d = data.map((d) => this.calendarEventInputAdapter.adapt(d)) || [];
+        const transform = data.map((d) => this.calendarEventInputAdapter.adapt(d)) || [];
 
-        this._events$?.next(this.calendarEventInputAdapter.sort(d));
+        this._events$?.next(this.calendarEventInputAdapter.sort(transform));
       });
   }
 

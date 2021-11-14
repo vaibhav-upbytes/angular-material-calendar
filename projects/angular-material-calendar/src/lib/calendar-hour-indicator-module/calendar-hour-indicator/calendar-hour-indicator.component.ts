@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { interval, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -6,8 +6,8 @@ import { CalendarView } from '../../calendar-modal/calendar-view/calendar-view';
 import { CalendarHourIndicatorService } from '../../service/calendar-hour-indicator.service';
 
 
-const ID = "-hour-indicator";
-const TOP ="5em";
+const ID = '-hour-indicator';
+const TOP ='5em';
 
 @Component({
     selector: 'upbytes-angular-material-calendar-hour-indicator',
@@ -17,14 +17,14 @@ const TOP ="5em";
     ]
 })
 export class CalendarHourIndicatorComponent implements AfterViewInit, OnDestroy {
-    @ViewChild('hourindicator', {read: ElementRef }) public hourindicatorRef?: ElementRef
-    
+    @ViewChild('hourindicator', {read: ElementRef }) public hourindicatorRef?: ElementRef;
+
     _view$?: Observable<CalendarView>;
     _destroyed$ = new Subject<void>();
     _interval$ = new Observable<number>();
     _view?: CalendarView;
     id?: string;
-    
+
     constructor(
         private store: Store<{ _view: CalendarView}>,
         private hourIndicatorService: CalendarHourIndicatorService
@@ -35,12 +35,12 @@ export class CalendarHourIndicatorComponent implements AfterViewInit, OnDestroy 
             this._view = v;
             this.id = `${this._view.view}${ID}`;
         });
-        this._interval$.pipe(takeUntil(this._destroyed$)).subscribe((result: any) => {
+        this._interval$.pipe(takeUntil(this._destroyed$)).subscribe(() => {
             this.hourIndicatorService.updateTop();
             this.setTop();
         });
     }
-   
+
     ngAfterViewInit(): void {
         this.setTop();
     }

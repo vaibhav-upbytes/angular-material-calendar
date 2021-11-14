@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { DateService } from "../../service/date.service";
-import { CalendarDate } from "../../calendar-modal/calendar-date/calendar-date";
-import { CalendarMonthView } from "../calendar-month-view";
-import { CalendarEventInput } from "../../calendar-modal/calendar-event/calendar-event-input";
+import { Injectable } from '@angular/core';
+import { DateService } from '../../service/date.service';
+import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
+import { CalendarMonthView } from '../calendar-month-view';
+import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
 
 @Injectable({
     providedIn: 'root'
@@ -14,19 +14,17 @@ export class MonthViewService {
     ) { }
 
     getMonthViewDates(date: CalendarDate): CalendarMonthView[] {
-        let d = date;
-        let monthDates: CalendarDate[] = this._dateService.getMonthDatesRange(d);
+        const monthDates: CalendarDate[] = this._dateService.getMonthDatesRange(date);
         return monthDates.map((d) => this.createMonthViewDate(d));
     }
 
     getCalendarDateEventMap(
         date: CalendarDate, events: CalendarEventInput[]
     ): Map<CalendarMonthView, CalendarEventInput[]> {
-        let d = date;
-        let dates: CalendarDate[] = this._dateService.getMonthDatesRange(d);
-        let data = new Map<CalendarMonthView, CalendarEventInput[]>();
+        const dates: CalendarDate[] = this._dateService.getMonthDatesRange(date);
+        const data = new Map<CalendarMonthView, CalendarEventInput[]>();
         dates.map((d) => {
-            let gridDate = this.createMonthViewDate(d);
+            const gridDate = this.createMonthViewDate(d);
             data.set(gridDate, []);
             events!.map((event) => {
                 if (this._dateService.isSameDate(d, event.start!)
@@ -34,7 +32,7 @@ export class MonthViewService {
                     data.get(gridDate)?.push(event);
                 }
 
-            })
+            });
         });
         return data;
     }
@@ -50,12 +48,15 @@ export class MonthViewService {
             day: this._dateService.getDayName(date, 'short'),
             month: this._dateService.getMonth(date) + 1,
             year: this._dateService.getYear(date),
-            isEnable: this._dateService.getMonth(date) == this._dateService.getMonth(date),
+            isEnable: this._dateService.getMonth(date) === this._dateService.getMonth(date),
             isToday: this._dateService.isToday(date)
-        }
+        };
     }
 
     setDate(selected: CalendarMonthView, _currentDate: CalendarDate): CalendarDate {
-        return this._dateService.setDate(selected.date, selected.month, selected.year, _currentDate);
+        return this._dateService.setDate(selected.date,
+            selected.month,
+            selected.year,
+            _currentDate);
     }
 }

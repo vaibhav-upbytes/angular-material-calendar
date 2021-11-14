@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { day, month, week } from '../../../actions/calendar-view.action'
+import { day, month, week } from '../../../actions/calendar-view.action';
 import { CalendarView } from '../../../calendar-modal/calendar-view/calendar-view';
 import { CalendarViewPortService } from '../../../service/calendar-view-port.service';
 
 /**
  * @author vaibhav
- * Calendar toggel component will be display right top corner of the calendar header. Toggle 
- * button will switch view in between day/week/month. 
+ * Calendar toggel component will be display right top corner of the calendar header. Toggle
+ * button will switch view in between day/week/month.
  */
 @Component({
   selector: 'upbytes-angular-material-calendar-toggel',

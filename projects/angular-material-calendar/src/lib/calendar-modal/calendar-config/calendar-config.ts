@@ -3,4 +3,3 @@ export class CalendarConfig {
     local?: string;
     view?: string;
 }
-  

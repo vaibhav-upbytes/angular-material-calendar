@@ -9,7 +9,6 @@ import { StoreModule } from '@ngrx/store';
 import { CALENDAR_REDUCER_TOKEN } from '../../angular-material-calendar.module';
 import { MaterialModule } from '../../material-modules/material.module';
 import { CalendarEventFullViewComponent } from './calendar-event-full-view.component';
-import { By } from '@angular/platform-browser';
 
 let loader: HarnessLoader;
 let rootLoader: HarnessLoader;
@@ -17,10 +16,10 @@ let component: CalendarEventFullViewComponent;
 let fixture: ComponentFixture<CalendarEventFullViewComponent>;
 
 export const event = {
-    "start": 1634621592000,
-    "end": 1634625192000,
-    "title": "string  string string string string string",
-    "color": "#e2e6c7"
+    'start': 1634621592000,
+    'end': 1634625192000,
+    'title': 'string  string string string string string',
+    'color': '#e2e6c7'
 };
 
 describe('calendar-event-full-view', () => {
@@ -72,7 +71,7 @@ describe('calendar-event-full-view', () => {
         expect(dialogs).toBeTruthy();
         dialogs.close();
         fixture.detectChanges();
-        expect(dialogs).toBeTruthy();      
+        expect(dialogs).toBeTruthy();
     });
-})
+});
 

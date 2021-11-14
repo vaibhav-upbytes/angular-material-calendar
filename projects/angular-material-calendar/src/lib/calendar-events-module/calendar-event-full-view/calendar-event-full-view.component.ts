@@ -7,9 +7,9 @@ import { CalendarView } from '../../calendar-modal/calendar-view/calendar-view';
 import { CalendarEventDialogeService } from '../../service/calendar-event-dialog.service';
 import { CalendarEventService } from '../../service/calendar-event.service';
 
-const LEFT = "12.5%";
-const TOP = "5em";
-const HEIGHT = "5em";
+const LEFT = '12.5%';
+const TOP = '5em';
+const HEIGHT = '5em';
 
 /**
  * @author vaibhav
@@ -23,7 +23,7 @@ const HEIGHT = "5em";
   ]
 })
 export class CalendarEventFullViewComponent implements OnInit {
-  @ViewChild('eventfullview', {read: ElementRef }) public eventfullviewRef?: ElementRef
+  @ViewChild('eventfullview', { read: ElementRef }) public eventfullviewRef?: ElementRef;
   @Input() event?: CalendarEventFull;
   width?: number;
   _view$?: Observable<CalendarView>;
@@ -41,11 +41,10 @@ export class CalendarEventFullViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let width = this._view?.view == 'week' ? 12.5 : 87.5;
-    let days = this._view?.view == 'week' ? 1 : 7;
+    const width = this._view?.view === 'week' ? 12.5 : 87.5;
     this.event = this.calendarEventService.isAllDayEvent(this.event!);
-    this.event = this._view?.view == 'week' ? 
-    this.calendarEventService.allDayEventWidth(this.event!) : this.event;
+    this.event = this._view?.view === 'week' ?
+      this.calendarEventService.allDayEventWidth(this.event!) : this.event;
     this.calendarEventService.setEventStyle(this.event!,
       this._element, LEFT, TOP, width!, HEIGHT);
     this.time = this.calendarEventService.eventsubtitle(this.event!);
