@@ -2,7 +2,7 @@
 
 This calendar library is devloped on Angular13+ and AngularMaterial13+ version.
 This support material design, prebuilt and custom theme and typography.
-[Angular Material Calendar Demo](http://ec2-3-109-181-49.ap-south-1.compute.amazonaws.com)
+[Angular Material Calendar Demo](http://angularcalendar.upbytes.in)
 
 ## Install
 
@@ -47,9 +47,9 @@ an event object should contain below fields.
 export interface Event  {
     start: number | string | Moment | DateTime | Date,
     end: number | string | Moment | DateTime | Date,
-    color: any
-    title?: any,
-    description?: any
+    color: string
+    title?: string,
+    description?: string
   }
   ```
 

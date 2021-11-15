@@ -1,6 +1,6 @@
 {
   "name": "@upbytes.in/angular-material-calendar",
-  "version": "0.3.6-beta.1",
+  "version": "1.0.0-beta.6",
   "schematics": "./schematics/collection.json",
   "scripts": {
     "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
@@ -24,10 +24,10 @@
   "ng-add": {
     "save": "dependencies"
   },
-  "description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.",
+  "description": "This library, was developed using Angular13 and Angular Materail 13, should be use to display calendar and events ",
   "main": "karma.conf.js",
-  "author": "vaibhav",
-  "license": "ISC",
+  "author": "vaibhav <vaibhav@upbytes.in>",
+  "license": "MIT",
   "keywords": [
     "angular",
     "material",
@@ -35,7 +35,12 @@
     "events"
   ],
   "bugs": {
-    "url": "https://github.com/vaibhav-upbytes/angular-material-calendar/issues"
+    "url": "https://github.com/vaibhav-upbytes/angular-material-calendar/issues",
+    "email": "vaibhav@upbytes.in"
   },
-  "homepage": "http://ec2-3-109-181-49.ap-south-1.compute.amazonaws.com/"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vaibhav-upbytes/angular-material-calendar.git"
+  },
+  "homepage": "http://angularcalendar.upbytes.in/"
 }
