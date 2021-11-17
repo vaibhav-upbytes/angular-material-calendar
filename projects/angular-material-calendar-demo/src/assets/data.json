@@ -4,25 +4,25 @@
         "start": 1634621592000,
         "end": 1634625192000,
         "title": "string  string string string string string" ,
-        "color": "#e2e6c7"
+        "color": "#69E203"
     },
     {
         "start": 1634743992000,
         "end": 1634747592000,
         "title": "event1",
-        "color": "#e2e6c7"
+        "color": "#FA0B01"
     },
     {
       "start": 1634826792000,
       "end": 1634833992000,
       "title": "event2",
-      "color": "#d8c6d9"
+      "color": "#73FA01"
   },
     {
         "start": 1634995992000,
         "end": 1635010392000,
         "title": "event3",
-        "color": "#d8c6d9"
+        "color": "#FA7E01"
     },
 
 
@@ -32,19 +32,19 @@
     "start": 1634743992000,
     "end": 1634747592000,
     "title": "event4",
-    "color": "#e2e6c7"
+    "color": "#FA01FA"
 },
 {
   "start": 1634826792000,
   "end": 1634833992000,
   "title": "event5",
-  "color": "#d8c6d9"
+  "color": "#01FAE2"
 },
 {
     "start": 1634995992000,
     "end": 1635010392000,
     "title": "event6",
-    "color": "#d8c6d9"
+    "color": "#F38792"
 },
 
 
@@ -53,7 +53,7 @@
   "start": 1634743992000,
   "end": 1634747592000,
   "title": "event7",
-  "color": "#e2e6c7"
+  "color": "#F38792"
 },
 {
 "start": 1634826792000,
@@ -143,20 +143,20 @@
     "start": 1634840820000,
     "end": 1635100020000,
     "title": "multiple event20",
-    "color": "#d8c6d9"
+    "color": "#FAFA01"
   },
   {
     "start": 1635589817000,
     "end": 1635604217000,
     "title": "event21",
-    "color": "#e2e6c7",
+    "color": "#F38792",
     "description": "https://fonts.google.com/icons?selected=Material+Icons git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all docker commands docker build docker build -t upbytes/angular-material-calendar-demo:latest .https://fonts.google.com/icons?selected=Material+Icons git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all docker commands docker build docker build -t upbytes/angular-material-calendar-demo:latest .https://fonts.google.com/icons?selected=Material+Icons git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all docker commands docker build docker build -t upbytes/angular-material-calendar-demo:latest ."
   },
   {
     "start": "2021-10-29T09:08:34.123",
     "end": "2021-10-29T12:08:34.123",
     "title": "event22",
-    "color": "#d8c6d9"
+    "color": "#C8F387"
   }
     ]
 }

@@ -80,6 +80,6 @@ $angular-material-calendar-purple-light-theme: mat.define-light-theme(
   )
 );
 
-@include mat.all-component-themes($angular-material-calendar-purple-dark-theme);
-@include angular-material-calendar($angular-material-calendar-purple-dark-theme);
-@include angular-material-calendar-demo($angular-material-calendar-purple-dark-theme);
+@include mat.all-component-themes($angular-material-calendar-demo-theme);
+@include angular-material-calendar($angular-material-calendar-demo-theme);
+@include angular-material-calendar-demo($angular-material-calendar-demo-theme);

@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, Renderer2, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { THEMES } from '../data/calendar-theme-data';
 import { CalendarTheme } from '../model/calendar-theme';
@@ -7,7 +7,8 @@ import { MatIconRegistry } from '@angular/material/icon';
 @Component({
     selector: 'calendar-demo-header',
     templateUrl: './calendar-demo-header.component.html',
-    styleUrls: ['./calendar-demo-header.component.scss']
+    styleUrls: ['./calendar-demo-header.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class CalendarDemoHeader {
     themes: CalendarTheme[] = THEMES;
