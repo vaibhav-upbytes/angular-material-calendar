@@ -7,7 +7,7 @@ export const THEMES: CalendarTheme[] = [
         theme: '',
         class: 'light-theme',
         isDisabled: false,
-        isChecked: false
+        isChecked: true
     },
     {
         label: 'Pink & Blue-grey',
@@ -29,7 +29,7 @@ export const THEMES: CalendarTheme[] = [
         icon: '',
         class: 'purple-dark-theme',
         isDisabled: false,
-        isChecked: true
+        isChecked: false
     }
 
 ];

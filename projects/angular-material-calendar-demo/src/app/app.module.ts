@@ -11,6 +11,7 @@ import { CalendarDemoHeader } from './header/calendar-demo-header.component';
 import { CalendarDemoSideNav } from './sidenav/calendar-demo-sidenav.component';
 import { CalendarDemoEvents } from './calendar-demo-events/calendar-demo-events.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,

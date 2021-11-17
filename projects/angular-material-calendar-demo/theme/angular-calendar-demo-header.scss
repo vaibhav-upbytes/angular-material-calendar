@@ -1,0 +1,10 @@
+@import "@angular/material/theming";
+
+@mixin calendar-demo-header-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+
+    .calendar-demo-header-tooltip {
+        background-color: mat-color($accent) !important;
+    }
+}

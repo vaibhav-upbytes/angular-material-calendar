@@ -1,17 +1,19 @@
 {
   "name": "@upbytes.in/angular-material-calendar",
-  "version": "1.0.0-beta.6",
+  "version": "1.0.0-beta.9",
   "schematics": "./schematics/collection.json",
   "scripts": {
     "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
     "copy:schemas": "cp --parents schematics/*/schema.json ../../dist/angular-material-calendar/",
     "copy:collection": "cp schematics/collection.json ../../dist/angular-material-calendar/schematics/collection.json",
     "copy:styles": "cp ../../dist/angular-material-calendar-demo/*.theme.css ../../dist/angular-material-calendar/theme/prebuilt/",
-    "postbuild": "npm run copy:schemas & npm run copy:collection & npm run copy:styles"  
+    "copy:readme": "cp ../../README.md ../../dist/angular-material-calendar/",
+    "postbuild": "npm run copy:schemas & npm run copy:collection & npm run copy:styles & npm run copy:readme"  
   },
   "peerDependencies": {
     "@angular/common": "^13.0.1",
     "@angular/core": "^13.0.1",
+    "@angular/cdk": "^13.0.1",
     "moment": "^2.29.1",
     "rxjs": "~7.4.0",
     "@angular/material-luxon-adapter": "^13.0.1",
@@ -24,7 +26,7 @@
   "ng-add": {
     "save": "dependencies"
   },
-  "description": "This library, was developed using Angular13 and Angular Materail 13, should be use to display calendar and events ",
+  "description": "This library, was developed using Angular13 and Angular Material 13, should be use to display calendar and events ",
   "main": "karma.conf.js",
   "author": "vaibhav <vaibhav@upbytes.in>",
   "license": "MIT",
