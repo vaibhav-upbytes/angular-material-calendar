@@ -52,8 +52,8 @@ export function addThemeToAppStyles(options: Schema): Rule {
 
 function insertPrebuiltTheme(project: string, theme: string, logger: logging.LoggerApi): Rule {
     // Path needs to be always relative to the `package.json` or workspace root.
-    const themePath = `./node_modules/@upbytes.in/
-      angular-material-calendar/theme/prebuilt/${theme}.css`;
+    /* eslint-disable max-len */
+    const themePath = `./node_modules/@upbytes.in/angular-material-calendar/theme/prebuilt/${theme}.css`;
 
     return chain([
         addThemeStyleToTarget(project, 'build', themePath, logger),

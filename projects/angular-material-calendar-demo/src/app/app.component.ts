@@ -1,7 +1,8 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularMaterialCalendarComponent } from 'angular-material-calendar';
-import { BehaviorSubject,  debounceTime, map,  Subject } from 'rxjs';
+import { DateTime } from 'luxon';
+import { BehaviorSubject, debounceTime, map, Subject } from 'rxjs';
 import { CalendarDataSource } from './data/calendar-data-source';
 // import { AngularMaterialCalendarComponent } from 'angular-material-calendar';
 import { Event } from './model/calendar-event';
@@ -23,9 +24,9 @@ export class AppComponent implements OnInit {
   //events?: Event[] = [];
 
   constructor(private calendarDemoDataService: CalendarDemoDataService) {
-  this.calendarDemoDataService.getEventsData().pipe(
+    this.calendarDemoDataService.getEventsData().pipe(
       map((d: any) => {
-        this.display = d.data;
+        this.display = d.data.map((e: Event) => this.updateDatesToCurrentMonth(e));
         this.dataSource.setData(this.display);
         return this.display;
       })
@@ -45,10 +46,23 @@ export class AppComponent implements OnInit {
     const updated = this.data!.pipe(debounceTime(0));
 
     updated.subscribe(s => {
-      this.display = s! && s.start! ?   [...this.display , s] : this.display;
+      this.display = s! && s.start! ? [...this.display, s] : this.display;
       //this.events?.next(this.display)
       this.dataSource.setData(this.display);
     });
+  }
+
+  updateDatesToCurrentMonth(event: Event) {
+    let now = DateTime.now();
+    if (typeof event.start === 'number' ) {
+      event.start = DateTime.fromMillis(event.start).set({ month: now.month, year: now.year });
+      event.end = DateTime.fromMillis(event.end).set({ month: now.month, year: now.year });  
+    } else {
+      event.start = DateTime.fromISO(event.start).set({ month: now.month, year: now.year });
+      event.end = DateTime.fromISO(event.end).set({ month: now.month, year: now.year });
+      
+    }
+    return event
   }
 
 }
