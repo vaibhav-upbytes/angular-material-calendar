@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { createReducer, on, ActionReducer } from '@ngrx/store';
 import { increment, decrement, reset, goto } from '../actions/date.action';
-import { CalendarDate } from '../calendar-modal/calendar-date/calendar-date';
-import { DateService } from '../service/date.service';
+import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
+import { DateService } from '../../service/date.service';
 
 @Injectable({
     providedIn: 'root'

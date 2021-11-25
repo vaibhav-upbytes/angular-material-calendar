@@ -3,5 +3,5 @@
 
 @mixin angular-material-calendar-demo($angular-material-calendar-demo) {
   @include calendar-demo-sidenav-theme($angular-material-calendar-demo);
-  @include calendar-demo-header-theme($angular-material-calendar-demo)
+  @include calendar-demo-header-theme($angular-material-calendar-demo);
 }

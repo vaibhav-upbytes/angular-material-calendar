@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 import { CalendarHours } from '../../calendar-modal/calendar-hours/calendar-hours';
 import { CalendarHoursService } from '../../service/calendar-hours.service';
+import { selectCalendarDateState } from '../../store';
 
 /**
  * @author vaibhav
@@ -26,7 +27,7 @@ export class CalendarWeekViewHeaderComponent {
     private store: Store<{ _date: CalendarDate }>,
     private _calendarWeekService: CalendarHoursService
   ) {
-    this.date$ = store.select('_date');
+    this.date$ = store.select(selectCalendarDateState);
     this.date$.subscribe((d: CalendarDate) => {
       this._currentDate = d;
       this.calendarHours = this._calendarWeekService.getCalendarWeekRange(this._currentDate!);
