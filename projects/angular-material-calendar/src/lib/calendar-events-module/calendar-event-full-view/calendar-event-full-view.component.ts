@@ -6,6 +6,7 @@ import { CalendarEventFull } from '../../calendar-modal/calendar-event/calendar-
 import { CalendarView } from '../../calendar-modal/calendar-view/calendar-view';
 import { CalendarEventDialogeService } from '../../service/calendar-event-dialog.service';
 import { CalendarEventService } from '../../service/calendar-event.service';
+import { selectCalendarViewState } from '../../store';
 
 const LEFT = '12.5%';
 const TOP = '5em';
@@ -36,7 +37,7 @@ export class CalendarEventFullViewComponent implements OnInit {
     private calendarEventService: CalendarEventService,
     private calendarEventDialogService: CalendarEventDialogeService,
     public dialog: MatDialog) {
-    this._view$ = store.select('_view');
+    this._view$ = store.select(selectCalendarViewState);
     this._view$.subscribe((v) => this._view = v);
   }
 

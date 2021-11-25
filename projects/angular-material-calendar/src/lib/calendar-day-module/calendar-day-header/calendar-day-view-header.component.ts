@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { DateService } from '../../service/date.service';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
+import { selectCalendarDateState } from '../../store';
 
 /**
  * @author vaibhav
@@ -25,7 +26,7 @@ export class CalendarDayViewHeaderComponent {
       private store: Store<{ _date: CalendarDate}>,
       private _dateService: DateService
     ) {
-      this.currentdate$ = store.select('_date');
+      this.currentdate$ = store.select(selectCalendarDateState);
       this.currentdate$.subscribe((d: CalendarDate) => {
           const redate = this._dateService.restoreFromStore(d);
           this.day = redate.current.weekdayLong;

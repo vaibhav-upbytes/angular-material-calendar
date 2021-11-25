@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { CalendarDate } from '../calendar-modal/calendar-date/calendar-date';
-import { CalendarView } from '../calendar-modal/calendar-view/calendar-view';
+import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
+import { CalendarView } from '../../calendar-modal/calendar-view/calendar-view';
 
 export const increment = createAction('[Date Component] Increment', props<CalendarView>());
 export const decrement = createAction('[Date Component] Decrement',  props<CalendarView>());

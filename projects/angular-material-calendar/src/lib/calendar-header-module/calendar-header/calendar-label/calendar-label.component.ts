@@ -20,12 +20,12 @@ export class CalendarHeaderLabelComponent {
     viewport?: string;
 
     constructor(
-        private store: Store<{ _date: CalendarDate}>,
+        private store: Store,
         private calendarViewPortService: CalendarViewPortService,
         private _dateService: DateService) {
-      this.date$ = store.select('_date');
-      this.date$.subscribe((d: CalendarDate) => this._currentDate = d);
-      this.calendarViewPortService.viewport.subscribe(s => this.viewport = s);
+        this.date$ = store.select((selector: any) => selector.upbytes_calendar._date);
+        this.date$.subscribe((d: CalendarDate) => this._currentDate = d);
+        this.calendarViewPortService.viewport.subscribe(s => this.viewport = s);
     }
 
     /**
@@ -33,8 +33,8 @@ export class CalendarHeaderLabelComponent {
      */
     get month(): string {
         return this.size ?
-        this._dateService.getMonthNames(this._currentDate!, 'long')
-        : this._dateService.getMonthNames(this._currentDate!, 'short');
+            this._dateService.getMonthNames(this._currentDate!, 'long')
+            : this._dateService.getMonthNames(this._currentDate!, 'short');
     }
 
     /**

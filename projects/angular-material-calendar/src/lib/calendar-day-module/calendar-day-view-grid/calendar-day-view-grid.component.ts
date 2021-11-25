@@ -8,6 +8,7 @@ import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar
 import { CalendarEventFull } from '../../calendar-modal/calendar-event/calendar-event-full';
 import { CalendarEventService } from '../../service/calendar-event.service';
 import { DateService } from '../../service/date.service';
+import { selectCalendarDateState } from '../../store';
 
 /**
  * @author vaibhav
@@ -35,7 +36,7 @@ export class CalendarDayViewGridComponent implements OnInit, AfterViewInit {
     private _calendarEventService: CalendarEventService,
     private _dateService: DateService
   ) {
-    this.date$ = store.select('_date');
+    this.date$ = store.select(selectCalendarDateState);
   }
 
   ngOnInit(): void {
