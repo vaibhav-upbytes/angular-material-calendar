@@ -5,8 +5,9 @@ import { MonthViewService } from '../service/calendar-month-view.service';
 import { CalendarDate } from '../../calendar-modal/calendar-date/calendar-date';
 import { CalendarMonthView } from '../calendar-month-view';
 import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
-import { goto } from '../../actions/date.action';
-import { day } from '../../actions/calendar-view.action';
+import { goto } from '../../store/actions/date.action';
+import { day } from '../../store/actions/calendar-view.action';
+import { selectCalendarDateState } from '../../store';
 
 /**
  * @author vaibhav
@@ -34,7 +35,7 @@ export class CalendarMonthViewGridComponent implements OnInit {
     private store: Store<{ _date: CalendarDate }>,
     private _monthViewService: MonthViewService,
   ) {
-    this.date$ = store.select('_date');
+    this.date$ = store.select(selectCalendarDateState);
   }
 
   /**

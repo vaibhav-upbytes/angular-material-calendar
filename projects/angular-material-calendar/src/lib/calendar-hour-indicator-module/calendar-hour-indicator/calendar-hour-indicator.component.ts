@@ -4,6 +4,7 @@ import { interval, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CalendarView } from '../../calendar-modal/calendar-view/calendar-view';
 import { CalendarHourIndicatorService } from '../../service/calendar-hour-indicator.service';
+import { selectCalendarViewState } from '../../store';
 
 
 const ID = '-hour-indicator';
@@ -30,7 +31,7 @@ export class CalendarHourIndicatorComponent implements AfterViewInit, OnDestroy 
         private hourIndicatorService: CalendarHourIndicatorService
     ) {
         this._interval$ = interval(1000);
-        this._view$ = store.select('_view');
+        this._view$ = store.select(selectCalendarViewState);
         this._view$.subscribe((v) => {
             this._view = v;
             this.id = `${this._view.view}${ID}`;

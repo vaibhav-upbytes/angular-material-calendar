@@ -11,10 +11,11 @@ import { CalendarView } from './calendar-modal/calendar-view/calendar-view';
 import { CalendarEventInput } from './calendar-modal/calendar-event/calendar-event-input';
 import { CalendarViewPortService } from './service/calendar-view-port.service';
 import { CalendarServiceConfig } from './service/calendar-config.service';
-import { day, month, week } from './actions/calendar-view.action';
+import { day, month, week } from './store/actions/calendar-view.action';
 
 import { CalendarEventInputAdapter } from './adapter/calendar-event-adapter';
 import { CalendarEvent } from './calendar-event-source/calendar-event';
+import { selectCalendarViewState } from './store';
 /**
  * define generic type for input data.
  */
@@ -44,13 +45,13 @@ export class AngularMaterialCalendarComponent<T extends CalendarEvent>
   _events$?: BehaviorSubject<CalendarEventInput[]> = new BehaviorSubject<CalendarEventInput[]>([]);
 
   constructor(
-    private store: Store<{ _view: CalendarView }>,
+    private store: Store<{_view: CalendarView}>,
     private calendarViewPortService: CalendarViewPortService,
     private calendarConfigService: CalendarServiceConfig,
     private calendarEventInputAdapter: CalendarEventInputAdapter<T>
   ) {
     this.initialView(this.calendarConfigService.view!);
-    this._view$ = store.select('_view');
+    this._view$ = store.select(selectCalendarViewState);
     this._view$!.subscribe((v) => this._view = v);
   }
 

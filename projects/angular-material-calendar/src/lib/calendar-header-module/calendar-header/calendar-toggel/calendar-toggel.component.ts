@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { day, month, week } from '../../../actions/calendar-view.action';
+import { day, month, week } from '../../../store/actions/calendar-view.action';
 import { CalendarView } from '../../../calendar-modal/calendar-view/calendar-view';
 import { CalendarViewPortService } from '../../../service/calendar-view-port.service';
+import { selectCalendarViewState } from '../../../store';
 
 /**
  * @author vaibhav
@@ -26,7 +27,7 @@ export class CalendarHeaderToggelComponent {
     private store: Store<{ _view: CalendarView }>,
     private calendarViewPortService: CalendarViewPortService
   ) {
-    this._view$ = store.select('_view');
+    this._view$ = store.select(selectCalendarViewState);
     this._view$.subscribe((v) => this._view = v);
     this.calendarViewPortService.viewport.subscribe(s => this.viewport = s);
   }

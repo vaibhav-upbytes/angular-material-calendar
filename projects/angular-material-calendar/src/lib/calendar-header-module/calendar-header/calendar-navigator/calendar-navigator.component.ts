@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { increment, decrement, reset } from '../../../actions/date.action';
+import { increment, decrement, reset } from '../../../store/actions/date.action';
 import { CalendarDate } from '../../../calendar-modal/calendar-date/calendar-date';
 import { CalendarView } from '../../../calendar-modal/calendar-view/calendar-view';
 import { CalendarViewPortService } from '../../../service/calendar-view-port.service';
+import { selectCalendarDateState, selectCalendarViewState } from '../../../store';
 
 /**
  * @author vaibhav
@@ -35,9 +36,9 @@ export class CalendarNavigatorComponent {
     private vstore: Store<{ _view: CalendarView }>,
     private calendarViewPortService: CalendarViewPortService
   ) {
-    this.date$ = dstore.select('_date');
+    this.date$ = dstore.select(selectCalendarDateState);
     this.date$.subscribe((d: CalendarDate) => this._currentDate = d);
-    this._view$ = vstore.select('_view');
+    this._view$ = vstore.select(selectCalendarViewState);
     this._view$.subscribe((v) => this._view = v);
     this.calendarViewPortService.viewport.subscribe(s => this.viewport = s);
   }

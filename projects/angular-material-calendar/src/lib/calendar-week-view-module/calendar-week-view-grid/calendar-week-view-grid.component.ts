@@ -7,6 +7,7 @@ import { CalendarHoursService } from '../../service/calendar-hours.service';
 import { CalendarEventInput } from '../../calendar-modal/calendar-event/calendar-event-input';
 import { CalendarEventFull } from '../../calendar-modal/calendar-event/calendar-event-full';
 import { CalendarEventService } from '../../service/calendar-event.service';
+import { selectCalendarDateState } from '../../store';
 
 
 /**
@@ -34,7 +35,7 @@ export class CalendarWeekViewGridComponent implements OnInit, AfterViewInit {
     private _calendarWeekService: CalendarHoursService,
     private _calendarEventService: CalendarEventService
   ) {
-    this.date$ = store.select('_date');
+    this.date$ = store.select(selectCalendarDateState);
 
   }
 

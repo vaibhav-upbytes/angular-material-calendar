@@ -19,12 +19,25 @@ Run below to add this library in your project.
 npm install  @upbytes.in/angular-material-calendar
 ```
 
+if you are using npm command to install Angular Material Calendar library then you need add peer dependencies.
+
+```
+   {
+    "moment": "^2.29.1",
+    "rxjs": "~7.4.0",
+    "@angular/material-luxon-adapter": "^13.0.1",
+    "@types/luxon": "^2.0.5",
+    "@ngrx/store": "^13.0.0-rc.0"
+   }
+```
+
 ## Add in your module.ts
 ```
 import { AngularMaterialCalendarModule } from 'angular-material-calendar';
 
 imports: [
     ....
+    StoreModule.forRoot({}),
     MaterialModule,
     AngularMaterialCalendarModule
 ]
