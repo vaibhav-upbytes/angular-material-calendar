@@ -11,8 +11,8 @@
     "postbuild": "npm run copy:schemas & npm run copy:collection & npm run copy:styles & npm run copy:readme"  
   },
   "peerDependencies": {
-    "@angular/common": "^13.0.1",
-    "@angular/core": "^13.0.1",
+    "@angular/common": "^13.1.2",
+    "@angular/core": "^13.1.2",
     "@angular/cdk": "^13.0.1",
     "moment": "^2.29.1",
     "rxjs": "~7.4.0",
