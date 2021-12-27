@@ -25,9 +25,9 @@ if you are using npm command to install Angular Material Calendar library then y
    {
     "moment": "^2.29.1",
     "rxjs": "~7.4.0",
-    "@angular/material-luxon-adapter": "^13.0.1",
+    "@angular/material-luxon-adapter": "^13.1.1",
     "@types/luxon": "^2.0.5",
-    "@ngrx/store": "^13.0.0-rc.0"
+    "@ngrx/store": "^13.0.2"
    }
 ```
 
