@@ -1,6 +1,6 @@
 {
   "name": "@upbytes.in/angular-material-calendar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "schematics": "./schematics/collection.json",
   "scripts": {
     "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
@@ -13,12 +13,12 @@
   "peerDependencies": {
     "@angular/common": "^13.1.2",
     "@angular/core": "^13.1.2",
-    "@angular/cdk": "^13.0.1",
+    "@angular/cdk": "^13.1.1",
     "moment": "^2.29.1",
     "rxjs": "~7.4.0",
-    "@angular/material-luxon-adapter": "^13.0.1",
+    "@angular/material-luxon-adapter": "^13.1.1",
     "@types/luxon": "^2.0.5",
-    "@ngrx/store": "^13.0.0-rc.0"
+    "@ngrx/store": "^13.0.2"
   },
   "dependencies": {
     "tslib": "^2.3.1"
